@@ -83,7 +83,7 @@
     "tailwindcss-question-mark": "0.1.1",
     "twin.macro": "2.7.0",
     "typescript": "4.4.3",
-    "use-async-resource": "2.2.1",
+    "use-async-resource": "2.2.2",
     "use-local-storage-state": "11.0.0"
   },
   "dependencies": {

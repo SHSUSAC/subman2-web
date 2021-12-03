@@ -113,7 +113,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tailwindcss-question-mark", "npm:0.1.1"],
             ["twin.macro", "npm:2.7.0"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=493e53"],
-            ["use-async-resource", "npm:2.2.1"],
+            ["use-async-resource", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.2.2"],
             ["use-local-storage-state", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:11.0.0"]
           ],
           "linkType": "SOFT",
@@ -3341,7 +3341,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tailwindcss-question-mark", "npm:0.1.1"],
             ["twin.macro", "npm:2.7.0"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=493e53"],
-            ["use-async-resource", "npm:2.2.1"],
+            ["use-async-resource", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.2.2"],
             ["use-local-storage-state", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:11.0.0"]
           ],
           "linkType": "SOFT",
@@ -21373,11 +21373,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["use-async-resource", [
-        ["npm:2.2.1", {
-          "packageLocation": "./.yarn/cache/use-async-resource-npm-2.2.1-899a6794d1-47d2364351.zip/node_modules/use-async-resource/",
+        ["npm:2.2.2", {
+          "packageLocation": "./.yarn/cache/use-async-resource-npm-2.2.2-c69c49f40d-284402ddbb.zip/node_modules/use-async-resource/",
           "packageDependencies": [
-            ["use-async-resource", "npm:2.2.1"],
-            ["object-hash", "npm:2.2.0"]
+            ["use-async-resource", "npm:2.2.2"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.2.2", {
+          "packageLocation": "./.yarn/__virtual__/use-async-resource-virtual-8a7cfd2e9a/0/cache/use-async-resource-npm-2.2.2-c69c49f40d-284402ddbb.zip/node_modules/use-async-resource/",
+          "packageDependencies": [
+            ["use-async-resource", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.2.2"],
+            ["@types/react", "npm:17.0.37"],
+            ["object-hash", "npm:2.2.0"],
+            ["react", "npm:17.0.2"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
           ],
           "linkType": "HARD",
         }]

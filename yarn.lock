@@ -2244,7 +2244,7 @@ __metadata:
     tailwindcss-question-mark: 0.1.1
     twin.macro: 2.7.0
     typescript: 4.4.3
-    use-async-resource: 2.2.1
+    use-async-resource: 2.2.2
     use-local-storage-state: 11.0.0
   languageName: unknown
   linkType: soft
@@ -18176,12 +18176,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-async-resource@npm:2.2.1":
-  version: 2.2.1
-  resolution: "use-async-resource@npm:2.2.1"
+"use-async-resource@npm:2.2.2":
+  version: 2.2.2
+  resolution: "use-async-resource@npm:2.2.2"
   dependencies:
     object-hash: ^2.0.3
-  checksum: 47d2364351c820c3f7db401993c6cb65c9fd93efb4d89a88b7ffdc5f1ad906bc7cd972c02ece9086e197093aa5fa3b71c374b5e409da9c3be8e6a88bc3cd68e4
+  peerDependencies:
+    react: 16 || 17 || 18
+  checksum: 284402ddbb9f8fded21c6b42bc04131932bff9fb370c60016028e3f1e2b07fcdc4bdd1d90364700aa427e4b2ddccf0ab9744160227b4593f3547105c46762e36
   languageName: node
   linkType: hard
 
