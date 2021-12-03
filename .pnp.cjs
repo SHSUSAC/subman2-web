@@ -46,7 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fortawesome/fontawesome-svg-core", "npm:1.2.36"],
             ["@fortawesome/free-regular-svg-icons", "npm:5.15.4"],
             ["@fortawesome/free-solid-svg-icons", "npm:5.15.4"],
-            ["@fortawesome/react-fontawesome", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.15"],
+            ["@fortawesome/react-fontawesome", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.16"],
             ["@headlessui/react", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.1"],
             ["@hookform/error-message", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.0.0"],
             ["@js-temporal/polyfill", "npm:0.2.0"],
@@ -1966,17 +1966,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@fortawesome/react-fontawesome", [
-        ["npm:0.1.15", {
-          "packageLocation": "./.yarn/cache/@fortawesome-react-fontawesome-npm-0.1.15-9ca6d4ae82-88670e1af9.zip/node_modules/@fortawesome/react-fontawesome/",
+        ["npm:0.1.16", {
+          "packageLocation": "./.yarn/cache/@fortawesome-react-fontawesome-npm-0.1.16-f61dd686a0-22e7f624ab.zip/node_modules/@fortawesome/react-fontawesome/",
           "packageDependencies": [
-            ["@fortawesome/react-fontawesome", "npm:0.1.15"]
+            ["@fortawesome/react-fontawesome", "npm:0.1.16"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.15", {
-          "packageLocation": "./.yarn/__virtual__/@fortawesome-react-fontawesome-virtual-a551e26f14/0/cache/@fortawesome-react-fontawesome-npm-0.1.15-9ca6d4ae82-88670e1af9.zip/node_modules/@fortawesome/react-fontawesome/",
+        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.16", {
+          "packageLocation": "./.yarn/__virtual__/@fortawesome-react-fontawesome-virtual-f6bc1aa435/0/cache/@fortawesome-react-fontawesome-npm-0.1.16-f61dd686a0-22e7f624ab.zip/node_modules/@fortawesome/react-fontawesome/",
           "packageDependencies": [
-            ["@fortawesome/react-fontawesome", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.15"],
+            ["@fortawesome/react-fontawesome", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.16"],
             ["@fortawesome/fontawesome-svg-core", "npm:1.2.36"],
             ["@types/fortawesome__fontawesome-svg-core", null],
             ["@types/react", "npm:17.0.24"],
@@ -3277,7 +3277,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fortawesome/fontawesome-svg-core", "npm:1.2.36"],
             ["@fortawesome/free-regular-svg-icons", "npm:5.15.4"],
             ["@fortawesome/free-solid-svg-icons", "npm:5.15.4"],
-            ["@fortawesome/react-fontawesome", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.15"],
+            ["@fortawesome/react-fontawesome", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.16"],
             ["@headlessui/react", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.1"],
             ["@hookform/error-message", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.0.0"],
             ["@js-temporal/polyfill", "npm:0.2.0"],
