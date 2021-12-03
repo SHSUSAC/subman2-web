@@ -222,8 +222,4 @@ function BuildStaticCompilation(done) {
 
 module.exports["build"] = gulp.series(gulp.parallel(Clean, Lint), BuildFavicons, BuildBundle, BuildStaticCompilation);
 
-module.exports["version"] = function (done) {
-	Exec(done, "yarn semantic-release");
-};
-
 module.exports["depcheck"] = (done) => Exec(done, "yarn dlx depcheck");

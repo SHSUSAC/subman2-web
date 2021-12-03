@@ -36,7 +36,7 @@ jobs:
         run: yarn gulp build
 
       - name: Build Semantic Release
-        run: yarn semantic-release
+        run: yarn dlx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
