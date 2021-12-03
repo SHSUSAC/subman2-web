@@ -2102,7 +2102,7 @@ __metadata:
     "@types/react-dom": 17.0.11
     "@types/react-table": 7.7.8
     "@typescript-eslint/parser": 5.5.0
-    autoprefixer: 10.3.6
+    autoprefixer: 10.4.0
     babel-plugin-macros: 3.1.0
     browser-bunyan: 1.6.3
     del: 6.0.0
@@ -3636,25 +3636,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:10.3.6":
-  version: 10.3.6
-  resolution: "autoprefixer@npm:10.3.6"
-  dependencies:
-    browserslist: ^4.17.1
-    caniuse-lite: ^1.0.30001260
-    fraction.js: ^4.1.1
-    nanocolors: ^0.2.8
-    normalize-range: ^0.1.2
-    postcss-value-parser: ^4.1.0
-  peerDependencies:
-    postcss: ^8.1.0
-  bin:
-    autoprefixer: bin/autoprefixer
-  checksum: 432fdba79e8be1c310acef3bf31e1ec02139222ce5a2134857d5ed12a659eef319cc3f206cb79f5d9b204baa2f08ccfe688b4b227294354dd0fae6976dde0876
-  languageName: node
-  linkType: hard
-
-"autoprefixer@npm:^10.2.5":
+"autoprefixer@npm:10.4.0, autoprefixer@npm:^10.2.5":
   version: 10.4.0
   resolution: "autoprefixer@npm:10.4.0"
   dependencies:
@@ -4352,7 +4334,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.14.5, browserslist@npm:^4.17.1, browserslist@npm:^4.17.5":
+"browserslist@npm:^4.14.5, browserslist@npm:^4.17.5":
   version: 4.18.1
   resolution: "browserslist@npm:4.18.1"
   dependencies:
@@ -4610,7 +4592,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001202, caniuse-lite@npm:^1.0.30001219, caniuse-lite@npm:^1.0.30001228, caniuse-lite@npm:^1.0.30001260, caniuse-lite@npm:^1.0.30001272, caniuse-lite@npm:^1.0.30001280":
+"caniuse-lite@npm:^1.0.30001202, caniuse-lite@npm:^1.0.30001219, caniuse-lite@npm:^1.0.30001228, caniuse-lite@npm:^1.0.30001272, caniuse-lite@npm:^1.0.30001280":
   version: 1.0.30001284
   resolution: "caniuse-lite@npm:1.0.30001284"
   checksum: 67196113186dc38dc579b8d28c660ab45465594d4bb55a4e263779525ed3c3ed208d369775469faf706e9f68ef7071b14e4890c197406d79c8b936f6fabac458
@@ -12318,7 +12300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanocolors@npm:^0.2.2, nanocolors@npm:^0.2.8":
+"nanocolors@npm:^0.2.2":
   version: 0.2.13
   resolution: "nanocolors@npm:0.2.13"
   checksum: 01ac5aab77295c66cef83ea5f595e22f5f91518f19fae12f93ca2cba98703f971e32611fea2983f333eb7e60604043005690f61d9759e7c0a32314942fe6ddb8
