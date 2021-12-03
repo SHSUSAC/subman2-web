@@ -2,5 +2,6 @@
 
 SubMan2 is a suite of management software for sub-aqua clubs.
 
-## License
-[AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.en.html)
+![GitHub](https://img.shields.io/github/license/shsusac/subman2-web?style=for-the-badge)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen?style=for-the-badge&logo=RenovateBot)](https://renovatebot.com/)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/shsusac/subman2-web?style=for-the-badge)

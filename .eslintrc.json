@@ -1,0 +1,33 @@
+{
+  "root": true,
+  "overrides": [
+	{
+	  "files": [
+		"**/*.test.ts",
+		"**/*.test.js",
+		"**/*.test.tsx",
+		"**/*.test.jsx"
+	  ],
+	  "env": {
+		"jest": true
+	  }
+	}
+  ],
+  "extends": ["next/core-web-vitals", "plugin:json/recommended", "plugin:import/recommended", "plugin:import/typescript", "plugin:prettier/recommended"],
+  "rules": {
+	"prettier/prettier": ["error", {
+	  "endOfLine":"auto"
+	}],
+	"@next/next/no-img-element": "off"
+  },
+  "settings": {
+	"import/parsers": {
+	  "@typescript-eslint/parser": [".ts", ".tsx"]
+	},
+	"import/resolver": {
+	  "typescript": {
+		"alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+	  }
+	}
+  }
+}
