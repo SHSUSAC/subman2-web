@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "config:base",
+    ":ignoreModulesAndTests"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ],
+  "major": {
+    "dependencyDashboardApproval": true
+  },
+  "automergeStrategy": "merge-commit"
+}

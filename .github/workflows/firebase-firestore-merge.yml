@@ -1,0 +1,24 @@
+name: Deploy to Firebase Firestore on merge
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".firebase/firestore.rules"
+      - ".firebase/firestore.indexes.json"
+      - "firebase.json"
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: false
+
+      - name: Deploy Firestore
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only firestore
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SUBMAN2 }}
