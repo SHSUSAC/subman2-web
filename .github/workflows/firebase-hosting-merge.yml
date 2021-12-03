@@ -38,7 +38,7 @@ jobs:
       - name: Build Semantic Release
         run: yarn dlx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
