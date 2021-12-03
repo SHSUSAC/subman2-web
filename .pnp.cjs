@@ -61,7 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", "npm:2.4.1"],
             ["@types/react", "npm:17.0.37"],
             ["@types/react-dom", "npm:17.0.11"],
-            ["@types/react-table", "npm:7.7.5"],
+            ["@types/react-table", "npm:7.7.8"],
             ["@typescript-eslint/parser", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:5.5.0"],
             ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.3.6"],
             ["babel-plugin-macros", "npm:3.1.0"],
@@ -103,7 +103,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-test-renderer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:17.0.2"],
             ["react-toastify", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.0.3"],
             ["react-use-error-boundary", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.0.6"],
-            ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.0"],
+            ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.1"],
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.2"],
             ["rxjs", "npm:7.4.0"],
             ["safe-json-stringify", "npm:1.2.0"],
@@ -3291,7 +3291,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", "npm:2.4.1"],
             ["@types/react", "npm:17.0.37"],
             ["@types/react-dom", "npm:17.0.11"],
-            ["@types/react-table", "npm:7.7.5"],
+            ["@types/react-table", "npm:7.7.8"],
             ["@typescript-eslint/parser", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:5.5.0"],
             ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.3.6"],
             ["babel-plugin-macros", "npm:3.1.0"],
@@ -3333,7 +3333,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-test-renderer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:17.0.2"],
             ["react-toastify", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.0.3"],
             ["react-use-error-boundary", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.0.6"],
-            ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.0"],
+            ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.1"],
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.2"],
             ["rxjs", "npm:7.4.0"],
             ["safe-json-stringify", "npm:1.2.0"],
@@ -3784,10 +3784,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/react-table", [
-        ["npm:7.7.5", {
-          "packageLocation": "./.yarn/cache/@types-react-table-npm-7.7.5-ae22f48626-a6754a72ad.zip/node_modules/@types/react-table/",
+        ["npm:7.7.8", {
+          "packageLocation": "./.yarn/cache/@types-react-table-npm-7.7.8-f6ca034125-8ee32341a2.zip/node_modules/@types/react-table/",
           "packageDependencies": [
-            ["@types/react-table", "npm:7.7.5"],
+            ["@types/react-table", "npm:7.7.8"],
             ["@types/react", "npm:17.0.37"]
           ],
           "linkType": "HARD",
@@ -17975,22 +17975,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["reactfire", [
-        ["npm:4.2.0", {
-          "packageLocation": "./.yarn/cache/reactfire-npm-4.2.0-10213d9089-4993e7c3b8.zip/node_modules/reactfire/",
+        ["npm:4.2.1", {
+          "packageLocation": "./.yarn/cache/reactfire-npm-4.2.1-fa05dc0894-a1a322754f.zip/node_modules/reactfire/",
           "packageDependencies": [
-            ["reactfire", "npm:4.2.0"]
+            ["reactfire", "npm:4.2.1"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.0", {
-          "packageLocation": "./.yarn/__virtual__/reactfire-virtual-841acf5da2/0/cache/reactfire-npm-4.2.0-10213d9089-4993e7c3b8.zip/node_modules/reactfire/",
+        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.1", {
+          "packageLocation": "./.yarn/__virtual__/reactfire-virtual-648013291b/0/cache/reactfire-npm-4.2.1-fa05dc0894-a1a322754f.zip/node_modules/reactfire/",
           "packageDependencies": [
-            ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.0"],
+            ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.1"],
             ["@types/firebase", null],
             ["@types/react", "npm:17.0.37"],
             ["firebase", "npm:9.1.0"],
             ["react", "npm:17.0.2"],
-            ["rxfire", "virtual:841acf5da25a25eb681ed525c1e36ba48e2614ca994e46c660f42743ea76db31b8a876e47035d4800e729c5f72c1a6de4018f087d681247208832d39289122cb#npm:6.0.3"],
+            ["rxfire", "virtual:648013291ba8a91e8a7cd0d24807883efbabec7c538164b151ac5420588d35c9970b2b65fa4adf72e60552d6f72a87db5c07b211303ec95cb0c35824d295e332#npm:6.0.3"],
             ["rxjs", "npm:7.4.0"]
           ],
           "packagePeers": [
@@ -18762,10 +18762,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:841acf5da25a25eb681ed525c1e36ba48e2614ca994e46c660f42743ea76db31b8a876e47035d4800e729c5f72c1a6de4018f087d681247208832d39289122cb#npm:6.0.3", {
-          "packageLocation": "./.yarn/__virtual__/rxfire-virtual-84a0f72854/0/cache/rxfire-npm-6.0.3-e1a79362ac-418ccf6ee9.zip/node_modules/rxfire/",
+        ["virtual:648013291ba8a91e8a7cd0d24807883efbabec7c538164b151ac5420588d35c9970b2b65fa4adf72e60552d6f72a87db5c07b211303ec95cb0c35824d295e332#npm:6.0.3", {
+          "packageLocation": "./.yarn/__virtual__/rxfire-virtual-07ee53a402/0/cache/rxfire-npm-6.0.3-e1a79362ac-418ccf6ee9.zip/node_modules/rxfire/",
           "packageDependencies": [
-            ["rxfire", "virtual:841acf5da25a25eb681ed525c1e36ba48e2614ca994e46c660f42743ea76db31b8a876e47035d4800e729c5f72c1a6de4018f087d681247208832d39289122cb#npm:6.0.3"],
+            ["rxfire", "virtual:648013291ba8a91e8a7cd0d24807883efbabec7c538164b151ac5420588d35c9970b2b65fa4adf72e60552d6f72a87db5c07b211303ec95cb0c35824d295e332#npm:6.0.3"],
             ["@types/firebase", null],
             ["@types/rxjs", null],
             ["firebase", "npm:9.1.0"],
