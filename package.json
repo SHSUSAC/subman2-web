@@ -74,7 +74,7 @@
     "react-toastify": "8.0.3",
     "react-use-error-boundary": "0.0.6",
     "reactfire": "4.2.1",
-    "rxfire": "6.0.2",
+    "rxfire": "6.0.3",
     "rxjs": "7.4.0",
     "safe-json-stringify": "1.2.0",
     "sass": "1.42.1",

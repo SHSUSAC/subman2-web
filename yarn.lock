@@ -2235,7 +2235,7 @@ __metadata:
     react-toastify: 8.0.3
     react-use-error-boundary: 0.0.6
     reactfire: 4.2.1
-    rxfire: 6.0.2
+    rxfire: 6.0.3
     rxjs: 7.4.0
     safe-json-stringify: 1.2.0
     sass: 1.42.1
@@ -15844,19 +15844,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxfire@npm:6.0.2":
-  version: 6.0.2
-  resolution: "rxfire@npm:6.0.2"
-  dependencies:
-    tslib: ^1.9.0 || ~2.1.0
-  peerDependencies:
-    firebase: ^9.0.0
-    rxjs: ^6.0.0 || ^7.0.0
-  checksum: 66da94b4f920f082618f3dc6943df139786129962990cf98459a47fba55971122e4510cd647d5afb1883d97a80ab4b5424a8b2872c963d0811b02bc3a6b7f9e2
-  languageName: node
-  linkType: hard
-
-"rxfire@npm:^6.0.2":
+"rxfire@npm:6.0.3, rxfire@npm:^6.0.2":
   version: 6.0.3
   resolution: "rxfire@npm:6.0.3"
   dependencies:
