@@ -2096,7 +2096,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/npm": 8.0.3
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/node": 16.10.1
+    "@types/node": 16.11.11
     "@types/prettier": 2.4.1
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
@@ -2390,17 +2390,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
+"@types/node@npm:*, @types/node@npm:16.11.11, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
   version: 16.11.11
   resolution: "@types/node@npm:16.11.11"
   checksum: 1c472bd63f23ca0e4effc96e6e0c693b83b027f613a1f41b6d1bd7791f65ce171a351e0a5c92575cb59e84ad0a930875397bfbbb91a7c925ddbbb558f7461af8
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:16.10.1":
-  version: 16.10.1
-  resolution: "@types/node@npm:16.10.1"
-  checksum: 84d7f082e9421fdf1f08dbe00b66848897b2675eacc94a4fa445c4d34cef57c901ecd3276d03ebe110607a848d3df0ab33816aeff51a234e036111dd8ef1422f
   languageName: node
   linkType: hard
 
