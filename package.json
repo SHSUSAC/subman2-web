@@ -79,7 +79,6 @@
     "safe-json-stringify": "1.2.0",
     "sass": "1.42.1",
     "semantic-release": "18.0.0",
-    "semantic-release-monorepo": "7.0.5",
     "tailwindcss": "2.2.16",
     "tailwindcss-animatecss": "1.0.7",
     "tailwindcss-multi-column": "1.0.2",
@@ -99,11 +98,19 @@
     "branches": [
       "main"
     ],
-    "extends": [
-      "semantic-release-monorepo"
-    ],
     "plugins": [
-      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "scope": "deps",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
       "@semantic-release/release-notes-generator",
       [
         "@semantic-release/changelog",
