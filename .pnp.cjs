@@ -47,7 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fortawesome/free-regular-svg-icons", "npm:5.15.4"],
             ["@fortawesome/free-solid-svg-icons", "npm:5.15.4"],
             ["@fortawesome/react-fontawesome", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.16"],
-            ["@headlessui/react", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.1"],
+            ["@headlessui/react", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.2"],
             ["@hookform/error-message", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.0.0"],
             ["@js-temporal/polyfill", "npm:0.2.0"],
             ["@next/bundle-analyzer", "npm:11.1.2"],
@@ -2127,17 +2127,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@headlessui/react", [
-        ["npm:1.4.1", {
-          "packageLocation": "./.yarn/cache/@headlessui-react-npm-1.4.1-246a97ee13-e036941e31.zip/node_modules/@headlessui/react/",
+        ["npm:1.4.2", {
+          "packageLocation": "./.yarn/cache/@headlessui-react-npm-1.4.2-2e2d40ec29-28c3620443.zip/node_modules/@headlessui/react/",
           "packageDependencies": [
-            ["@headlessui/react", "npm:1.4.1"]
+            ["@headlessui/react", "npm:1.4.2"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.1", {
-          "packageLocation": "./.yarn/__virtual__/@headlessui-react-virtual-906b0405a8/0/cache/@headlessui-react-npm-1.4.1-246a97ee13-e036941e31.zip/node_modules/@headlessui/react/",
+        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.2", {
+          "packageLocation": "./.yarn/__virtual__/@headlessui-react-virtual-955b195922/0/cache/@headlessui-react-npm-1.4.2-2e2d40ec29-28c3620443.zip/node_modules/@headlessui/react/",
           "packageDependencies": [
-            ["@headlessui/react", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.1"],
+            ["@headlessui/react", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.2"],
             ["@types/react", "npm:17.0.24"],
             ["@types/react-dom", "npm:17.0.9"],
             ["react", "npm:17.0.2"],
@@ -3278,7 +3278,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fortawesome/free-regular-svg-icons", "npm:5.15.4"],
             ["@fortawesome/free-solid-svg-icons", "npm:5.15.4"],
             ["@fortawesome/react-fontawesome", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.1.16"],
-            ["@headlessui/react", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.1"],
+            ["@headlessui/react", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:1.4.2"],
             ["@hookform/error-message", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.0.0"],
             ["@js-temporal/polyfill", "npm:0.2.0"],
             ["@next/bundle-analyzer", "npm:11.1.2"],
