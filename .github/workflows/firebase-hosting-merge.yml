@@ -29,6 +29,12 @@ jobs:
       - name: Lint
         run: yarn gulp lint
 
+      #- name: Test
+      #  run: yarn run test
+
+      - name: Build
+        run: yarn gulp build
+
       - name: Build Semantic Release
         run: yarn gulp version
         env:
