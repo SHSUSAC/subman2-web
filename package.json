@@ -35,7 +35,7 @@
     "@types/prettier": "2.4.1",
     "@types/react": "17.0.37",
     "@types/react-dom": "17.0.11",
-    "@types/react-table": "7.7.5",
+    "@types/react-table": "7.7.8",
     "@typescript-eslint/parser": "5.5.0",
     "autoprefixer": "10.3.6",
     "babel-plugin-macros": "3.1.0",

@@ -2192,7 +2192,7 @@ __metadata:
     "@types/prettier": 2.4.1
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
-    "@types/react-table": 7.7.5
+    "@types/react-table": 7.7.8
     "@typescript-eslint/parser": 5.5.0
     autoprefixer: 10.3.6
     babel-plugin-macros: 3.1.0
@@ -2605,12 +2605,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-table@npm:7.7.5":
-  version: 7.7.5
-  resolution: "@types/react-table@npm:7.7.5"
+"@types/react-table@npm:7.7.8":
+  version: 7.7.8
+  resolution: "@types/react-table@npm:7.7.8"
   dependencies:
     "@types/react": "*"
-  checksum: a6754a72ad6926395dd020dc7abc5ac17f7d6e3f42387427f98a979d5772398bde4b77c1335944c36c58b816ba8f388510a85b527d9c61de6e0a86ceb84c32b8
+  checksum: 8ee32341a2f20001d6b8ec80709a786391fde033e71634f8b3e5e2108532e123322bac8522583274f52b8901045085f9185b8a9e25717595589641d551bb2ce3
   languageName: node
   linkType: hard
 
