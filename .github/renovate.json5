@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "config:base",
+    ":ignoreModulesAndTests"
+  ],
+  "packageRules": [
+	{
+	  "description": "Automatically merge minor and patch-level updates",
+	  "matchUpdateTypes": ["minor", "patch", "digest"],
+	  "automerge": true,
+	  // Force Renovate to not create a PR (but merge its branches directly), to avoid PR-related email spam
+	  "automergeType": "branch"
+	},
+	  {
+		  "description": "Require major updates to be manually approved",
+		  "matchUpdateTypes": ["major"],
+		  "automerge": false,
+		  "dependencyDashboardApproval": true
+	  }
+  ],
+  "automergeStrategy": "merge-commit"
+}
