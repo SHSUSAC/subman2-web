@@ -2136,7 +2136,7 @@ __metadata:
     react-dom: 17.0.2
     react-hook-form: 7.20.5
     react-optimized-image: 0.4.1
-    react-select: 5.0.0
+    react-select: 5.2.1
     react-table: 7.7.0
     react-toastify: 8.0.3
     react-use-error-boundary: 0.0.6
@@ -14739,9 +14739,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-select@npm:5.0.0":
-  version: 5.0.0
-  resolution: "react-select@npm:5.0.0"
+"react-select@npm:5.2.1":
+  version: 5.2.1
+  resolution: "react-select@npm:5.2.1"
   dependencies:
     "@babel/runtime": ^7.12.0
     "@emotion/cache": ^11.4.0
@@ -14753,7 +14753,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: f0a0762ebccc7f825c583ec8ab13d372eeba5c2deea054264df6f3a15eab0bcd06aec7a1771765eb353a40e32407ac659e739657085b484a82e0b79efe2800d4
+  checksum: 014cde5d23ca466795bd7f02455769efda74522c41f11109ec2d6f0e3c77f401ea91ae23cdccce997efb653aa6ea88688a16f40e59bfdef2a2414d0cfd10f374
   languageName: node
   linkType: hard
 
