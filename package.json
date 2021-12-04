@@ -75,7 +75,7 @@
     "rxfire": "6.0.3",
     "rxjs": "7.4.0",
     "safe-json-stringify": "1.2.0",
-    "sass": "1.42.1",
+    "sass": "1.44.0",
     "semantic-release": "18.0.1",
     "tailwindcss": "2.2.19",
     "tailwindcss-animatecss": "1.0.7",

@@ -105,7 +105,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
             ["rxjs", "npm:7.4.0"],
             ["safe-json-stringify", "npm:1.2.0"],
-            ["sass", "npm:1.42.1"],
+            ["sass", "npm:1.44.0"],
             ["semantic-release", "npm:18.0.1"],
             ["tailwindcss", "virtual:3898afaa6021db9369b440b8816ab562842bcd3aec138bd76a646d408af4b9f876ac6ca28baff58166f1de32574df69cfb1cde525a3af868e95b755aed158df7#npm:2.2.19"],
             ["tailwindcss-animatecss", "npm:1.0.7"],
@@ -3196,7 +3196,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
             ["rxjs", "npm:7.4.0"],
             ["safe-json-stringify", "npm:1.2.0"],
-            ["sass", "npm:1.42.1"],
+            ["sass", "npm:1.44.0"],
             ["semantic-release", "npm:18.0.1"],
             ["tailwindcss", "virtual:3898afaa6021db9369b440b8816ab562842bcd3aec138bd76a646d408af4b9f876ac6ca28baff58166f1de32574df69cfb1cde525a3af868e95b755aed158df7#npm:2.2.19"],
             ["tailwindcss-animatecss", "npm:1.0.7"],
@@ -11465,6 +11465,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["immutable", [
+        ["npm:4.0.0", {
+          "packageLocation": "./.yarn/cache/immutable-npm-4.0.0-74b844f82e-4b5e9181e4.zip/node_modules/immutable/",
+          "packageDependencies": [
+            ["immutable", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["import-cwd", [
         ["npm:3.0.0", {
           "packageLocation": "./.yarn/cache/import-cwd-npm-3.0.0-2f801f964d-f2c4230e83.zip/node_modules/import-cwd/",
@@ -14820,7 +14829,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:17.0.2"],
             ["react-is", "npm:17.0.2"],
             ["react-refresh", "npm:0.8.3"],
-            ["sass", "npm:1.42.1"],
+            ["sass", "npm:1.44.0"],
             ["stream-browserify", "npm:3.0.0"],
             ["stream-http", "npm:3.1.1"],
             ["string_decoder", "npm:1.3.0"],
@@ -18406,11 +18415,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["sass", [
-        ["npm:1.42.1", {
-          "packageLocation": "./.yarn/cache/sass-npm-1.42.1-85b82c1e8b-467817475b.zip/node_modules/sass/",
+        ["npm:1.44.0", {
+          "packageLocation": "./.yarn/cache/sass-npm-1.44.0-e617b09388-35b5b21ee5.zip/node_modules/sass/",
           "packageDependencies": [
-            ["sass", "npm:1.42.1"],
-            ["chokidar", "npm:3.5.2"]
+            ["sass", "npm:1.44.0"],
+            ["chokidar", "npm:3.5.2"],
+            ["immutable", "npm:4.0.0"]
           ],
           "linkType": "HARD",
         }]
