@@ -2128,7 +2128,7 @@ __metadata:
     next-optimized-images: 3.0.0-canary.10
     optimized-images-loader: 0.4.0
     plugin-error: 1.0.1
-    postcss: 8.3.8
+    postcss: 8.4.4
     prettier: 2.4.1
     query-string: 7.0.1
     react: 17.0.2
@@ -12300,14 +12300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanocolors@npm:^0.2.2":
-  version: 0.2.13
-  resolution: "nanocolors@npm:0.2.13"
-  checksum: 01ac5aab77295c66cef83ea5f595e22f5f91518f19fae12f93ca2cba98703f971e32611fea2983f333eb7e60604043005690f61d9759e7c0a32314942fe6ddb8
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^3.1.23, nanoid@npm:^3.1.25, nanoid@npm:^3.1.30":
+"nanoid@npm:^3.1.23, nanoid@npm:^3.1.30":
   version: 3.1.30
   resolution: "nanoid@npm:3.1.30"
   bin:
@@ -14094,18 +14087,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.3.8":
-  version: 8.3.8
-  resolution: "postcss@npm:8.3.8"
-  dependencies:
-    nanocolors: ^0.2.2
-    nanoid: ^3.1.25
-    source-map-js: ^0.6.2
-  checksum: 20073f3f70487e9fa8d40e930d02595c4d96b7db8b2142ee4efe8e0c9a54c844c720370e178aef57c12d2d5bf65592cfdd1d020a74bf2840bc58650590713a35
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.1.6, postcss@npm:^8.1.8, postcss@npm:^8.3.5":
+"postcss@npm:8.4.4, postcss@npm:^8.1.6, postcss@npm:^8.1.8, postcss@npm:^8.3.5":
   version: 8.4.4
   resolution: "postcss@npm:8.4.4"
   dependencies:
@@ -16162,13 +16144,6 @@ __metadata:
     ip: ^1.1.5
     smart-buffer: ^4.1.0
   checksum: 2ca9d616e424f645838ebaabb04f85d94ea999e0f8393dc07f86c435af22ed88cb83958feeabd1bb7bc537c635ed47454255635502c6808a6df61af1f41af750
-  languageName: node
-  linkType: hard
-
-"source-map-js@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "source-map-js@npm:0.6.2"
-  checksum: 9c8151a29e00fd8d3ba87709fdf9a9ce48313d653f4a29a39b4ae53d346ac79e005de624796ff42eff55cbaf26d2e87f4466001ca87831d400d818c5cf146a0e
   languageName: node
   linkType: hard
 

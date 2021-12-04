@@ -61,7 +61,7 @@
     "next-optimized-images": "3.0.0-canary.10",
     "optimized-images-loader": "0.4.0",
     "plugin-error": "1.0.1",
-    "postcss": "8.3.8",
+    "postcss": "8.4.4",
     "prettier": "2.4.1",
     "query-string": "7.0.1",
     "react-click-away-listener": "2.0.5",
