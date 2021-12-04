@@ -2097,7 +2097,7 @@ __metadata:
     "@semantic-release/npm": 8.0.3
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/node": 16.11.11
-    "@types/prettier": 2.4.1
+    "@types/prettier": 2.4.2
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     "@types/react-table": 7.7.8
@@ -2129,7 +2129,7 @@ __metadata:
     optimized-images-loader: 0.4.0
     plugin-error: 1.0.1
     postcss: 8.4.4
-    prettier: 2.4.1
+    prettier: 2.5.0
     query-string: 7.0.1
     react: 17.0.2
     react-click-away-listener: 2.0.5
@@ -2411,10 +2411,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:2.4.1":
-  version: 2.4.1
-  resolution: "@types/prettier@npm:2.4.1"
-  checksum: df330c2d6fe7c282839b0f17701e069a9c6c96d2ff54704e933a1b3c1b98844d963a7cb00c5629d173604892ceee802312bbaeb8a97f5da21e13db8f653b519e
+"@types/prettier@npm:2.4.2":
+  version: 2.4.2
+  resolution: "@types/prettier@npm:2.4.2"
+  checksum: 76e230b2d11028af11fe12e09b2d5b10b03738e9abf819ae6ebb0f78cac13d39f860755ce05ac3855b608222518d956628f5d00322dc206cc6d1f2d8d1519f1e
   languageName: node
   linkType: hard
 
@@ -14160,12 +14160,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.4.1":
-  version: 2.4.1
-  resolution: "prettier@npm:2.4.1"
+"prettier@npm:2.5.0":
+  version: 2.5.0
+  resolution: "prettier@npm:2.5.0"
   bin:
     prettier: bin-prettier.js
-  checksum: cc6830588b401b0d742862fe9c46bc9118204fb307c3abe0e49e95b35ed23629573807ffdf9cdd65289c252a0bb51fc0171437f6626ee36378dea80f0ee80b91
+  checksum: aad1b35b73e7c14596d389d90977a83dad0db689ba5802a0ef319c357b7867f55b885db197972aa6a56c30f53088c9f8e0d7f7930ae074c275a4e9cbe091d21d
   languageName: node
   linkType: hard
 
