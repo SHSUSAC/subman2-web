@@ -99,7 +99,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-optimized-image", "npm:0.4.1"],
             ["react-select", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:5.2.1"],
             ["react-table", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:7.7.0"],
-            ["react-toastify", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.0.3"],
+            ["react-toastify", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.1.0"],
             ["react-use-error-boundary", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.0.6"],
             ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.1"],
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
@@ -3190,7 +3190,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-optimized-image", "npm:0.4.1"],
             ["react-select", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:5.2.1"],
             ["react-table", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:7.7.0"],
-            ["react-toastify", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.0.3"],
+            ["react-toastify", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.1.0"],
             ["react-use-error-boundary", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.0.6"],
             ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.1"],
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
@@ -17456,17 +17456,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["react-toastify", [
-        ["npm:8.0.3", {
-          "packageLocation": "./.yarn/cache/react-toastify-npm-8.0.3-31fe49482a-a428f310bf.zip/node_modules/react-toastify/",
+        ["npm:8.1.0", {
+          "packageLocation": "./.yarn/cache/react-toastify-npm-8.1.0-2a38351740-9d7b18c747.zip/node_modules/react-toastify/",
           "packageDependencies": [
-            ["react-toastify", "npm:8.0.3"]
+            ["react-toastify", "npm:8.1.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.0.3", {
-          "packageLocation": "./.yarn/__virtual__/react-toastify-virtual-c8b392c99c/0/cache/react-toastify-npm-8.0.3-31fe49482a-a428f310bf.zip/node_modules/react-toastify/",
+        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.1.0", {
+          "packageLocation": "./.yarn/__virtual__/react-toastify-virtual-21ce0aaae2/0/cache/react-toastify-npm-8.1.0-2a38351740-9d7b18c747.zip/node_modules/react-toastify/",
           "packageDependencies": [
-            ["react-toastify", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.0.3"],
+            ["react-toastify", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:8.1.0"],
             ["@types/react", "npm:17.0.37"],
             ["@types/react-dom", "npm:17.0.11"],
             ["clsx", "npm:1.1.1"],
