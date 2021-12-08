@@ -2058,7 +2058,7 @@ __metadata:
     react: 17.0.2
     react-click-away-listener: 2.0.5
     react-dom: 17.0.2
-    react-hook-form: 7.20.5
+    react-hook-form: 7.21.0
     react-optimized-image: 0.4.1
     react-select: 5.2.1
     react-table: 7.7.0
@@ -14629,12 +14629,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:7.20.5":
-  version: 7.20.5
-  resolution: "react-hook-form@npm:7.20.5"
+"react-hook-form@npm:7.21.0":
+  version: 7.21.0
+  resolution: "react-hook-form@npm:7.21.0"
   peerDependencies:
     react: ^16.8.0 || ^17
-  checksum: f7ae9bbdddf5e2efb75541a6dccbd881ae92f4636a08eb9d1ffa866160929cef743702de5858c054f169b798efbdc80e46896f344d97e34be70f21364c8f23cf
+  checksum: e200c3776746ec9de87826f03daea0b39d5067690a47a0bc51d6b8cc0fae8580a0bda5493cc2ad80f4dbce69c8158cd04878b5fb5eeef2e7c1ef9a1481c02eb1
   languageName: node
   linkType: hard
 
