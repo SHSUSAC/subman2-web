@@ -61,7 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", "npm:2.4.2"],
             ["@types/react", "npm:17.0.37"],
             ["@types/react-dom", "npm:17.0.11"],
-            ["@types/react-table", "npm:7.7.8"],
+            ["@types/react-table", "npm:7.7.9"],
             ["@typescript-eslint/parser", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:5.6.0"],
             ["autoprefixer", "virtual:4c0943788cfbf62ff7a2196f6aa3ce7bca1933cf17f07902a2ec4e1be3657bd133f3c4b538e2ab5b031cc605a6626429965a8888d48307375f87badbb62791c5#npm:10.4.0"],
             ["babel-plugin-macros", "npm:3.1.0"],
@@ -2924,7 +2924,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", "npm:2.4.2"],
             ["@types/react", "npm:17.0.37"],
             ["@types/react-dom", "npm:17.0.11"],
-            ["@types/react-table", "npm:7.7.8"],
+            ["@types/react-table", "npm:7.7.9"],
             ["@typescript-eslint/parser", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:5.6.0"],
             ["autoprefixer", "virtual:4c0943788cfbf62ff7a2196f6aa3ce7bca1933cf17f07902a2ec4e1be3657bd133f3c4b538e2ab5b031cc605a6626429965a8888d48307375f87badbb62791c5#npm:10.4.0"],
             ["babel-plugin-macros", "npm:3.1.0"],
@@ -3335,10 +3335,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/react-table", [
-        ["npm:7.7.8", {
-          "packageLocation": "./.yarn/cache/@types-react-table-npm-7.7.8-f6ca034125-8ee32341a2.zip/node_modules/@types/react-table/",
+        ["npm:7.7.9", {
+          "packageLocation": "./.yarn/cache/@types-react-table-npm-7.7.9-2777fc0c09-3f6c847c8e.zip/node_modules/@types/react-table/",
           "packageDependencies": [
-            ["@types/react-table", "npm:7.7.8"],
+            ["@types/react-table", "npm:7.7.9"],
             ["@types/react", "npm:17.0.37"]
           ],
           "linkType": "HARD",
