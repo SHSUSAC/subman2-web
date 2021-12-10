@@ -114,7 +114,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["twin.macro", "npm:2.8.1"],
             ["typescript", "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"],
             ["use-async-resource", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.2.2"],
-            ["use-local-storage-state", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:11.0.0"]
+            ["use-local-storage-state", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:12.0.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -2977,7 +2977,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["twin.macro", "npm:2.8.1"],
             ["typescript", "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"],
             ["use-async-resource", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.2.2"],
-            ["use-local-storage-state", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:11.0.0"]
+            ["use-local-storage-state", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:12.0.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -20847,22 +20847,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["use-local-storage-state", [
-        ["npm:11.0.0", {
-          "packageLocation": "./.yarn/cache/use-local-storage-state-npm-11.0.0-9b99807b47-80f9d98e75.zip/node_modules/use-local-storage-state/",
+        ["npm:12.0.0", {
+          "packageLocation": "./.yarn/cache/use-local-storage-state-npm-12.0.0-b0a57196dd-84ac8110d9.zip/node_modules/use-local-storage-state/",
           "packageDependencies": [
-            ["use-local-storage-state", "npm:11.0.0"]
+            ["use-local-storage-state", "npm:12.0.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:11.0.0", {
-          "packageLocation": "./.yarn/__virtual__/use-local-storage-state-virtual-4a6400756c/0/cache/use-local-storage-state-npm-11.0.0-9b99807b47-80f9d98e75.zip/node_modules/use-local-storage-state/",
+        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:12.0.0", {
+          "packageLocation": "./.yarn/__virtual__/use-local-storage-state-virtual-3feadb9b0b/0/cache/use-local-storage-state-npm-12.0.0-b0a57196dd-84ac8110d9.zip/node_modules/use-local-storage-state/",
           "packageDependencies": [
-            ["use-local-storage-state", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:11.0.0"],
+            ["use-local-storage-state", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:12.0.0"],
             ["@types/react", "npm:17.0.37"],
-            ["react", "npm:17.0.2"]
+            ["@types/react-dom", "npm:17.0.11"],
+            ["react", "npm:17.0.2"],
+            ["react-dom", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:17.0.2"]
           ],
           "packagePeers": [
+            "@types/react-dom",
             "@types/react",
+            "react-dom",
             "react"
           ],
           "linkType": "HARD",

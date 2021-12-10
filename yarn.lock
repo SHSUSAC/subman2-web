@@ -2077,7 +2077,7 @@ __metadata:
     twin.macro: 2.8.1
     typescript: 4.5.2
     use-async-resource: 2.2.2
-    use-local-storage-state: 11.0.0
+    use-local-storage-state: 12.0.0
   languageName: unknown
   linkType: soft
 
@@ -17924,12 +17924,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-local-storage-state@npm:11.0.0":
-  version: 11.0.0
-  resolution: "use-local-storage-state@npm:11.0.0"
+"use-local-storage-state@npm:12.0.0":
+  version: 12.0.0
+  resolution: "use-local-storage-state@npm:12.0.0"
   peerDependencies:
     react: ">=16.8.0"
-  checksum: 80f9d98e75909472795fb50407946506ae3d1fe76b919f39905504245fdc030891f1f1b161c62c7fd14bdad839d6f9153639145533cb7b6b22766bcbcd1c91e3
+    react-dom: ">=16.8.0"
+  checksum: 84ac8110d9e660cbdf7874a8c1cbe1f533888de5f7ad1f909bfd86664c05c63e564f125ba3c0c7327b86a0666e6732316ca736a3db95c085b5caff44a1229232
   languageName: node
   linkType: hard
 
