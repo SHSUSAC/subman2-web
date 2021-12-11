@@ -77,7 +77,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:3.4.1"],
             ["fancy-log", "npm:1.3.3"],
             ["firebase", "npm:9.6.0"],
-            ["firebase-tools", "npm:9.23.0"],
+            ["firebase-tools", "npm:9.23.1"],
             ["git-guppy", "npm:2.1.0"],
             ["gulp", "npm:4.0.2"],
             ["gulp-eslint", "npm:6.0.0"],
@@ -2940,7 +2940,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:3.4.1"],
             ["fancy-log", "npm:1.3.3"],
             ["firebase", "npm:9.6.0"],
-            ["firebase-tools", "npm:9.23.0"],
+            ["firebase-tools", "npm:9.23.1"],
             ["git-guppy", "npm:2.1.0"],
             ["gulp", "npm:4.0.2"],
             ["gulp-eslint", "npm:6.0.0"],
@@ -9414,10 +9414,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["firebase-tools", [
-        ["npm:9.23.0", {
-          "packageLocation": "./.yarn/cache/firebase-tools-npm-9.23.0-b5a9eec9ea-ae4dc5d69a.zip/node_modules/firebase-tools/",
+        ["npm:9.23.1", {
+          "packageLocation": "./.yarn/cache/firebase-tools-npm-9.23.1-49ce4eba23-22a317f209.zip/node_modules/firebase-tools/",
           "packageDependencies": [
-            ["firebase-tools", "npm:9.23.0"],
+            ["firebase-tools", "npm:9.23.1"],
             ["@google-cloud/pubsub", "npm:2.18.3"],
             ["@types/archiver", "npm:5.3.0"],
             ["JSONStream", "npm:1.3.5"],
@@ -9450,7 +9450,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["leven", "npm:3.1.0"],
             ["lodash", "npm:4.17.21"],
             ["marked", "npm:0.7.0"],
-            ["marked-terminal", "virtual:b5a9eec9eab1bc8946ca055015dc1b9d3353eb6558789ec228373ebd014c6e9ed0697c72052b01103e2de1d48fd74ee5841d5be0a3c06b285dc8b9612b9f5abf#npm:3.3.0"],
+            ["marked-terminal", "virtual:49ce4eba23cb4ef89ad160381d005f8e0dec63ecccdacc90ebcade335071c6cad3d054d758f46bbf4ad9405b45816c67ca2cda707e98b9a3f0adc3e09dd67873#npm:3.3.0"],
             ["mime", "npm:2.6.0"],
             ["minimatch", "npm:3.0.4"],
             ["morgan", "npm:1.10.0"],
@@ -13673,6 +13673,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
+        ["virtual:49ce4eba23cb4ef89ad160381d005f8e0dec63ecccdacc90ebcade335071c6cad3d054d758f46bbf4ad9405b45816c67ca2cda707e98b9a3f0adc3e09dd67873#npm:3.3.0", {
+          "packageLocation": "./.yarn/__virtual__/marked-terminal-virtual-7284e61f26/0/cache/marked-terminal-npm-3.3.0-354e989e9a-1d10becde5.zip/node_modules/marked-terminal/",
+          "packageDependencies": [
+            ["marked-terminal", "virtual:49ce4eba23cb4ef89ad160381d005f8e0dec63ecccdacc90ebcade335071c6cad3d054d758f46bbf4ad9405b45816c67ca2cda707e98b9a3f0adc3e09dd67873#npm:3.3.0"],
+            ["@types/marked", null],
+            ["ansi-escapes", "npm:3.2.0"],
+            ["cardinal", "npm:2.1.1"],
+            ["chalk", "npm:2.4.2"],
+            ["cli-table", "npm:0.3.9"],
+            ["marked", "npm:0.7.0"],
+            ["node-emoji", "npm:1.11.0"],
+            ["supports-hyperlinks", "npm:1.0.1"]
+          ],
+          "packagePeers": [
+            "@types/marked",
+            "marked"
+          ],
+          "linkType": "HARD",
+        }],
         ["virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:4.2.0", {
           "packageLocation": "./.yarn/__virtual__/marked-terminal-virtual-3029d4bc4b/0/cache/marked-terminal-npm-4.2.0-efa6513dff-a68a4cfd22.zip/node_modules/marked-terminal/",
           "packageDependencies": [
@@ -13685,25 +13704,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["marked", "npm:2.1.3"],
             ["node-emoji", "npm:1.11.0"],
             ["supports-hyperlinks", "npm:2.2.0"]
-          ],
-          "packagePeers": [
-            "@types/marked",
-            "marked"
-          ],
-          "linkType": "HARD",
-        }],
-        ["virtual:b5a9eec9eab1bc8946ca055015dc1b9d3353eb6558789ec228373ebd014c6e9ed0697c72052b01103e2de1d48fd74ee5841d5be0a3c06b285dc8b9612b9f5abf#npm:3.3.0", {
-          "packageLocation": "./.yarn/__virtual__/marked-terminal-virtual-64870a4a5b/0/cache/marked-terminal-npm-3.3.0-354e989e9a-1d10becde5.zip/node_modules/marked-terminal/",
-          "packageDependencies": [
-            ["marked-terminal", "virtual:b5a9eec9eab1bc8946ca055015dc1b9d3353eb6558789ec228373ebd014c6e9ed0697c72052b01103e2de1d48fd74ee5841d5be0a3c06b285dc8b9612b9f5abf#npm:3.3.0"],
-            ["@types/marked", null],
-            ["ansi-escapes", "npm:3.2.0"],
-            ["cardinal", "npm:2.1.1"],
-            ["chalk", "npm:2.4.2"],
-            ["cli-table", "npm:0.3.9"],
-            ["marked", "npm:0.7.0"],
-            ["node-emoji", "npm:1.11.0"],
-            ["supports-hyperlinks", "npm:1.0.1"]
           ],
           "packagePeers": [
             "@types/marked",
