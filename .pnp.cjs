@@ -105,7 +105,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
             ["rxjs", "npm:7.4.0"],
             ["safe-json-stringify", "npm:1.2.0"],
-            ["sass", "npm:1.44.0"],
+            ["sass", "npm:1.45.0"],
             ["semantic-release", "npm:18.0.1"],
             ["tailwindcss", "virtual:d86c2527885d22e277747c45d295589546e621a599250a128428d6e25cb0613dd62303bbeab1c620a176c7241407b9441d613123f5b6f46bdc3cbaf2a72c1dbf#npm:2.2.19"],
             ["tailwindcss-animatecss", "npm:1.0.7"],
@@ -3164,7 +3164,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
             ["rxjs", "npm:7.4.0"],
             ["safe-json-stringify", "npm:1.2.0"],
-            ["sass", "npm:1.44.0"],
+            ["sass", "npm:1.45.0"],
             ["semantic-release", "npm:18.0.1"],
             ["tailwindcss", "virtual:d86c2527885d22e277747c45d295589546e621a599250a128428d6e25cb0613dd62303bbeab1c620a176c7241407b9441d613123f5b6f46bdc3cbaf2a72c1dbf#npm:2.2.19"],
             ["tailwindcss-animatecss", "npm:1.0.7"],
@@ -14724,7 +14724,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:17.0.2"],
             ["react-is", "npm:17.0.2"],
             ["react-refresh", "npm:0.8.3"],
-            ["sass", "npm:1.44.0"],
+            ["sass", "npm:1.45.0"],
             ["stream-browserify", "npm:3.0.0"],
             ["stream-http", "npm:3.1.1"],
             ["string_decoder", "npm:1.3.0"],
@@ -18311,12 +18311,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["sass", [
-        ["npm:1.44.0", {
-          "packageLocation": "./.yarn/cache/sass-npm-1.44.0-e617b09388-35b5b21ee5.zip/node_modules/sass/",
+        ["npm:1.45.0", {
+          "packageLocation": "./.yarn/cache/sass-npm-1.45.0-83550ad0f7-f20d22ddf9.zip/node_modules/sass/",
           "packageDependencies": [
-            ["sass", "npm:1.44.0"],
+            ["sass", "npm:1.45.0"],
             ["chokidar", "npm:3.5.2"],
-            ["immutable", "npm:4.0.0"]
+            ["immutable", "npm:4.0.0"],
+            ["source-map-js", "npm:1.0.1"]
           ],
           "linkType": "HARD",
         }]
