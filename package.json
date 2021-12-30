@@ -73,7 +73,7 @@
     "react-use-error-boundary": "0.0.6",
     "reactfire": "4.2.1",
     "rxfire": "6.0.3",
-    "rxjs": "7.4.0",
+    "rxjs": "7.5.1",
     "safe-json-stringify": "1.2.0",
     "sass": "1.45.1",
     "semantic-release": "18.0.1",

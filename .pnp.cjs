@@ -103,7 +103,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-use-error-boundary", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.0.6"],
             ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.1"],
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
-            ["rxjs", "npm:7.4.0"],
+            ["rxjs", "npm:7.5.1"],
             ["safe-json-stringify", "npm:1.2.0"],
             ["sass", "npm:1.45.1"],
             ["semantic-release", "npm:18.0.1"],
@@ -3330,7 +3330,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-use-error-boundary", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:0.0.6"],
             ["reactfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.2.1"],
             ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
-            ["rxjs", "npm:7.4.0"],
+            ["rxjs", "npm:7.5.1"],
             ["safe-json-stringify", "npm:1.2.0"],
             ["sass", "npm:1.45.1"],
             ["semantic-release", "npm:18.0.1"],
@@ -17764,7 +17764,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:17.0.38"],
             ["firebase", "npm:9.6.1"],
             ["react", "npm:17.0.2"],
-            ["rxfire", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3"],
+            ["rxfire", "virtual:648013291ba8a91e8a7cd0d24807883efbabec7c538164b151ac5420588d35c9970b2b65fa4adf72e60552d6f72a87db5c07b211303ec95cb0c35824d295e332#npm:6.0.3"],
             ["rxjs", "npm:7.4.0"]
           ],
           "packagePeers": [
@@ -18529,6 +18529,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
+        ["virtual:648013291ba8a91e8a7cd0d24807883efbabec7c538164b151ac5420588d35c9970b2b65fa4adf72e60552d6f72a87db5c07b211303ec95cb0c35824d295e332#npm:6.0.3", {
+          "packageLocation": "./.yarn/__virtual__/rxfire-virtual-07ee53a402/0/cache/rxfire-npm-6.0.3-e1a79362ac-418ccf6ee9.zip/node_modules/rxfire/",
+          "packageDependencies": [
+            ["rxfire", "virtual:648013291ba8a91e8a7cd0d24807883efbabec7c538164b151ac5420588d35c9970b2b65fa4adf72e60552d6f72a87db5c07b211303ec95cb0c35824d295e332#npm:6.0.3"],
+            ["@types/firebase", null],
+            ["@types/rxjs", null],
+            ["firebase", "npm:9.6.1"],
+            ["rxjs", "npm:7.4.0"],
+            ["tslib", "npm:2.1.0"]
+          ],
+          "packagePeers": [
+            "@types/firebase",
+            "@types/rxjs",
+            "firebase",
+            "rxjs"
+          ],
+          "linkType": "HARD",
+        }],
         ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:6.0.3", {
           "packageLocation": "./.yarn/__virtual__/rxfire-virtual-86e4322417/0/cache/rxfire-npm-6.0.3-e1a79362ac-418ccf6ee9.zip/node_modules/rxfire/",
           "packageDependencies": [
@@ -18536,7 +18554,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/firebase", null],
             ["@types/rxjs", null],
             ["firebase", "npm:9.6.1"],
-            ["rxjs", "npm:7.4.0"],
+            ["rxjs", "npm:7.5.1"],
             ["tslib", "npm:2.1.0"]
           ],
           "packagePeers": [
@@ -18562,6 +18580,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["rxjs", "npm:7.4.0"],
             ["tslib", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:7.5.1", {
+          "packageLocation": "./.yarn/cache/rxjs-npm-7.5.1-ce59cbb6a3-78e3eecb16.zip/node_modules/rxjs/",
+          "packageDependencies": [
+            ["rxjs", "npm:7.5.1"],
+            ["tslib", "npm:2.3.1"]
           ],
           "linkType": "HARD",
         }]
