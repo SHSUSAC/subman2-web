@@ -63,7 +63,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:17.0.11"],
             ["@types/react-table", "npm:7.7.9"],
             ["@typescript-eslint/parser", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:5.8.1"],
-            ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.0"],
+            ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.1"],
             ["babel-plugin-macros", "npm:3.1.0"],
             ["browser-bunyan", "npm:1.6.3"],
             ["del", "npm:6.0.0"],
@@ -3290,7 +3290,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:17.0.11"],
             ["@types/react-table", "npm:7.7.9"],
             ["@typescript-eslint/parser", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:5.8.1"],
-            ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.0"],
+            ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.1"],
             ["babel-plugin-macros", "npm:3.1.0"],
             ["browser-bunyan", "npm:1.6.3"],
             ["del", "npm:6.0.0"],
@@ -5119,6 +5119,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
+        ["npm:10.4.1", {
+          "packageLocation": "./.yarn/cache/autoprefixer-npm-10.4.1-fa09ff3343-96527cd62b.zip/node_modules/autoprefixer/",
+          "packageDependencies": [
+            ["autoprefixer", "npm:10.4.1"]
+          ],
+          "linkType": "SOFT",
+        }],
         ["virtual:d86c2527885d22e277747c45d295589546e621a599250a128428d6e25cb0613dd62303bbeab1c620a176c7241407b9441d613123f5b6f46bdc3cbaf2a72c1dbf#npm:10.4.0", {
           "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-f87885de4a/0/cache/autoprefixer-npm-10.4.0-71e06cafae-7d511c64da.zip/node_modules/autoprefixer/",
           "packageDependencies": [
@@ -5138,13 +5145,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.0", {
-          "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-f42faa9591/0/cache/autoprefixer-npm-10.4.0-71e06cafae-7d511c64da.zip/node_modules/autoprefixer/",
+        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.1", {
+          "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-8b7a74dfc8/0/cache/autoprefixer-npm-10.4.1-fa09ff3343-96527cd62b.zip/node_modules/autoprefixer/",
           "packageDependencies": [
-            ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.0"],
+            ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.1"],
             ["@types/postcss", null],
-            ["browserslist", "npm:4.18.1"],
-            ["caniuse-lite", "npm:1.0.30001284"],
+            ["browserslist", "npm:4.19.1"],
+            ["caniuse-lite", "npm:1.0.30001294"],
             ["fraction.js", "npm:4.1.2"],
             ["normalize-range", "npm:0.1.2"],
             ["picocolors", "npm:1.0.0"],
@@ -5920,6 +5927,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["picocolors", "npm:1.0.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.19.1", {
+          "packageLocation": "./.yarn/cache/browserslist-npm-4.19.1-e9de2a4009-c0777fd483.zip/node_modules/browserslist/",
+          "packageDependencies": [
+            ["browserslist", "npm:4.19.1"],
+            ["caniuse-lite", "npm:1.0.30001294"],
+            ["electron-to-chromium", "npm:1.4.30"],
+            ["escalade", "npm:3.1.1"],
+            ["node-releases", "npm:2.0.1"],
+            ["picocolors", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["buffer", [
@@ -6202,6 +6221,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001284-134d5a43e3-6719611318.zip/node_modules/caniuse-lite/",
           "packageDependencies": [
             ["caniuse-lite", "npm:1.0.30001284"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.0.30001294", {
+          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001294-c42d943e4c-4e22649ef8.zip/node_modules/caniuse-lite/",
+          "packageDependencies": [
+            ["caniuse-lite", "npm:1.0.30001294"]
           ],
           "linkType": "HARD",
         }]
@@ -8327,6 +8353,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.4.10-e503123a76-00b9ca9726.zip/node_modules/electron-to-chromium/",
           "packageDependencies": [
             ["electron-to-chromium", "npm:1.4.10"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.4.30", {
+          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.4.30-787baac84d-ae786f52ee.zip/node_modules/electron-to-chromium/",
+          "packageDependencies": [
+            ["electron-to-chromium", "npm:1.4.30"]
           ],
           "linkType": "HARD",
         }]
@@ -20143,7 +20176,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/autoprefixer", null],
             ["@types/postcss", null],
             ["arg", "npm:5.0.1"],
-            ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.0"],
+            ["autoprefixer", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.4.1"],
             ["bytes", "npm:3.1.1"],
             ["chalk", "npm:4.1.2"],
             ["chokidar", "npm:3.5.2"],
