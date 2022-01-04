@@ -74,7 +74,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-import-resolver-typescript", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.5.0"],
             ["eslint-plugin-import", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.25.3"],
             ["eslint-plugin-json", "npm:3.1.0"],
-            ["eslint-plugin-prettier", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:3.4.1"],
+            ["eslint-plugin-prettier", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.0.0"],
             ["fancy-log", "npm:1.3.3"],
             ["firebase", "npm:9.6.1"],
             ["firebase-tools", "npm:10.0.1"],
@@ -3466,7 +3466,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-import-resolver-typescript", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.5.0"],
             ["eslint-plugin-import", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.25.3"],
             ["eslint-plugin-json", "npm:3.1.0"],
-            ["eslint-plugin-prettier", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:3.4.1"],
+            ["eslint-plugin-prettier", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.0.0"],
             ["fancy-log", "npm:1.3.3"],
             ["firebase", "npm:9.6.1"],
             ["firebase-tools", "npm:10.0.1"],
@@ -9117,17 +9117,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["eslint-plugin-prettier", [
-        ["npm:3.4.1", {
-          "packageLocation": "./.yarn/cache/eslint-plugin-prettier-npm-3.4.1-c0bf5af22f-fa6a89f0d7.zip/node_modules/eslint-plugin-prettier/",
+        ["npm:4.0.0", {
+          "packageLocation": "./.yarn/cache/eslint-plugin-prettier-npm-4.0.0-e632552861-03d69177a3.zip/node_modules/eslint-plugin-prettier/",
           "packageDependencies": [
-            ["eslint-plugin-prettier", "npm:3.4.1"]
+            ["eslint-plugin-prettier", "npm:4.0.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:3.4.1", {
-          "packageLocation": "./.yarn/__virtual__/eslint-plugin-prettier-virtual-424a1a154a/0/cache/eslint-plugin-prettier-npm-3.4.1-c0bf5af22f-fa6a89f0d7.zip/node_modules/eslint-plugin-prettier/",
+        ["virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.0.0", {
+          "packageLocation": "./.yarn/__virtual__/eslint-plugin-prettier-virtual-9f00410634/0/cache/eslint-plugin-prettier-npm-4.0.0-e632552861-03d69177a3.zip/node_modules/eslint-plugin-prettier/",
           "packageDependencies": [
-            ["eslint-plugin-prettier", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:3.4.1"],
+            ["eslint-plugin-prettier", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:4.0.0"],
             ["@types/eslint", null],
             ["@types/eslint-config-prettier", null],
             ["@types/prettier", "npm:2.4.2"],
