@@ -129,7 +129,7 @@
           "assets": [
             "CHANGELOG.md",
             "package.json",
-			"yarn.lock"
+            "yarn.lock"
           ]
         }
       ],
