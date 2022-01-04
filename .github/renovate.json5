@@ -15,8 +15,5 @@
 	  //"group:definitelyTyped"
 	  "npm:unpublishSafe"
   ],
-	"compatibility": {
-		"yarn": "2.x"
-	},
   "automergeStrategy": "merge-commit"
 }
