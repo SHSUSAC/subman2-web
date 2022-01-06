@@ -16,6 +16,7 @@ import Link from "next/link";
 import { PanelDialog } from "../../../components/common/PanelDialog";
 import { GeneralEquipmentFormControls, SizedFormControl } from "../../../components/equipment/equipmentFormControls";
 import { useForm, FormProvider } from "react-hook-form";
+import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
 
 function TableWrapper({ columns }: { columns: Column<Fins>[] }) {
 	const { data } = useCollection();
@@ -287,5 +288,9 @@ export default function Index(): JSX.Element | null {
 }
 
 Index.getLayout = function getLayout(page: ReactElement) {
-	return <LogProvider name="FinIndex">{page}</LogProvider>;
+	return (
+		<LogProvider name="FinIndex">
+			<FirestoreWrapper>{page}</FirestoreWrapper>
+		</LogProvider>
+	);
 };

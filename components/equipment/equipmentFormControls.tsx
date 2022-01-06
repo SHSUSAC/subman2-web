@@ -84,7 +84,7 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 			</label>
 			<ErrorMessage errors={errors} name="record.gasType" />
 			<label className="">
-				Fill Date
+				Date
 				<input
 					className="w-full mb-2 px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
 					type="date"
@@ -109,7 +109,7 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 				<input
 					className="w-full mb-2 px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
 					type="text"
-					placeholder="Filling Location"
+					placeholder="Location"
 					inputMode="text"
 					defaultValue={data?.record?.location}
 					{...register("record.location", {

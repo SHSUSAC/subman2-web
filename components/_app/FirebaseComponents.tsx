@@ -52,46 +52,6 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 		return initializeAnalytics(firebaseApp, {});
 	});
 
-	const firestore = useInitFirestore(async (firebaseApp) => {
-		const db = initializeFirestore(firebaseApp, {});
-
-		if (process.env.NEXT_PUBLIC_FIRESTORE_EMULATOR) {
-			const hostname = process.env.NEXT_PUBLIC_FIRESTORE_EMULATOR;
-			const hostnameSplit = hostname.split(":");
-			let port;
-			try {
-				port = Number(hostnameSplit[1]);
-			} catch (e) {
-				const error = e as Error;
-				log.error(
-					"Failed to parse port from emulator env var. %s %s %s",
-					error.name,
-					error.message,
-					error.stack
-				);
-			}
-			if (!port) {
-				return db;
-			}
-			connectFirestoreEmulator(db, hostnameSplit[0], port);
-		}
-
-		try {
-			await enableMultiTabIndexedDbPersistence(db);
-		} catch (e) {
-			if (e instanceof FirebaseError) {
-				log.info(
-					"Error enabling indexeddb persistence. code: %s; name: %s; msg: %s",
-					e.code,
-					e.message,
-					e.name
-				);
-			}
-		}
-
-		return db;
-	});
-
 	const perf = useInitPerformance(async (firebaseApp) => {
 		return initializePerformance(firebaseApp, {
 			instrumentationEnabled: process.env.NEXT_PUBLIC_DATA_COLLECTION == "true" && gdprConsent,
@@ -99,7 +59,7 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 		});
 	});
 
-	if (!firestore.data || !auth.data || !perf.data || !anal.data) {
+	if (!auth.data || !perf.data || !anal.data) {
 		return <FullPageLoaderComponent message="Rolling SDK dice..." />;
 	}
 
@@ -107,7 +67,7 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 		<AuthProvider sdk={auth?.data}>
 			<AnalyticsProvider sdk={anal?.data}>
 				<PerformanceProvider sdk={perf?.data}>
-					<FirestoreProvider sdk={firestore?.data}>{children}</FirestoreProvider>
+					{children}
 				</PerformanceProvider>
 			</AnalyticsProvider>
 		</AuthProvider>

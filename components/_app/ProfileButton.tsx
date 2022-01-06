@@ -25,37 +25,34 @@ export function ProfileButton(): JSX.Element | null {
 
 	//Loads the script into the page
 	useEffect(() => {
-		/* eslint-disable react-hooks/exhaustive-deps */
-		const script = document.createElement("script");
-		script.src = "https://accounts.google.com/gsi/client";
-		// @ts-ignore
-		script.onload = function initializeGsi() {
-			// @ts-ignore
-			google.accounts.id.initialize({
-				client_id: "738603738437-hhc2dhkm98nb6hr7kf7cfo19eunp0438.apps.googleusercontent.com",
-				callback: function (response: GisResponse) {
-					gisLog?.debug("Response handler triggered");
-					const credential = GoogleAuthProvider.credential(response.credential);
-					const signInResult = signInWithCredential(auth, credential);
-					signInResult.then((uc) => {
-						gisLog.trace(
+
+		if(gisReady) {
+			return;
+		}
+
+		//@ts-ignore
+		google.accounts.id.initialize({
+			client_id: "738603738437-hhc2dhkm98nb6hr7kf7cfo19eunp0438.apps.googleusercontent.com",
+			callback: function (response: GisResponse) {
+				gisLog?.debug("Response handler triggered");
+				const credential = GoogleAuthProvider.credential(response.credential);
+				const signInResult = signInWithCredential(auth, credential);
+				signInResult.then((uc) => {
+					gisLog.trace(
 							"Authenticated with via firebase using sign in credential. Got result {CredentialJson}",
 							uc.user.toJSON()
-						);
-						setUserId(anal, uc.user.uid);
-						logEvent(anal, "login", {
-							method: response.select_by,
-						});
+					);
+					setUserId(anal, uc.user.uid);
+					logEvent(anal, "login", {
+						method: response.select_by,
 					});
-				},
-			});
+				});
+			},
+		});
 
-			setGisReady(true);
-		};
-		script.async = true;
-		// @ts-ignore
-		document.querySelector("body").appendChild(script);
-	}, []);
+		setGisReady(true);
+
+	}, [gisReady, anal, auth, gisLog]);
 
 	//Prompts the user if they are not signed in and it is allowed
 	useEffect(() => {
@@ -123,7 +120,7 @@ export function ProfileButton(): JSX.Element | null {
 				}
 			}
 		}
-	}, [allowPrompt, status, user, gisReady]);
+	}, [allowPrompt, status, user, gisReady, gisLog, anal]);
 
 	if (status === "loading") {
 		return (

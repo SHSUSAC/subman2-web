@@ -17,6 +17,7 @@ import { query, collection, addDoc, doc, updateDoc, deleteDoc } from "firebase/f
 import Link from "next/link";
 import Error from "../pages/_error";
 import React from "react";
+import FirestoreWrapper from "../components/_app/FirestoreWrapper";
 
 function TableWrapper({
 	columns,
@@ -48,7 +49,13 @@ const useCollection = (suspense = true, itemCollection: string) =>
 		suspense: suspense,
 	});
 
-export default function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX.Element | null {
+export default function Wrapper({ itemCollection }: { itemCollection: string }): JSX.Element {
+	return <FirestoreWrapper>
+		<BasicEquipmentPage itemCollection={itemCollection} />
+	</FirestoreWrapper>
+}
+
+function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX.Element | null {
 	const firestore = useFirestore();
 	const [newPanelOpen, setNewPanelOpen] = useState(false);
 	const [newPressureRecordPanelOpen, setNewPressureRecordPanelOpen] = useState(false);

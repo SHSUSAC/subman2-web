@@ -9,7 +9,19 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+	"appAssociation": "AUTO",
+	"headers":	[
+	  {
+		"source": "**/*",
+		"headers": [
+		  {
+		  "key": "Content-Security-Policy",
+			"value": "frame-ancestors 'self'; block-all-mixed-content; default-src 'self'; script-src 'self' 'report-sample' https://www.recaptcha.net https://recaptcha.net https://www.gstatic.com/recaptcha/ https://www.gstatic.cn/recaptcha/ https://www.google.com/recaptcha/ https://www.googletagmanager.com https://googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://google-analytics.com https://use.fontawesome.com https://kit.fontawesome.com https://accounts.google.com/gsi/client; style-src 'self' 'unsafe-inline' 'report-sample' fonts.googleapis.com *.fontawesome.com https://rsms.me/inter/inter.css https://accounts.google.com/gsi/style; object-src 'none'; frame-src 'self' https://accounts.google.com/ *.recaptcha.net recaptcha.net https://www.google.com/recaptcha/ https://recaptcha.google.com www.googletagmanager.com; child-src 'self' www.googletagmanager.com; img-src 'self' data: blob: www.gstatic.com/recaptcha www.googletagmanager.com www.google-analytics.com ssl.google-analytics.com www.google.com analytics.google.com; font-src 'self' data: *.fontawesome.com fonts.googleapis.com fonts.gstatic.com rsms.me; connect-src 'self' https://accounts.google.com firebase.googleapis.com www.googletagmanager.com www.google-analytics.com stats.g.doubleclick.net ampcid.google.com analytics.google.com about: *.fontawesome.com; manifest-src 'self'; base-uri 'self'; form-action 'self'; media-src 'self'; prefetch-src 'self'; worker-src 'self' www.recaptcha.net; "
+		  }
+		]
+	  }
+	]
   },
   "emulators": {
     "auth": {

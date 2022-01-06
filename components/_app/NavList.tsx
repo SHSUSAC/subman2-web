@@ -5,7 +5,6 @@ import Link from "next/link";
 import { roles, usePermission } from "../../lib/hooks/useAuthErrorPages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { ObservableStatus, SigninCheckResult } from "reactfire";
 
 function SignInComponent({ show }: { show: boolean }) {
 	return (

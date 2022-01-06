@@ -2,7 +2,7 @@ import { ClaimsValidator, useAuth, useObservable, useSigninCheck, useUser } from
 import Error from "../../pages/_error";
 import { useLog } from "../../components/common/LogProvider";
 import { user } from "rxfire/auth";
-import { combineLatest, filter, from, map, mergeMap, Observable } from "rxjs";
+import { combineLatest, filter, from, map, mergeMap } from "rxjs";
 
 export type roles = "EquipmentRole" | "CalenderRole" | "ChatRole" | "StorageRole" | "SystemRole";
 type accessLevels = "Reader" | "Writer" | "Admin";

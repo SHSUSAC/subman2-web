@@ -13,11 +13,15 @@
 	  }
 	}
   ],
-  "extends": ["next/core-web-vitals", "plugin:json/recommended", "plugin:import/recommended", "plugin:import/typescript", "plugin:prettier/recommended"],
+  "extends": [
+	"plugin:json/recommended",
+	//"plugin:import/recommended",
+	//"plugin:import/typescript",
+	"next/core-web-vitals"
+//	"plugin:prettier/recommended"
+  ],
   "rules": {
-	"prettier/prettier": ["error", {
-	  "endOfLine":"auto"
-	}],
+	//"prettier/prettier": "warn",
 	"@next/next/no-img-element": "off"
   },
   "settings": {

@@ -1,11 +1,18 @@
 //Next.js does not allow config to be a ESModule
 const withPlugins = require("next-compose-plugins");
-const optimizedImages = require("next-optimized-images");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
 	enabled: process.env.ANALYZE === "true",
 });
+const withServiceWorker = require("next-service-worker");
 
-module.exports = withPlugins([[withBundleAnalyzer], [optimizedImages]], {
+module.exports = withPlugins([
+	[withBundleAnalyzer],
+	[withServiceWorker, {
+		workbox: {
+			// workbox config here...
+		}
+	}]
+], {
 	trailingSlash: false,
 	//Should be handled by CDN
 	compress: false,
@@ -16,7 +23,17 @@ module.exports = withPlugins([[withBundleAnalyzer], [optimizedImages]], {
 
 		return config;
 	},
-	sassOptions: {
-		includePaths: [],
-	},
+	async headers() {
+		const firebaseHeaders = require("./firebase.json").hosting.headers;
+		const headers = [];
+
+		firebaseHeaders.forEach(header => {
+			if(header.source === "**/*"){
+				header.source = "/";
+			}
+			headers.push(header);
+		})
+
+		return headers;
+	}
 });
