@@ -57,7 +57,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.0.1"],
             ["@semantic-release/npm", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:8.0.3"],
             ["@semantic-release/release-notes-generator", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:10.0.3"],
-            ["@types/node", "npm:16.11.17"],
+            ["@types/node", "npm:16.11.19"],
             ["@types/prettier", "npm:2.4.2"],
             ["@types/react", "npm:17.0.38"],
             ["@types/react-dom", "npm:17.0.11"],
@@ -3449,7 +3449,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:10.0.1"],
             ["@semantic-release/npm", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:8.0.3"],
             ["@semantic-release/release-notes-generator", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:10.0.3"],
-            ["@types/node", "npm:16.11.17"],
+            ["@types/node", "npm:16.11.19"],
             ["@types/prettier", "npm:2.4.2"],
             ["@types/react", "npm:17.0.38"],
             ["@types/react-dom", "npm:17.0.11"],
@@ -3795,10 +3795,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:16.11.17", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.17-096721cf1e-86ed84f794.zip/node_modules/@types/node/",
+        ["npm:16.11.19", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.19-b289452f75-a9ba0cd1e6.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:16.11.17"]
+            ["@types/node", "npm:16.11.19"]
           ],
           "linkType": "HARD",
         }]
