@@ -91,7 +91,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["plugin-error", "npm:1.0.1"],
             ["postcss", "npm:8.4.5"],
             ["prettier", "npm:2.5.1"],
-            ["query-string", "npm:7.0.1"],
+            ["query-string", "npm:7.1.0"],
             ["react", "npm:17.0.2"],
             ["react-click-away-listener", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.0.5"],
             ["react-dom", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:17.0.2"],
@@ -3483,7 +3483,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["plugin-error", "npm:1.0.1"],
             ["postcss", "npm:8.4.5"],
             ["prettier", "npm:2.5.1"],
-            ["query-string", "npm:7.0.1"],
+            ["query-string", "npm:7.1.0"],
             ["react", "npm:17.0.2"],
             ["react-click-away-listener", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:2.0.5"],
             ["react-dom", "virtual:f7c6e84e3466592cc74da2da816e747ad3f8100aefcc575b26d74e656e189f4d2dee28871802316abbc932d8fc1a587e79d587499e836adc22038ec729854ad0#npm:17.0.2"],
@@ -17490,10 +17490,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["query-string", [
-        ["npm:7.0.1", {
-          "packageLocation": "./.yarn/cache/query-string-npm-7.0.1-4631368591-2eb990c0ea.zip/node_modules/query-string/",
+        ["npm:7.1.0", {
+          "packageLocation": "./.yarn/cache/query-string-npm-7.1.0-7b2204089a-4594a0a092.zip/node_modules/query-string/",
           "packageDependencies": [
-            ["query-string", "npm:7.0.1"],
+            ["query-string", "npm:7.1.0"],
             ["decode-uri-component", "npm:0.2.0"],
             ["filter-obj", "npm:1.1.0"],
             ["split-on-first", "npm:1.1.0"],

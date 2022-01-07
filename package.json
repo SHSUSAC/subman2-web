@@ -63,7 +63,7 @@
     "plugin-error": "1.0.1",
     "postcss": "8.4.5",
     "prettier": "2.5.1",
-    "query-string": "7.0.1",
+    "query-string": "7.1.0",
     "react-click-away-listener": "2.0.5",
     "react-hook-form": "7.22.5",
     "react-optimized-image": "0.4.1",
