@@ -13,10 +13,10 @@
 	"appAssociation": "AUTO",
 	"headers":	[
 	  {
-		"source": "/service-workers/root.js",
+		"source": "/service-workers/sw_root.js",
 		"headers":[
 		  {
-			"key": "service-worker-allowed",
+			"key": "Service-Worker-Allowed",
 			"value": "/"
 		  }
 		]
