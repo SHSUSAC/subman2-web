@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "packageManager": "yarn@3.1.1",
   "repository": {
-	"type": "git",
-	"url": "https://github.com/SHSUSAC/subman2-web.git"
+    "type": "git",
+    "url": "https://github.com/SHSUSAC/subman2-web.git"
   },
   "scripts": {
     "version": "semantic-release",
