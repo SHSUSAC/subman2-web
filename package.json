@@ -2,9 +2,12 @@
   "name": "@shsusac/subman2-web",
   "author": "Vespion Softworks",
   "license": "AGPL-3.0-only",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "packageManager": "yarn@3.1.1",
-  "repository": "https://github.com/SHSUSAC/subman2-web.git",
+  "repository": {
+	"type": "git",
+	"url": "https://github.com/SHSUSAC/subman2-web.git"
+  },
   "scripts": {
     "version": "semantic-release",
     "start-emulators": "firebase emulators:start --import ./.firebase/emulator-data",
