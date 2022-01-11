@@ -49,6 +49,9 @@ jobs:
       - name: Build
         run: yarn gulp build
 
+      - name: Zip static export
+        run: "cd out && zip -r ../static_site.zip . ; cd .."
+
       - name: Build Semantic Release
         if: ${{ !env.ACT }}
         run: yarn dlx semantic-release

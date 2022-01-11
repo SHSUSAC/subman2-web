@@ -152,7 +152,7 @@
         {
           "assets": [
             {
-              "path": "out/**",
+              "path": "static_site.zip",
               "name": "Static Build",
               "label": "Website, statically built for deployment on a HTTP server"
             }
