@@ -46,11 +46,16 @@ const FirebaseComponents = dynamic(
 
 function dumpInfo(log: Logger) {
 	log.info("Scuba Management Version 2 (%s)", packagejson.version);
-	log.info("Package ID: %s", packagejson.name);
-	const depsLog = log.child({ childName: "Dependencies" });
-	log.trace("Dependency Info");
-	for (let [key, value] of Object.entries(packagejson.dependencies)) {
-		depsLog.trace("%s@%s", key, value);
+	try {
+		log.info("Package ID: %s", packagejson.name);
+		const depsLog = log.child({ childName: "Dependencies" });
+		log.trace("Dependency Info");
+		for (let [key, value] of Object.entries(packagejson.dependencies)) {
+			depsLog.trace("%s@%s", key, value);
+		}
+	}
+	catch{
+		log.warn("Error loading dependency info");
 	}
 	log.info("Environmental Mode: %s", process.env.NEXT_PUBLIC_ENVIRONMENT_MODE);
 	log.info("Emulation Modes: %j", {
@@ -58,8 +63,18 @@ function dumpInfo(log: Logger) {
 		AuthEmulatorEnabled: process.env.NEXT_PUBLIC_AUTH_EMULATOR ?? false,
 	});
 	log.debug("Built-in firebase configuration: %j", fbConfig);
-	log.info("Process TZ: %s", process.env.TZ);
-	log.info("Temporal TZ: %s", Temporal.Now.timeZone().toString());
+	try {
+		log.info("Process TZ: %s", process.env.TZ);
+	}
+	catch{
+		log.warn("Error finding process timezone. This could cause time related issues")
+	}
+	try {
+		log.info("Temporal TZ: %s", Temporal.Now.timeZone().toString());
+	}
+	catch{
+		log.warn("Error finding temporal timezone. This could cause time related issues")
+	}
 	log.trace("Panel portal set to %s, use selector %s to access it", panelPortalId, PanelPortalSelector);
 }
 

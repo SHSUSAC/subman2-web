@@ -1,4 +1,4 @@
-import { ClaimsValidator, useAuth, useObservable, useSigninCheck, useUser } from "reactfire";
+import { ClaimsValidator, useAuth, useObservable } from "reactfire";
 import Error from "../../pages/_error";
 import { useLog } from "../../components/common/LogProvider";
 import { user } from "rxfire/auth";
@@ -73,16 +73,4 @@ export function usePermission(roleName: roles, minimum: accessLevels) {
 		signedIn: boolean;
 		hasRequiredClaims: boolean;
 	}>("CustomsPermissionsChecker-" + roleName, finalObserver);
-
-	// // noinspection JSUnusedGlobalSymbols
-	// const result = useSigninCheck({
-	// 	forceRefresh: true,
-	// 	validateCustomClaims: claimsValidator,
-	// 	suspense: true,
-	// });
-	//
-	// return {
-	// 	hasRequiredClaims: result.data.hasRequiredClaims,
-	// 	signedIn: result.data.signedIn,
-	// };
 }

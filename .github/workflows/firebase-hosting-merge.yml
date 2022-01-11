@@ -36,11 +36,13 @@ jobs:
         run: yarn gulp build
 
       - name: Build Semantic Release
+        if: ${{ !env.ACT }}
         run: yarn dlx semantic-release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Hosting
+        if: ${{ !env.ACT }}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
