@@ -3,7 +3,7 @@
  * Root service worker for the site
  */
 import {cleanupOutdatedCaches, precache, precacheAndRoute, PrecacheEntry} from "workbox-precaching";
-import googleAnalytics from 'workbox-google-analytics';
+import * as googleAnalytics from 'workbox-google-analytics';
 import { skipWaiting, clientsClaim } from "workbox-core"
 // @ts-ignore
 import {_createRootLogger, ConstructLog} from "../../components/common/LogProvider";

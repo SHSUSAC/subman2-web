@@ -21,7 +21,7 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SUBMAN2 }}
 
-  deploy_firebase:
+  deploy_hosting:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,16 +29,27 @@ jobs:
         with:
           lfs: true
 
-      - name: Setup Node, Yarn and Cached Dependencies
+      - name: Check if build artifacts already cached
+        if: ${{ !env.ACT }}
+        id: build_cache
+        uses: actions/cache@v2
+        with:
+          path: out
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-hash-${{ github.sha }}
+
+      - name: Setup Node and Cached Dependencies
+        if: steps.build_cache.outputs.cache-hit != 'true' && ${{ !env.ACT }}
         uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'yarn'
 
       - name: Install Dependencies
+        if: steps.build_cache.outputs.cache-hit != 'true'
         run: yarn install --immutable --check-cache
 
       - name: Build
+        if: steps.build_cache.outputs.cache-hit != 'true'
         run: yarn gulp build
 
       - name: Deploy Hosting
