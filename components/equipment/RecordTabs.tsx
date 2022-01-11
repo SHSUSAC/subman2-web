@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Cell, Column } from "react-table";
 import { Table } from "../common/Table";
 import { PressureRecord } from "../../lib/types/records/PressureRecord";
@@ -13,6 +13,7 @@ import Link from "next/link";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { logEvent } from "firebase/analytics";
+import FirestoreWrapper from "../_app/FirestoreWrapper";
 
 const ConditionTable = ({ itemId, itemCollection }: { itemId: string; itemCollection: string }) => {
 	const useCollection = (suspense = true) =>
@@ -427,4 +428,25 @@ const Tabs = ({
 	);
 };
 
-export default Tabs;
+export default function WrappedTabs({
+	enablePressure,
+	enableTest,
+	itemCollection,
+	itemId,
+}: {
+	enablePressure: boolean;
+	enableTest: boolean;
+	itemCollection: string;
+	itemId: string;
+}) {
+	return (
+		<FirestoreWrapper>
+			<Tabs
+				enablePressure={enablePressure}
+				enableTest={enableTest}
+				itemCollection={itemCollection}
+				itemId={itemId}
+			/>
+		</FirestoreWrapper>
+	);
+}

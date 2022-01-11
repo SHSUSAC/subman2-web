@@ -6,6 +6,7 @@ import { useAuthErrorPages } from "../../lib/hooks/useAuthErrorPages";
 import { useFirestoreCollectionData, useFirestore } from "reactfire";
 import { query, collection, where } from "firebase/firestore";
 import { EquipmentConditions } from "../../lib/types/equipmentComponents";
+import FirestoreWrapper from "../../components/_app/FirestoreWrapper";
 
 function BasicCards({
 	name,
@@ -110,7 +111,7 @@ export default function Dashboard(): JSX.Element {
 	}
 
 	return (
-		<>
+		<FirestoreWrapper>
 			<main>
 				<header className="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
 					<h1 className="text-2xl font-semibold">Dashboard</h1>
@@ -127,6 +128,6 @@ export default function Dashboard(): JSX.Element {
 				</div>
 			</main>
 			<div className="h-full" />
-		</>
+		</FirestoreWrapper>
 	);
 }

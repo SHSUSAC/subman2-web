@@ -2,13 +2,11 @@ const gulp = require("gulp");
 const realFavicon = require("gulp-real-favicon");
 const fs = require("fs");
 const utils = require("util");
-const exec = require("child_process").exec;
 const del = require("del");
 const eslint = require("gulp-eslint");
-const log = require("fancy-log");
-const PluginError = require("plugin-error");
 const guppy = require("git-guppy")(gulp);
 const gulpFilter = require("gulp-filter");
+const shell = require("gulp-shell");
 
 module.exports["pre-commit"] = function () {
 	return (
@@ -80,10 +78,12 @@ const GenerateFaviconAssets = async function () {
 				themeColor: "#152e4d",
 				manifest: {
 					name: "SubMan 2",
+					shortName: "SM2",
 					display: "standalone",
 					orientation: "notSet",
 					onConflict: "override",
 					declared: true,
+					start_url: "/",
 				},
 				assets: {
 					legacyIcon: false,
@@ -140,7 +140,7 @@ const BuildFavicons = gulp.series(CheckForApiUpdates, GenerateFaviconAssets);
 module.exports["build/favicons"] = BuildFavicons;
 
 function CleanNextDirectory() {
-	return del(["./.next/*", "./.next/**/*"]);
+	return del(["./.next/*", "./.next/**/*", "./public/service-workers"]);
 }
 
 function CleanOutputDirectory() {
@@ -153,17 +153,19 @@ function CleanFaviconData() {
 
 const Clean = gulp.parallel(CleanNextDirectory, CleanOutputDirectory, CleanFaviconData);
 
-function RunNextDevServer(done) {
-	return Exec(done, "yarn next dev", 0);
-}
+const RunNextDevServer = shell.task("yarn next dev");
 
-function Lint() {
+function Lint(fix) {
 	return (
 		gulp
 			.src(["./components/*", "./pages/*", "./lib/*", "*.js", "*.json"])
 			// eslint() attaches the lint output to the "eslint" property
 			// of the file object so it can be used by other modules.
-			.pipe(eslint())
+			.pipe(
+				eslint({
+					fix: fix,
+				})
+			)
 			// eslint.format() outputs the lint results to the console.
 			// Alternatively use eslint.formatEach() (see Docs).
 			.pipe(eslint.format())
@@ -173,53 +175,24 @@ function Lint() {
 	);
 }
 
-module.exports["lint"] = Lint;
+module.exports["lint"] = () => Lint(process.env.NODE_ENV === "development");
+module.exports["lint#no-fix"] = () => Lint(false);
 module.exports["clean"] = Clean;
 module.exports["clean#CleanNextDirectory"] = CleanNextDirectory;
 module.exports["clean#CleanOutputDirectory"] = CleanOutputDirectory;
 module.exports["clean#CleanFaviconData"] = CleanFaviconData;
-module.exports["dev"] = gulp.series(
-	gulp.parallel(CleanNextDirectory, Lint),
-	gulp.parallel(GenerateFaviconAssets, RunNextDevServer)
+module.exports["dev"] = gulp.series(gulp.parallel(CleanNextDirectory, BuildFavicons), Lint, RunNextDevServer);
+
+const BuildBundle = shell.task("yarn next build");
+const BuildStaticCompilation = shell.task("yarn next export");
+
+module.exports["build"] = gulp.series(Clean, Lint, BuildFavicons, BuildBundle, BuildStaticCompilation);
+
+module.exports["depcheck"] = shell.task("yarn dlx depcheck");
+module.exports["analyze-bundle"] = gulp.series(
+	Clean,
+	Lint,
+	BuildFavicons,
+	shell.task("cross-env ANALYZE=true yarn next build"),
+	BuildStaticCompilation
 );
-
-function Exec(done, cmd, successCode) {
-	log.info(`Launching child process to handle command '${cmd}'`);
-	const ls = exec(cmd);
-	ls.stdout.on("data", function (data) {
-		log.info(data);
-	});
-
-	ls.stderr.on("data", function (data) {
-		log.error(data);
-	});
-
-	ls.on("exit", function (code) {
-		log.info("Child finished with code " + code);
-		if (!successCode) {
-			successCode = 0;
-		}
-		if (code !== successCode) {
-			throw new PluginError(
-				"Exec",
-				`Child process did not exit with success code. Expected code ${successCode}, actually ${code}`,
-				{ showStack: false, showProperties: false }
-			);
-		}
-		done();
-	});
-}
-
-function BuildBundle(done) {
-	console.info("Calling next-cli for bundle compilation");
-	Exec(done, "yarn next build");
-}
-
-function BuildStaticCompilation(done) {
-	console.info("Calling next-cli for static compilation");
-	Exec(done, "yarn next export");
-}
-
-module.exports["build"] = gulp.series(gulp.parallel(Clean, Lint), BuildFavicons, BuildBundle, BuildStaticCompilation);
-
-module.exports["depcheck"] = (done) => Exec(done, "yarn dlx depcheck");

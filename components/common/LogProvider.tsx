@@ -1,10 +1,10 @@
-import { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 import { ConsoleFormattedStream, createLogger, stdSerializers, TRACE } from "browser-bunyan";
 import { Logger } from "../../lib/types/logging";
 
 const rootLogName = "SubMan2-WebInterface";
 
-export function _createRootLogger() {
+export function _createRootLogger(): Logger {
 	return createLogger({
 		name: rootLogName,
 		serializers: stdSerializers,

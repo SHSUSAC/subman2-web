@@ -58,6 +58,7 @@
 	--color-violet-lighter: #a78bfa;
 	--color-violet-dark: #6d28d9;
 	--color-violet-darker: #5b21b6;
+
 }
 
 @tailwind base;

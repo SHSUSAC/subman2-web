@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useContext } from "react";
+import React, { ReactElement, ReactNode, useContext, useEffect } from "react";
 import { AppProps } from "next/app";
 import { NextPage } from "next";
 import LogProvider, { useLog } from "../components/common/LogProvider";
@@ -21,6 +21,7 @@ import fbConfig from "../lib/constants/firebaseConfig";
 import { Temporal } from "@js-temporal/polyfill";
 import packagejson from "../package.json";
 import { useGdprConsent, useGdprConsentBannerShown } from "../lib/hooks/localStorageHooks";
+import { Workbox } from "workbox-window";
 
 // faConfig.autoAddCss = false;
 
@@ -45,11 +46,16 @@ const FirebaseComponents = dynamic(
 
 function dumpInfo(log: Logger) {
 	log.info("Scuba Management Version 2 (%s)", packagejson.version);
-	log.info("Package ID: %s", packagejson.name);
-	const depsLog = log.child({ childName: "Dependencies" });
-	log.trace("Dependency Info");
-	for (let [key, value] of Object.entries(packagejson.dependencies)) {
-		depsLog.trace("%s@%s", key, value);
+	try {
+		log.info("Package ID: %s", packagejson.name);
+		const depsLog = log.child({ childName: "Dependencies" });
+		log.trace("Dependency Info");
+		for (let [key, value] of Object.entries(packagejson.dependencies)) {
+			depsLog.trace("%s@%s", key, value);
+		}
+	}
+	catch{
+		log.warn("Error loading dependency info");
 	}
 	log.info("Environmental Mode: %s", process.env.NEXT_PUBLIC_ENVIRONMENT_MODE);
 	log.info("Emulation Modes: %j", {
@@ -57,8 +63,18 @@ function dumpInfo(log: Logger) {
 		AuthEmulatorEnabled: process.env.NEXT_PUBLIC_AUTH_EMULATOR ?? false,
 	});
 	log.debug("Built-in firebase configuration: %j", fbConfig);
-	log.info("Process TZ: %s", process.env.TZ);
-	log.info("Temporal TZ: %s", Temporal.Now.timeZone().toString());
+	try {
+		log.info("Process TZ: %s", process.env.TZ);
+	}
+	catch{
+		log.warn("Error finding process timezone. This could cause time related issues")
+	}
+	try {
+		log.info("Temporal TZ: %s", Temporal.Now.timeZone().toString());
+	}
+	catch{
+		log.warn("Error finding temporal timezone. This could cause time related issues")
+	}
 	log.trace("Panel portal set to %s, use selector %s to access it", panelPortalId, PanelPortalSelector);
 }
 
@@ -98,6 +114,21 @@ export default function ApplicationContainer({ Component, pageProps }: AppPropsW
 	useRouterLogging();
 	const log = useLog();
 	dumpInfo(log);
+
+	useEffect(() => {
+		log.debug("Attempting service worker registration")
+		if (
+				!("serviceWorker" in navigator) ||
+				process.env.NODE_ENV !== "production"
+		) {
+			log.warn("Progressive Web App support is disabled");
+			return;
+		}
+		const wb = new Workbox("/service-workers/sw_root.js", { scope: "/" });
+		wb.register().then(() => {
+			log.info("Service Worker registered with browser")
+		});
+	}, [log]);
 
 	log.trace("Rendering application container");
 	const getLayout = Component.getLayout || ((page) => page);

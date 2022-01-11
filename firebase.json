@@ -9,7 +9,19 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+	"appAssociation": "AUTO",
+	"headers":	[
+	  {
+		"source": "/service-workers/root.js",
+		"headers":[
+		  {
+			"key": "service-worker-allowed",
+			"value": "/"
+		  }
+		]
+	  }
+	]
   },
   "emulators": {
     "auth": {

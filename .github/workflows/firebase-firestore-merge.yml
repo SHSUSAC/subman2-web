@@ -9,6 +9,7 @@ on:
       - "firebase.json"
 jobs:
   deploy:
+    if: ${{ !env.ACT }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

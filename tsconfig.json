@@ -3,12 +3,15 @@
     "module": "esnext",
     "target": "esnext",
     "sourceMap": true,
+	"composite": true,
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-	"types": ["node"],
+    "types": [
+      "node"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,16 +21,23 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
   "exclude": [
     "node_modules",
     ".yarn"
   ],
   "include": [
+	"package.json",
     "next-env.d.ts",
     "*.ts",
     "**/*.ts",
     "**/*.tsx"
+  ],
+  "references": [
+	{
+	  "path": "./lib/service-workers"
+	}
   ]
 }

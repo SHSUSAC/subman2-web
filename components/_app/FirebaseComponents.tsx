@@ -16,7 +16,7 @@ import {
 	PerformanceProvider,
 } from "reactfire";
 import firebaseConfig, { APP_CHECK_TOKEN } from "../../lib/constants/firebaseConfig";
-import { ReactNode, useCallback, useMemo, useState } from "react";
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useLog } from "../common/LogProvider";
 import process from "process";
 import { useGdprConsent } from "../../lib/hooks/localStorageHooks";
@@ -49,47 +49,17 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 	});
 
 	const anal = useInitAnalytics(async (firebaseApp) => {
-		return initializeAnalytics(firebaseApp, {});
-	});
-
-	const firestore = useInitFirestore(async (firebaseApp) => {
-		const db = initializeFirestore(firebaseApp, {});
-
-		if (process.env.NEXT_PUBLIC_FIRESTORE_EMULATOR) {
-			const hostname = process.env.NEXT_PUBLIC_FIRESTORE_EMULATOR;
-			const hostnameSplit = hostname.split(":");
-			let port;
-			try {
-				port = Number(hostnameSplit[1]);
-			} catch (e) {
-				const error = e as Error;
-				log.error(
-					"Failed to parse port from emulator env var. %s %s %s",
-					error.name,
-					error.message,
-					error.stack
-				);
-			}
-			if (!port) {
-				return db;
-			}
-			connectFirestoreEmulator(db, hostnameSplit[0], port);
-		}
-
+		const initialisedAnal = initializeAnalytics(firebaseApp, {});
 		try {
-			await enableMultiTabIndexedDbPersistence(db);
-		} catch (e) {
-			if (e instanceof FirebaseError) {
-				log.info(
-					"Error enabling indexeddb persistence. code: %s; name: %s; msg: %s",
-					e.code,
-					e.message,
-					e.name
-				);
-			}
+			// @ts-ignore
+			gtag('config', firebaseApp.options.measurementId, { 'anonymize_ip': true });
+			// @ts-ignore
+			gtag('set', 'dimension1', 'online');
 		}
-
-		return db;
+		catch (e) {
+			log.debug("Error configuring gtag. %o", e);
+		}
+		return initialisedAnal;
 	});
 
 	const perf = useInitPerformance(async (firebaseApp) => {
@@ -99,7 +69,7 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 		});
 	});
 
-	if (!firestore.data || !auth.data || !perf.data || !anal.data) {
+	if (!auth.data || !perf.data || !anal.data) {
 		return <FullPageLoaderComponent message="Rolling SDK dice..." />;
 	}
 
@@ -107,7 +77,7 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 		<AuthProvider sdk={auth?.data}>
 			<AnalyticsProvider sdk={anal?.data}>
 				<PerformanceProvider sdk={perf?.data}>
-					<FirestoreProvider sdk={firestore?.data}>{children}</FirestoreProvider>
+					{children}
 				</PerformanceProvider>
 			</AnalyticsProvider>
 		</AuthProvider>
@@ -118,6 +88,14 @@ function AppProviderHOC({ children, fetchedConfig }: { children: ReactNode; fetc
 	const fbLog = useLog("Firebase");
 
 	const [gdprConsent] = useGdprConsent();
+
+	useEffect(() => {
+		const id = fetchedConfig?.measurementId;
+		if(id){
+			// @ts-ignore
+			window[`ga-disable-${id}`] = process.env.NEXT_PUBLIC_DATA_COLLECTION != "true" || !gdprConsent;
+		}
+	}, [fetchedConfig, gdprConsent])
 
 	const app = useMemo(() => {
 		const logHandler: LogCallback = (logParams) => {

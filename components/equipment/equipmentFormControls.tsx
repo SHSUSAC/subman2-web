@@ -1,10 +1,10 @@
-/** @jsxImportSource @emotion/react **/
+///** @jsxImportSource @emotion/react **/
 import { Controller, useFormContext } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { CommonEquipmentProperties, EquipmentConditions } from "../../lib/types/equipmentComponents";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import tw from "twin.macro";
+//import tw from "twin.macro";
 import { _sizeProperties, _weightProperties, cylinder, Regulator } from "../../lib/types/equipment";
 import { PressureRecord } from "../../lib/types/records/PressureRecord";
 import { Temporal } from "@js-temporal/polyfill";
@@ -51,24 +51,24 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 					render={({ field }) => (
 						<CreatableSelect
 							aria-invalid={!!errors?.record?.gasType?.message}
-							styles={{
-								option: (provided) => ({
-									...provided,
-									...tw`dark:bg-dark dark:hover:bg-gray-400`,
-								}),
-								control: (provided) => ({
-									...provided,
-									...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
-								}),
-								container: (provided) => ({
-									...provided,
-									...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
-								}),
-								singleValue: (provided) => ({
-									...provided,
-									...tw`text-current`,
-								}),
-							}}
+							// styles={{
+							// 	option: (provided) => ({
+							// 		...provided,
+							// 		...tw`dark:bg-dark dark:hover:bg-gray-400`,
+							// 	}),
+							// 	control: (provided) => ({
+							// 		...provided,
+							// 		...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
+							// 	}),
+							// 	container: (provided) => ({
+							// 		...provided,
+							// 		...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
+							// 	}),
+							// 	singleValue: (provided) => ({
+							// 		...provided,
+							// 		...tw`text-current`,
+							// 	}),
+							// }}
 							options={[
 								{ label: "Air", value: "Air" },
 								{ label: "Nitrox", value: "Nitrox" },
@@ -84,7 +84,7 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 			</label>
 			<ErrorMessage errors={errors} name="record.gasType" />
 			<label className="">
-				Fill Date
+				Date
 				<input
 					className="w-full mb-2 px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
 					type="date"
@@ -109,7 +109,7 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 				<input
 					className="w-full mb-2 px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
 					type="text"
-					placeholder="Filling Location"
+					placeholder="Location"
 					inputMode="text"
 					defaultValue={data?.record?.location}
 					{...register("record.location", {
@@ -174,24 +174,24 @@ export function GeneralEquipmentFormControls({ data }: { data?: CommonEquipmentP
 					render={({ field }) => (
 						<Select
 							aria-invalid={!!errors?.condition?.message}
-							styles={{
-								option: (provided) => ({
-									...provided,
-									...tw`dark:bg-dark dark:hover:bg-gray-400`,
-								}),
-								control: (provided) => ({
-									...provided,
-									...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
-								}),
-								container: (provided) => ({
-									...provided,
-									...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
-								}),
-								singleValue: (provided) => ({
-									...provided,
-									...tw`text-current`,
-								}),
-							}}
+							// styles={{
+							// 	option: (provided) => ({
+							// 		...provided,
+							// 		...tw`dark:bg-dark dark:hover:bg-gray-400`,
+							// 	}),
+							// 	control: (provided) => ({
+							// 		...provided,
+							// 		...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
+							// 	}),
+							// 	container: (provided) => ({
+							// 		...provided,
+							// 		...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
+							// 	}),
+							// 	singleValue: (provided) => ({
+							// 		...provided,
+							// 		...tw`text-current`,
+							// 	}),
+							// }}
 							options={options}
 							defaultValue={options[0]}
 							onChange={(val) => field.onChange(val?.value)}
@@ -258,24 +258,24 @@ export function WeightFormControls({ data }: { data?: _weightProperties }) {
 					render={({ field }) => (
 						<CreatableSelect
 							aria-invalid={!!errors?.type?.message}
-							styles={{
-								option: (provided) => ({
-									...provided,
-									...tw`dark:bg-dark dark:hover:bg-gray-400`,
-								}),
-								control: (provided) => ({
-									...provided,
-									...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
-								}),
-								container: (provided) => ({
-									...provided,
-									...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
-								}),
-								singleValue: (provided) => ({
-									...provided,
-									...tw`text-current`,
-								}),
-							}}
+							// styles={{
+							// 	option: (provided) => ({
+							// 		...provided,
+							// 		...tw`dark:bg-dark dark:hover:bg-gray-400`,
+							// 	}),
+							// 	control: (provided) => ({
+							// 		...provided,
+							// 		...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
+							// 	}),
+							// 	container: (provided) => ({
+							// 		...provided,
+							// 		...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
+							// 	}),
+							// 	singleValue: (provided) => ({
+							// 		...provided,
+							// 		...tw`text-current`,
+							// 	}),
+							// }}
 							options={[
 								{ label: "Block", value: "Block" },
 								{ label: "Shot", value: "Shot" },
@@ -413,24 +413,24 @@ export function CylinderFormControls({ data }: { data?: cylinder }) {
 					render={({ field }) => (
 						<CreatableSelect
 							aria-invalid={!!errors?.gasType?.message}
-							styles={{
-								option: (provided) => ({
-									...provided,
-									...tw`dark:bg-dark dark:hover:bg-gray-400`,
-								}),
-								control: (provided) => ({
-									...provided,
-									...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
-								}),
-								container: (provided) => ({
-									...provided,
-									...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
-								}),
-								singleValue: (provided) => ({
-									...provided,
-									...tw`text-current`,
-								}),
-							}}
+							// styles={{
+							// 	option: (provided) => ({
+							// 		...provided,
+							// 		...tw`dark:bg-dark dark:hover:bg-gray-400`,
+							// 	}),
+							// 	control: (provided) => ({
+							// 		...provided,
+							// 		...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
+							// 	}),
+							// 	container: (provided) => ({
+							// 		...provided,
+							// 		...tw`border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker`,
+							// 	}),
+							// 	singleValue: (provided) => ({
+							// 		...provided,
+							// 		...tw`text-current`,
+							// 	}),
+							// }}
 							options={[
 								{ label: "Air", value: "Air" },
 								{ label: "Nitrox", value: "Nitrox" },

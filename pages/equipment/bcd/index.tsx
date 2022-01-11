@@ -17,6 +17,7 @@ import { PanelDialog } from "../../../components/common/PanelDialog";
 import { GeneralEquipmentFormControls, SizedFormControl } from "../../../components/equipment/equipmentFormControls";
 import { useForm, FormProvider } from "react-hook-form";
 import { toFirestore } from "../../../lib/dateTimeHelpers";
+import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
 
 function TableWrapper({ columns }: { columns: Column<BCD>[] }) {
 	const { data } = useCollection();
@@ -289,5 +290,9 @@ export default function Index(): JSX.Element | null {
 }
 
 Index.getLayout = function getLayout(page: ReactElement) {
-	return <LogProvider name="BCDIndex">{page}</LogProvider>;
+	return (
+		<LogProvider name="BCDIndex">
+			<FirestoreWrapper>{page}</FirestoreWrapper>
+		</LogProvider>
+	);
 };

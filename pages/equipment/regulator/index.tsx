@@ -17,6 +17,7 @@ import { PanelDialog } from "../../../components/common/PanelDialog";
 import { GeneralEquipmentFormControls, NextTestFormControl } from "../../../components/equipment/equipmentFormControls";
 import { useForm, FormProvider } from "react-hook-form";
 import { toTemporal } from "../../../lib/dateTimeHelpers";
+import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
 
 function TableWrapper({ columns }: { columns: Column<Regulator>[] }) {
 	const { data } = useCollection();
@@ -225,7 +226,7 @@ export default function Index(): JSX.Element | null {
 			<PanelDialog open={editItem !== null} title="Editing regulator">
 				<FormProvider {...editEquipmentForm}>
 					<form
-						onSubmit={editEquipmentForm.handleSubmit(writeEquipmentEdit)}
+						onSubmit={editEquipmentForm.handleSubmit((data) => writeEquipmentEdit(data as Regulator))}
 						className="w-full flex flex-col px-4 py-6 space-y-6 bg-white rounded-md dark:bg-darker flex-grow overflow-y-auto overscroll-y-contain"
 					>
 						<div className="flex-grow flex flex-col space-y-2">
@@ -301,5 +302,9 @@ export default function Index(): JSX.Element | null {
 }
 
 Index.getLayout = function getLayout(page: ReactElement) {
-	return <LogProvider name="RegulatorIndex">{page}</LogProvider>;
+	return (
+		<LogProvider name="RegulatorIndex">
+			<FirestoreWrapper>{page}</FirestoreWrapper>
+		</LogProvider>
+	);
 };

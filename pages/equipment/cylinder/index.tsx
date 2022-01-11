@@ -23,6 +23,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { PressureRecord } from "../../../lib/types/records/PressureRecord";
 import { SavePressureRecord } from "../../../lib/firestoreHelpers";
 import { toFirestore, toTemporal } from "../../../lib/dateTimeHelpers";
+import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
 
 function TableWrapper({ columns }: { columns: Column<cylinder>[] }) {
 	const log = useLog();
@@ -187,7 +188,7 @@ export default function Index(): JSX.Element | null {
 		}
 	};
 
-	const saveNewEquipment = (newItem: cylinder) => {
+	const saveNewEquipment = async (newItem: cylinder) => {
 		if (!("clampType" in newItem)) {
 			log.error("Type guard failed! Type of data received from the dialog is not a cylinder");
 			setAppError(new AppError(601));
@@ -195,7 +196,7 @@ export default function Index(): JSX.Element | null {
 		log.info("Adding new cylinder, values: %j", newItem);
 		try {
 			newItem.nextDue = toFirestore(newItem.nextDue, log);
-			addDoc(collection(firestore, "cylinders"), newItem);
+			await addDoc(collection(firestore, "cylinders"), newItem);
 		} catch (e) {
 			const err = e as AppError;
 			err.code = 600;
@@ -210,13 +211,13 @@ export default function Index(): JSX.Element | null {
 		setNewPanelOpen(false);
 	};
 
-	const writeEquipmentEdit = (d: cylinder) => {
+	const writeEquipmentEdit = async (d: cylinder) => {
 		try {
 			const data = d;
 			if (data.nextDue) {
 				data.nextDue = toFirestore(data.nextDue, log);
 			}
-			updateDoc(doc(firestore, "cylinders", editItem?.id ?? ""), data);
+			await updateDoc(doc(firestore, "cylinders", editItem?.id ?? ""), data);
 		} finally {
 			setEditItem(null);
 		}
@@ -270,9 +271,9 @@ export default function Index(): JSX.Element | null {
 						</button>
 						<button
 							type="button"
-							onClick={() => {
+							onClick={async () => {
 								try {
-									deleteDoc(doc(firestore, "cylinders", deleteItem?.id ?? ""));
+									await deleteDoc(doc(firestore, "cylinders", deleteItem?.id ?? ""));
 								} finally {
 									setDeleteItem(null);
 								}
@@ -287,7 +288,7 @@ export default function Index(): JSX.Element | null {
 			<PanelDialog open={editItem !== null} title="Editing cylinder">
 				<FormProvider {...editEquipmentForm}>
 					<form
-						onSubmit={editEquipmentForm.handleSubmit(writeEquipmentEdit)}
+						onSubmit={editEquipmentForm.handleSubmit((data) => writeEquipmentEdit(data as cylinder))}
 						className="w-full flex flex-col px-4 py-6 space-y-6 bg-white rounded-md dark:bg-darker flex-grow overflow-y-auto overscroll-y-contain"
 					>
 						<div className="flex-grow flex flex-col space-y-2">
@@ -346,7 +347,7 @@ export default function Index(): JSX.Element | null {
 			<PanelDialog open={newPressureRecordPanelOpen} title="Changing cylinder pressure">
 				<FormProvider {...newPressureRecordForm}>
 					<form
-						onSubmit={newPressureRecordForm.handleSubmit(savePressureRecord)}
+						onSubmit={newPressureRecordForm.handleSubmit(data => savePressureRecord(data as {record: PressureRecord, parentId: string}))}
 						className="w-full flex flex-col px-4 py-6 space-y-6 bg-white rounded-md dark:bg-darker flex-grow overflow-y-auto overscroll-y-contain"
 					>
 						<div className="flex-grow flex flex-col space-y-2">
@@ -412,7 +413,7 @@ export default function Index(): JSX.Element | null {
 					//@ts-ignore
 					<NewEquipmentModal
 						open={newPanelOpen}
-						save={(c) => saveNewEquipment(c as cylinder)}
+						save={async (c) => await saveNewEquipment(c as cylinder)}
 						cancel={cancelNewEquipment}
 						type="cylinder"
 						title="New Cylinder"
@@ -424,5 +425,9 @@ export default function Index(): JSX.Element | null {
 }
 
 Index.getLayout = function getLayout(page: ReactElement) {
-	return <LogProvider name="CylinderIndex">{page}</LogProvider>;
+	return (
+		<LogProvider name="CylinderIndex">
+			<FirestoreWrapper>{page}</FirestoreWrapper>
+		</LogProvider>
+	);
 };
