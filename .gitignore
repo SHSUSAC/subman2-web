@@ -202,5 +202,4 @@ Temporary Items
 
 ###Generated public assets
 public/icons/favicon/
-public/service-worker.js
-public/workbox-*.js
+public/service-workers/

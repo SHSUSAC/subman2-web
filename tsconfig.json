@@ -3,6 +3,7 @@
     "module": "esnext",
     "target": "esnext",
     "sourceMap": true,
+	"composite": true,
     "lib": [
       "dom",
       "dom.iterable",
@@ -28,9 +29,15 @@
     ".yarn"
   ],
   "include": [
+	"package.json",
     "next-env.d.ts",
     "*.ts",
     "**/*.ts",
     "**/*.tsx"
+  ],
+  "references": [
+	{
+	  "path": "./lib/service-workers"
+	}
   ]
 }

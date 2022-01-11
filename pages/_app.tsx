@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useContext } from "react";
+import React, { ReactElement, ReactNode, useContext, useEffect } from "react";
 import { AppProps } from "next/app";
 import { NextPage } from "next";
 import LogProvider, { useLog } from "../components/common/LogProvider";
@@ -21,6 +21,7 @@ import fbConfig from "../lib/constants/firebaseConfig";
 import { Temporal } from "@js-temporal/polyfill";
 import packagejson from "../package.json";
 import { useGdprConsent, useGdprConsentBannerShown } from "../lib/hooks/localStorageHooks";
+import { Workbox } from "workbox-window";
 
 // faConfig.autoAddCss = false;
 
@@ -98,6 +99,21 @@ export default function ApplicationContainer({ Component, pageProps }: AppPropsW
 	useRouterLogging();
 	const log = useLog();
 	dumpInfo(log);
+
+	useEffect(() => {
+		log.debug("Attempting service worker registration")
+		if (
+				!("serviceWorker" in navigator) ||
+				process.env.NODE_ENV !== "production"
+		) {
+			log.warn("Progressive Web App support is disabled");
+			return;
+		}
+		const wb = new Workbox("/service-workers/sw_root.js", { scope: "/" });
+		wb.register().then(() => {
+			log.info("Service Worker registered with browser")
+		});
+	}, [log]);
 
 	log.trace("Rendering application container");
 	const getLayout = Component.getLayout || ((page) => page);

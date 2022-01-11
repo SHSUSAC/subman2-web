@@ -29,7 +29,22 @@ export default function FirestoreWrapper({ children }: { children: ReactNode }) 
 			if (!port) {
 				return db;
 			}
-			connectFirestoreEmulator(db, hostnameSplit[0], port);
+
+			try {
+				connectFirestoreEmulator(db, hostnameSplit[0], port);
+			}
+			catch (e) {
+				if (e instanceof FirebaseError) {
+					log.info(
+							"Caught duplicate firestore init. code: %s; name: %s; msg: %s",
+							e.code,
+							e.message,
+							e.name
+					);
+				}
+				const err = e as Error;
+				log.warn("%s during firestore connection. %s", err.name, err.message);
+			}
 		}
 
 		try {

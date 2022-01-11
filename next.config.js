@@ -3,15 +3,12 @@ const withPlugins = require("next-compose-plugins");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
 	enabled: process.env.ANALYZE === "true",
 });
-const withServiceWorker = require("next-service-worker");
+const WorkboxPlugin = require('workbox-webpack-plugin');
+const path = require('path');
 
 module.exports = withPlugins([
 	[withBundleAnalyzer],
-	[withServiceWorker, {
-		workbox: {
-			// workbox config here...
-		}
-	}]
+
 ], {
 	trailingSlash: false,
 	//Should be handled by CDN
@@ -20,6 +17,14 @@ module.exports = withPlugins([
 		config.resolve.fallback = {
 			...config.resolve.fallback,
 		};
+		config.plugins.push(new WorkboxPlugin.InjectManifest({
+			swSrc: path.resolve(
+				__dirname,
+				'./lib/service-workers/root.ts',
+			),
+			swDest: '../../../public/service-workers/sw_root.js',
+		}));
+
 
 		return config;
 	},
@@ -27,12 +32,13 @@ module.exports = withPlugins([
 		const firebaseHeaders = require("./firebase.json").hosting.headers;
 		const headers = [];
 
-		firebaseHeaders.forEach(header => {
-			if(header.source === "**/*"){
-				header.source = "/";
-			}
-			headers.push(header);
-		})
+		// firebaseHeaders.forEach(firebaseHeader => {
+		// 	if(firebaseHeader.source === "**/*")
+		// 	{
+		// 		firebaseHeader.source = "/";
+		// 	}
+		// 	headers.push(firebaseHeader);
+		// })
 
 		return headers;
 	}

@@ -78,6 +78,7 @@ const GenerateFaviconAssets = async function () {
 				themeColor: "#152e4d",
 				manifest: {
 					name: "SubMan 2",
+					shortName: "SM2",
 					display: "standalone",
 					orientation: "notSet",
 					onConflict: "override",
@@ -139,7 +140,7 @@ const BuildFavicons = gulp.series(CheckForApiUpdates, GenerateFaviconAssets);
 module.exports["build/favicons"] = BuildFavicons;
 
 function CleanNextDirectory() {
-	return del(["./.next/*", "./.next/**/*"]);
+	return del(["./.next/*", "./.next/**/*", "./public/service-workers"]);
 }
 
 function CleanOutputDirectory() {
@@ -187,7 +188,7 @@ const BuildStaticCompilation = shell.task("yarn next export");
 
 module.exports["build"] = gulp.series(Clean, Lint, BuildFavicons, BuildBundle, BuildStaticCompilation);
 
-module.exports["depcheck"] = (done) => Exec(done, "yarn dlx depcheck");
+module.exports["depcheck"] = shell.task("yarn dlx depcheck");
 module.exports["analyze-bundle"] = gulp.series(
 	Clean,
 	Lint,
