@@ -53,6 +53,8 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 		try {
 			// @ts-ignore
 			gtag('config', firebaseApp.options.measurementId, { 'anonymize_ip': true });
+			// @ts-ignore
+			gtag('set', 'dimension1', 'online');
 		}
 		catch (e) {
 			log.debug("Error configuring gtag. %o", e);
