@@ -16,7 +16,7 @@ import {
 	PerformanceProvider,
 } from "reactfire";
 import firebaseConfig, { APP_CHECK_TOKEN } from "../../lib/constants/firebaseConfig";
-import { ReactNode, useCallback, useMemo, useState } from "react";
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useLog } from "../common/LogProvider";
 import process from "process";
 import { useGdprConsent } from "../../lib/hooks/localStorageHooks";
@@ -49,7 +49,15 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 	});
 
 	const anal = useInitAnalytics(async (firebaseApp) => {
-		return initializeAnalytics(firebaseApp, {});
+		const initialisedAnal = initializeAnalytics(firebaseApp, {});
+		try {
+			// @ts-ignore
+			gtag('config', firebaseApp.options.measurementId, { 'anonymize_ip': true });
+		}
+		catch (e) {
+			log.debug("Error configuring gtag. %o", e);
+		}
+		return initialisedAnal;
 	});
 
 	const perf = useInitPerformance(async (firebaseApp) => {
@@ -78,6 +86,14 @@ function AppProviderHOC({ children, fetchedConfig }: { children: ReactNode; fetc
 	const fbLog = useLog("Firebase");
 
 	const [gdprConsent] = useGdprConsent();
+
+	useEffect(() => {
+		const id = fetchedConfig?.measurementId;
+		if(id){
+			// @ts-ignore
+			window[`ga-disable-${id}`] = process.env.NEXT_PUBLIC_DATA_COLLECTION != "true" || !gdprConsent;
+		}
+	}, [fetchedConfig, gdprConsent])
 
 	const app = useMemo(() => {
 		const logHandler: LogCallback = (logParams) => {

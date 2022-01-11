@@ -32,13 +32,13 @@ module.exports = withPlugins([
 		const firebaseHeaders = require("./firebase.json").hosting.headers;
 		const headers = [];
 
-		// firebaseHeaders.forEach(firebaseHeader => {
-		// 	if(firebaseHeader.source === "**/*")
-		// 	{
-		// 		firebaseHeader.source = "/";
-		// 	}
-		// 	headers.push(firebaseHeader);
-		// })
+		firebaseHeaders.forEach(firebaseHeader => {
+			if(firebaseHeader.source === "**/*")
+			{
+				firebaseHeader.source = "/";
+			}
+			headers.push(firebaseHeader);
+		})
 
 		return headers;
 	}
