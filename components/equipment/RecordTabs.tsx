@@ -14,6 +14,20 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { logEvent } from "firebase/analytics";
 import FirestoreWrapper from "../_app/FirestoreWrapper";
+import { getInstanceTypeOfClassLikeDeclaration } from "tsutils";
+
+const TimestampCell = ({ zdt }: { zdt: datePhases }) => {
+	const log = useLog();
+	const date = toTemporal(zdt, log);
+	log.trace("Rendering timestamp (%s) in cell", date.toString());
+	return (
+			<>
+				<p>
+					{date?.day}/{date?.month}/{date?.year}
+				</p>
+			</>
+	);
+};
 
 const ConditionTable = ({ itemId, itemCollection }: { itemId: string; itemCollection: string }) => {
 	const useCollection = (suspense = true) =>
@@ -24,19 +38,6 @@ const ConditionTable = ({ itemId, itemCollection }: { itemId: string; itemCollec
 				suspense: suspense,
 			}
 		);
-
-	const TimestampCell = ({ zdt }: { zdt: datePhases }) => {
-		const log = useLog();
-		log.trace("Rendering");
-		const date = toTemporal(zdt, log);
-		return (
-			<>
-				<p>
-					{date?.day}/{date?.month}/{date?.year}
-				</p>
-			</>
-		);
-	};
 
 	const columns = useMemo<Column<ConditionRecord>[]>(() => {
 		return [
@@ -137,16 +138,7 @@ const PressureTable = ({ itemId, itemCollection }: { itemId: string; itemCollect
 				accessor: "timestamp",
 				Header: "Timestamp",
 				Cell: function (props: Cell<PressureRecord>) {
-					const log = useLog();
-					log.trace("Rendering");
-					const date = toTemporal(props.row.original.timestamp, log);
-					return (
-						<>
-							<p>
-								{date?.day}/{date?.month}/{date?.year}
-							</p>
-						</>
-					);
+					return <TimestampCell zdt={props.row.original.timestamp} />;
 				},
 			},
 			{
@@ -212,32 +204,14 @@ const TestTable = ({ itemId, itemCollection }: { itemId: string; itemCollection:
 				accessor: "performedAt",
 				Header: "Performed At",
 				Cell: function (props: Cell<TestRecord>) {
-					const log = useLog();
-					log.trace("Rendering");
-					const date = toTemporal(props.row.original.performedAt, log);
-					return (
-						<>
-							<p>
-								{date?.day}/{date?.month}/{date?.year}
-							</p>
-						</>
-					);
+					return <TimestampCell zdt={props.row.original.performedAt} />;
 				},
 			},
 			{
 				accessor: "nextDue",
 				Header: "Next Due",
 				Cell: function (props: Cell<TestRecord>) {
-					const log = useLog();
-					log.trace("Rendering");
-					const date = toTemporal(props.row.original.nextDue, log);
-					return (
-						<>
-							<p>
-								{date?.day}/{date?.month}/{date?.year}
-							</p>
-						</>
-					);
+					return <TimestampCell zdt={props.row.original.nextDue} />;
 				},
 			},
 			{

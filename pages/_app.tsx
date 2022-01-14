@@ -61,6 +61,7 @@ function dumpInfo(log: Logger) {
 	log.info("Emulation Modes: %j", {
 		FirestoreEmulatorEnabled: process.env.NEXT_PUBLIC_FIRESTORE_EMULATOR ?? false,
 		AuthEmulatorEnabled: process.env.NEXT_PUBLIC_AUTH_EMULATOR ?? false,
+		AppCheckDebugTokenEnabled: process.env.NEXT_PUBLIC_APP_CHECK_DEBUG
 	});
 	log.debug("Built-in firebase configuration: %j", fbConfig);
 	try {

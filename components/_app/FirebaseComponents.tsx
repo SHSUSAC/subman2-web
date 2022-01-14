@@ -31,6 +31,8 @@ import { NavList } from "./NavList";
 import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import FullPageLoaderComponent from "./FullPageLoaderComponent";
 
+declare const self: Window & typeof globalThis & {FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string};
+
 function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 	const log = useLog("Firebase");
 	const [gdprConsent] = useGdprConsent();
@@ -117,6 +119,18 @@ function AppProviderHOC({ children, fetchedConfig }: { children: ReactNode; fetc
 		});
 		return app;
 	}, [fbLog, fetchedConfig, gdprConsent]);
+
+
+	if(process.env.NEXT_PUBLIC_APP_CHECK_DEBUG){
+		if(process.env.NEXT_PUBLIC_APP_CHECK_DEBUG === "true") {
+			fbLog.warn("App Check is configured to generate a debug token, watch the console for it, and then whitelist it in firebase!")
+			self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+		}
+		else {
+			fbLog.warn("App Check is configured to use a debug token, ensure it is whitelisted in firebase!")
+			self.FIREBASE_APPCHECK_DEBUG_TOKEN = process.env.NEXT_PUBLIC_APP_CHECK_DEBUG;
+		}
+	}
 
 	const appCheck = initializeAppCheck(app, {
 		provider: new ReCaptchaV3Provider(APP_CHECK_TOKEN),

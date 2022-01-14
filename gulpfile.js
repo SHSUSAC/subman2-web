@@ -4,26 +4,28 @@ const fs = require("fs");
 const utils = require("util");
 const del = require("del");
 const eslint = require("gulp-eslint");
-const guppy = require("git-guppy")(gulp);
 const gulpFilter = require("gulp-filter");
 const shell = require("gulp-shell");
+const contains = require('gulp-contains2');
+const PluginError = require("plugin-error");
 
-module.exports["pre-commit"] = function () {
-	return (
-		guppy
-			.stream("pre-commit")
-			.pipe(gulpFilter(["*.js*", "*.ts*"]))
-			// eslint() attaches the lint output to the "eslint" property
-			// of the file object so it can be used by other modules.
-			.pipe(eslint())
-			// eslint.format() outputs the lint results to the console.
-			// Alternatively use eslint.formatEach() (see Docs).
-			.pipe(eslint.format())
-			// To have the process exit with an error code (1) on
-			// lint error, return the stream and pipe to failAfterError last.
-			.pipe(eslint.failAfterError())
-	);
-};
+const CheckAppCheckTokenIsNotCommitted = function () {
+	return gulp.src(".env.*")
+		.pipe(gulp.src(".env"))
+		.pipe(contains({
+			search: new RegExp(/NEXT_PUBLIC_APP_CHECK_DEBUG=.*\n?/mg),
+			onFound: function (string, file, cb) {
+				cb(new PluginError('gulp-contains', new Error("Found a App Check Debug token")));
+			}
+		}));
+}
+
+module.exports["git-hooks/pre-commit#CheckAppCheckTokenIsNotCommitted"] = CheckAppCheckTokenIsNotCommitted;
+module.exports["git-hooks/pre-commit"] = gulp.parallel(() => Lint(false), CheckAppCheckTokenIsNotCommitted);
+
+module.exports["git-hooks/prepare-commit-msg"] = function () {
+
+}
 
 // File where the favicon markups are stored
 const FAVICON_DATA_FILE = "assets/favicons/faviconData.json";
@@ -153,7 +155,7 @@ function CleanFaviconData() {
 
 const Clean = gulp.parallel(CleanNextDirectory, CleanOutputDirectory, CleanFaviconData);
 
-const RunNextDevServer = shell.task("yarn next dev");
+const RunNextDevServer = shell.task("yarn node ./dev_server/server.js");
 
 function Lint(fix) {
 	return (
@@ -181,7 +183,7 @@ module.exports["clean"] = Clean;
 module.exports["clean#CleanNextDirectory"] = CleanNextDirectory;
 module.exports["clean#CleanOutputDirectory"] = CleanOutputDirectory;
 module.exports["clean#CleanFaviconData"] = CleanFaviconData;
-module.exports["dev"] = gulp.series(gulp.parallel(CleanNextDirectory, BuildFavicons), Lint, RunNextDevServer);
+module.exports["dev"] = gulp.series(BuildFavicons, Lint, RunNextDevServer);
 
 const BuildBundle = shell.task("yarn next build");
 const BuildStaticCompilation = shell.task("yarn next export");

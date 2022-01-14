@@ -10,10 +10,21 @@
   },
   "scripts": {
     "start-emulators": "firebase emulators:start --import ./.firebase/emulator-data",
-    "export-emulators": "firebase emulators:export ./.firebase/emulator-data"
+    "export-emulators": "firebase emulators:export ./.firebase/emulator-data",
+    "postinstall": "husky install .github/husky",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   },
   "devDependencies": {
     "@browser-bunyan/console-formatted-stream": "1.6.2",
+    "@commitlint/cli": "16.0.2",
+    "@commitlint/config-conventional": "16.0.0",
+    "@commitlint/cz-commitlint": "16.0.0",
     "@firebase/logger": "0.3.2",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
@@ -37,6 +48,7 @@
     "@typescript-eslint/parser": "5.9.0",
     "autoprefixer": "10.4.2",
     "browser-bunyan": "1.6.3",
+    "commitizen": "4.2.4",
     "cross-env": "7.0.3",
     "del": "6.0.0",
     "eslint": "8.6.0",
@@ -50,13 +62,15 @@
     "fancy-log": "2.0.0",
     "firebase": "9.6.2",
     "firebase-tools": "10.0.1",
-    "git-guppy": "2.1.0",
     "gulp": "4.0.2",
+    "gulp-contains2": "1.1.0",
     "gulp-eslint": "6.0.0",
     "gulp-filter": "7.0.0",
     "gulp-real-favicon": "0.3.2",
     "gulp-shell": "0.8.0",
-    "guppy-pre-commit": "0.4.0",
+    "husky": "7.0.0",
+    "pinst": "2.0.0",
+    "plugin-error": "1.0.1",
     "postcss": "8.4.5",
     "prettier": "2.5.1",
     "react-click-away-listener": "2.0.5",
@@ -142,17 +156,12 @@
           "assets": [
             {
               "path": "static_site.zip",
-              "name": "Static Build",
-              "label": "Website, statically built for deployment on a HTTP server"
+              "name": "static_site.zip",
+              "label": "Static Website Build"
             }
           ]
         }
       ]
     ]
-  },
-  "babelMacros": {
-    "twin": {
-      "config": "tailwind.config.js"
-    }
   }
 }

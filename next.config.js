@@ -10,6 +10,8 @@ module.exports = withPlugins([
 	[withBundleAnalyzer],
 
 ], {
+	swcMinify: true,
+	reactStrictMode: true,
 	trailingSlash: false,
 	//Should be handled by CDN
 	compress: false,
@@ -17,12 +19,15 @@ module.exports = withPlugins([
 		config.resolve.fallback = {
 			...config.resolve.fallback,
 		};
+		//TODO Look at this message vesp!
+		console.warn("Max precache size has been increased but the actual file should be trimed")
 		config.plugins.push(new WorkboxPlugin.InjectManifest({
 			swSrc: path.resolve(
 				__dirname,
 				'./lib/service-workers/root.ts',
 			),
 			swDest: '../../../public/service-workers/sw_root.js',
+			maximumFileSizeToCacheInBytes: 13000000
 		}));
 
 
