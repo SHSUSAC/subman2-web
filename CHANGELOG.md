@@ -1,5 +1,7 @@
 # Semantic Versioning Changelog
 
+## [1.0.6](https://github.com/SHSUSAC/subman2-web/compare/v1.0.5...v1.0.6) (2022-01-15)
+
 ## [1.0.5](https://github.com/SHSUSAC/subman2-web/compare/v1.0.4...v1.0.5) (2022-01-15)
 
 ## [1.0.4](https://github.com/SHSUSAC/subman2-web/compare/v1.0.3...v1.0.4) (2022-01-14)
