@@ -3,8 +3,8 @@ const withPlugins = require("next-compose-plugins");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
 	enabled: process.env.ANALYZE === "true",
 });
-const WorkboxPlugin = require('workbox-webpack-plugin');
-const path = require('path');
+const WorkboxPlugin = require("workbox-webpack-plugin");
+const path = require("path");
 
 module.exports = withPlugins([
 	[withBundleAnalyzer],
@@ -24,9 +24,9 @@ module.exports = withPlugins([
 		config.plugins.push(new WorkboxPlugin.InjectManifest({
 			swSrc: path.resolve(
 				__dirname,
-				'./lib/service-workers/root.ts',
+				"./lib/service-workers/root.ts",
 			),
-			swDest: '../../../public/service-workers/sw_root.js',
+			swDest: "../../../public/service-workers/sw_root.js",
 			maximumFileSizeToCacheInBytes: 13000000
 		}));
 

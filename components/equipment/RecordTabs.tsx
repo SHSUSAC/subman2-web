@@ -15,6 +15,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { logEvent } from "firebase/analytics";
 import FirestoreWrapper from "../_app/FirestoreWrapper";
 import { getInstanceTypeOfClassLikeDeclaration } from "tsutils";
+import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
+import PressureRecordPanel from "../../fragments/panels/pressureRecordPanel";
+import { useForm } from "react-hook-form";
+import { SaveConditionRecord, SavePressureRecord, SaveTestRecord } from "../../lib/firestoreHelpers";
+import { AppError } from "../../lib/types/errors";
+import TestRecordPanel from "../../fragments/panels/TestRecordPanel";
+import ConditionRecordPanel from "../../fragments/panels/ConditionRecordPanel";
 
 const TimestampCell = ({ zdt }: { zdt: datePhases }) => {
 	const log = useLog();
@@ -263,7 +270,33 @@ const Tabs = ({
 	itemCollection: string;
 	itemId: string;
 }) => {
-	const [openTab, setOpenTab] = useState(1);
+	const log = useLog();
+
+	const [openTab, setOpenTab] = useState<1 | 2 | 3>(1);
+	const openRecordPanelForTab = () => {
+		log.debug("Opening record panel");
+		switch (openTab) {
+			case 1:
+				setNewPressureRecordPanelOpen(false);
+				setConditionRecordPanelOpen(true);
+				setTestRecordPanelOpen(false);
+				break;
+			case 2:
+				setNewPressureRecordPanelOpen(true);
+				setConditionRecordPanelOpen(false);
+				setTestRecordPanelOpen(false);
+				break;
+			case 3:
+				setNewPressureRecordPanelOpen(false);
+				setConditionRecordPanelOpen(false);
+				setTestRecordPanelOpen(true);
+				break;
+			default:
+				throw new AppError(601, "Invalid tab code for records");
+		}
+	};
+
+	const firestore = useFirestore();
 
 	const analytics = useAnalytics();
 
@@ -300,6 +333,50 @@ const Tabs = ({
 		logEvent(analytics, "screen_view", data);
 	}, [openTab, analytics]);
 
+	const newPressureRecordForm = useForm<{ record: PressureRecord; parentId: string }>();
+	newPressureRecordForm.setValue("parentId", itemId);
+	const [newPressureRecordPanelOpen, setNewPressureRecordPanelOpen] = useState(false);
+	const savePressureRecord = async (record: { record: PressureRecord; parentId: string }) => {
+		if(itemCollection !== "cylinders") {
+			log.error("Tried to update a pressure record for a type (%s) that does not support pressure!", itemCollection);
+			throw new AppError(601, "Attempted to add pressure record to unsupported type");
+		}
+		try {
+			await SavePressureRecord(record.record, record.parentId, "cylinders", log, firestore);
+			setNewPressureRecordPanelOpen(false);
+		} catch (e) {
+			const err = e as AppError;
+			err.code = 600;
+			log.error(err, "Error adding new pressure record to firestore collection. Values: %j", record);
+		}
+	};
+
+	const testRecordForm = useForm<TestRecord>();
+	const [testRecordPanelOpen, setTestRecordPanelOpen] = useState(false);
+	const saveTestRecord = async (record: TestRecord) => {
+		try {
+			await SaveTestRecord(record, itemId, itemCollection, log, firestore);
+			setTestRecordPanelOpen(false);
+		} catch (e) {
+			const err = e as AppError;
+			err.code = 600;
+			log.error(err, "Error adding new test record to firestore collection. Values: %j", record);
+		}
+	};
+
+	const conditionRecordForm = useForm<ConditionRecord>();
+	const [conditionRecordPanelOpen, setConditionRecordPanelOpen] = useState(false);
+	const saveConditionRecord = async (record: ConditionRecord) => {
+		try {
+			await SaveConditionRecord(record, itemId, itemCollection, log, firestore);
+			setConditionRecordPanelOpen(false);
+		} catch (e) {
+			const err = e as AppError;
+			err.code = 600;
+			log.error(err, "Error adding new condition record to firestore collection. Values: %j", record);
+		}
+	};
+
 	// noinspection HtmlUnknownAnchorTarget
 	return (
 		<>
@@ -309,7 +386,7 @@ const Tabs = ({
 						<Link href={`/equipment/${itemCollection.substring(0, itemCollection.length - 1)}`}>
 							<a className="align-start text-center inline-flex">
 								<FontAwesomeIcon icon={faArrowLeft} className="w-6 h-6" />
-								<span className="mr-5 underline">Back to {itemCollection}</span>
+								<span className="ml-2 mr-5 underline">Back to {itemCollection}</span>
 							</a>
 						</Link>
 						<p className="align-end text-center">
@@ -381,6 +458,18 @@ const Tabs = ({
 							</a>
 						</li>
 					</ul>
+					<div className="flex flex-row">
+						<button
+								onClick={openRecordPanelForTab}
+								title={`Add new ${openTab === 1 ? "condition" : openTab === 2 ? "pressure" : "test"} record`}
+								className="p-2 w-12 h-12 transition-colors duration-200 rounded text-secondary-lighter dark:text-white bg-secondary-50 hover:bg-secondary-100 dark:hover:bg-secondary-dark dark:bg-secondary-darker focus:bg-secondary-100 dark:focus:bg-secondary-dark focus:ring-secondary-darker focus:outline-none"
+						>
+							<>
+								<FontAwesomeIcon icon={faPlusSquare} className="" />
+							</>
+						</button>
+						<p className="ml-2 self-center">Add new {openTab === 1 ? "condition" : openTab === 2 ? "pressure" : "test"} record</p>
+					</div>
 					<div className="relative flex flex-col break-words ">
 						<div className="py-2 flex-auto">
 							<div className="tab-content tab-space">
@@ -397,7 +486,11 @@ const Tabs = ({
 						</div>
 					</div>
 				</div>
+
 			</div>
+			<PressureRecordPanel panelOpen={newPressureRecordPanelOpen} pressureRecordForm={newPressureRecordForm} savePressureRecord={savePressureRecord} setPanelOpen={setNewPressureRecordPanelOpen}/>
+			<TestRecordPanel panelOpen={testRecordPanelOpen} recordForm={testRecordForm} saveRecord={saveTestRecord} setPanelOpen={setTestRecordPanelOpen}/>
+			<ConditionRecordPanel panelOpen={conditionRecordPanelOpen} recordForm={conditionRecordForm} saveRecord={saveConditionRecord} setPanelOpen={setConditionRecordPanelOpen}/>
 		</>
 	);
 };

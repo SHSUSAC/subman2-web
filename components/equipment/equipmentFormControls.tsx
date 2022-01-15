@@ -10,6 +10,7 @@ import { PressureRecord } from "../../lib/types/records/PressureRecord";
 import { Temporal } from "@js-temporal/polyfill";
 import { toFormDateString, toTemporal } from "../../lib/dateTimeHelpers";
 import { useLog } from "../common/LogProvider";
+import { TestRecord } from "../../lib/types/records/TestRecord";
 
 export function PressureRecordFormControls({ data }: { data?: { record: PressureRecord; parentId: string } }) {
 	const {
@@ -105,7 +106,7 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 			</label>
 			<ErrorMessage errors={errors} name="record.timestamp" />
 			<label className="">
-				Fill Location
+				Location
 				<input
 					className="w-full mb-2 px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
 					type="text"
@@ -315,7 +316,7 @@ export function SizedFormControl({ data }: { data?: _sizeProperties }) {
 	);
 }
 
-export function NextTestFormControl({ data }: { data?: cylinder | Regulator }) {
+export function NextTestFormControl({ data }: { data?: cylinder | Regulator | TestRecord }) {
 	const log = useLog();
 	const {
 		register,

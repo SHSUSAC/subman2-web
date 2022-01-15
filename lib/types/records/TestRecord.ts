@@ -1,4 +1,4 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { datePhases } from "../equipmentComponents";
 
 export type TestRecord = {
 	/**
@@ -8,11 +8,11 @@ export type TestRecord = {
 	/**
 	 * When the test was performed
 	 */
-	performedAt: Temporal.ZonedDateTime;
+	performedAt: datePhases;
 	/**
 	 * When another test is next due
 	 */
-	nextDue: Temporal.ZonedDateTime;
+	nextDue: datePhases;
 	/**
 	 * The result of the test
 	 */
@@ -25,4 +25,9 @@ export type TestRecord = {
 	 * The location the test was performed at
 	 */
 	testLocation: string;
+
+	/**
+	 * Any notes about this test
+	 */
+	notes?: string;
 };

@@ -24,6 +24,7 @@ import { PressureRecord } from "../../../lib/types/records/PressureRecord";
 import { SavePressureRecord } from "../../../lib/firestoreHelpers";
 import { toFirestore, toTemporal } from "../../../lib/dateTimeHelpers";
 import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
+import PressureRecordPanel from "../../../fragments/panels/pressureRecordPanel";
 
 function TableWrapper({ columns }: { columns: Column<cylinder>[] }) {
 	const log = useLog();
@@ -344,37 +345,7 @@ export default function Index(): JSX.Element | null {
 					</form>
 				</FormProvider>
 			</PanelDialog>
-			<PanelDialog open={newPressureRecordPanelOpen} title="Changing cylinder pressure">
-				<FormProvider {...newPressureRecordForm}>
-					<form
-						onSubmit={newPressureRecordForm.handleSubmit(data => savePressureRecord(data as {record: PressureRecord, parentId: string}))}
-						className="w-full flex flex-col px-4 py-6 space-y-6 bg-white rounded-md dark:bg-darker flex-grow overflow-y-auto overscroll-y-contain"
-					>
-						<div className="flex-grow flex flex-col space-y-2">
-							<PressureRecordFormControls />
-						</div>
-
-						<div className="block md:flex mb-4 gap-8">
-							<button
-								type="button"
-								className="w-full mb-2 md:mb-0 space-y-3 px-4 py-2 font-medium border border-primary-darker text-primary-darker text-center hover:text-white dark:text-white transition-colors duration-200 rounded-md hover:bg-primary-dark dark:hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-darker"
-								onClick={() => {
-									newPressureRecordForm.reset();
-									setNewPressureRecordPanelOpen(false);
-								}}
-							>
-								Cancel
-							</button>
-							<button
-								type="submit"
-								className="w-full space-y-3 px-4 py-2 font-medium text-center text-white transition-colors duration-200 rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-darker"
-							>
-								Save changes
-							</button>
-						</div>
-					</form>
-				</FormProvider>
-			</PanelDialog>
+			<PressureRecordPanel panelOpen={newPressureRecordPanelOpen} pressureRecordForm={newPressureRecordForm} savePressureRecord={savePressureRecord} setPanelOpen={setNewPressureRecordPanelOpen}/>
 			<main>
 				<header className="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
 					<h1 className="text-2xl font-semibold">Cylinders</h1>

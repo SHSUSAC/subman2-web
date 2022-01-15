@@ -5,6 +5,7 @@ import { useAnalytics, useAuth, useUser } from "reactfire";
 import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 import { useLog } from "../common/LogProvider";
 import { logEvent, setUserId, setUserProperties } from "firebase/analytics";
+import { useStore } from "react-context-hook"
 
 type GisResponse = {
 	credential: string;
@@ -21,12 +22,16 @@ export function ProfileButton(): JSX.Element | null {
 
 	const gisLog = useLog("GoogleIdentityService");
 	const [allowPrompt, setAllowPrompt] = useState(true);
-	const [gisReady, setGisReady] = useState(false);
+	const [gisLoaded] = useStore("gisLoaded");
+	const [gisReady, setGisReady] = useStore("gisReady");
 
 	//Loads the script into the page
 	useEffect(() => {
-
 		if(gisReady) {
+			return;
+		}
+
+		if(!gisLoaded) {
 			return;
 		}
 
@@ -51,8 +56,7 @@ export function ProfileButton(): JSX.Element | null {
 		});
 
 		setGisReady(true);
-
-	}, [gisReady, anal, auth, gisLog]);
+	}, [anal, auth, gisLog, gisReady, setGisReady]);
 
 	//Prompts the user if they are not signed in and it is allowed
 	useEffect(() => {

@@ -1,4 +1,4 @@
-import styles from "../assets/styles/landing.module.css";
+
 import Link from "next/link";
 
 export default function Index() {
@@ -26,7 +26,7 @@ export default function Index() {
 							Module dashboards
 						</h2>
 						<div className="w-full mb-4">
-							<div className={`h-1 mx-auto ${styles.gradient} w-64 opacity-25 my-0 py-0 rounded-t`} />
+							<div className={"h-1 mx-auto w-64 opacity-25 my-0 py-0 rounded-t"} />
 						</div>
 
 						<div className="w-full md:w-1/4 p-6 flex flex-col flex-grow flex-shrink">
