@@ -22,7 +22,8 @@ import { Temporal } from "@js-temporal/polyfill";
 import packagejson from "../package.json";
 import { useGdprConsent, useGdprConsentBannerShown } from "../lib/hooks/localStorageHooks";
 import { Workbox } from "workbox-window";
-import { withStore } from "react-context-hook";
+import { withStore, useSetStoreValue } from "react-context-hook";
+import Script from "next/script";
 
 // faConfig.autoAddCss = false;
 
@@ -46,20 +47,20 @@ const FirebaseComponents = dynamic(
 );
 
 export type GlobalStore = {
-	gisLoaded: boolean
-	gisReady: boolean
-}
-const initialState: GlobalStore = { gisLoaded: false, gisReady: false }
-const storeLog = ConstructLog(_createRootLogger(), "GlobalState")
+	gisLoaded: boolean;
+	gisReady: boolean;
+};
+const initialState: GlobalStore = { gisLoaded: false, gisReady: false };
+const storeLog = ConstructLog(_createRootLogger(), "GlobalState");
 const storeConfig = {
 	listener: (state: Object, key: string, prevValue: any, nextValue: any) => {
 		storeLog.debug("%s updated to %j from %j", key, nextValue, prevValue);
 		storeLog.trace("Store state: %j", state);
 	},
-	logging: false //process.env.NODE_ENV !== 'production'
-}
+	logging: false, //process.env.NODE_ENV !== 'production'
+};
 
-export default withStore(ApplicationContainer, initialState, storeConfig)
+export default withStore(ApplicationContainer, initialState, storeConfig);
 
 // noinspection JSUnusedGlobalSymbols
 function ApplicationContainer({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
@@ -68,25 +69,31 @@ function ApplicationContainer({ Component, pageProps }: AppPropsWithLayout): JSX
 	dumpInfo(log);
 
 	useEffect(() => {
-		log.debug("Attempting service worker registration")
-		if (
-				!("serviceWorker" in navigator) ||
-				process.env.NODE_ENV !== "production"
-		) {
+		log.debug("Attempting service worker registration");
+		if (!("serviceWorker" in navigator) || process.env.NODE_ENV !== "production") {
 			log.warn("Progressive Web App support is disabled");
 			return;
 		}
 		const wb = new Workbox("/service-workers/sw_root.js", { scope: "/" });
 		wb.register().then(() => {
-			log.info("Service Worker registered with browser")
+			log.info("Service Worker registered with browser");
 		});
 	}, [log]);
 
 	log.trace("Rendering application container");
 	const getLayout = Component.getLayout || ((page) => page);
+
+	const setGisLoaded = useSetStoreValue("gisLoaded");
 	return (
 		<ErrorBoundary generateRawShell={true}>
 			<LogProvider>
+				<Script
+					strategy="afterInteractive"
+					src="https://accounts.google.com/gsi/client"
+					onLoad={() => {
+						setGisLoaded(true);
+					}}
+				/>
 				{/*<React.Suspense*/}
 				{/*	fallback={*/}
 				{/*		<Shell>*/}
@@ -115,28 +122,25 @@ function dumpInfo(log: Logger) {
 		for (let [key, value] of Object.entries(packagejson.dependencies)) {
 			depsLog.trace("%s@%s", key, value);
 		}
-	}
-	catch{
+	} catch {
 		log.warn("Error loading dependency info");
 	}
 	log.info("Environmental Mode: %s", process.env.NEXT_PUBLIC_ENVIRONMENT_MODE);
 	log.info("Emulation Modes: %j", {
 		FirestoreEmulatorEnabled: process.env.NEXT_PUBLIC_FIRESTORE_EMULATOR ?? false,
 		AuthEmulatorEnabled: process.env.NEXT_PUBLIC_AUTH_EMULATOR ?? false,
-		AppCheckDebugTokenEnabled: process.env.NEXT_PUBLIC_APP_CHECK_DEBUG
+		AppCheckDebugTokenEnabled: process.env.NEXT_PUBLIC_APP_CHECK_DEBUG,
 	});
 	log.debug("Built-in firebase configuration: %j", fbConfig);
 	try {
 		log.info("Process TZ: %s", process.env.TZ);
-	}
-	catch{
-		log.warn("Error finding process timezone. This could cause time related issues")
+	} catch {
+		log.warn("Error finding process timezone. This could cause time related issues");
 	}
 	try {
 		log.info("Temporal TZ: %s", Temporal.Now.timeZone().toString());
-	}
-	catch{
-		log.warn("Error finding temporal timezone. This could cause time related issues")
+	} catch {
+		log.warn("Error finding temporal timezone. This could cause time related issues");
 	}
 	log.trace("Panel portal set to %s, use selector %s to access it", panelPortalId, PanelPortalSelector);
 }
@@ -146,29 +150,29 @@ const ConsentBanner = () => {
 	const [, setSeen] = useGdprConsentBannerShown();
 
 	return (
-			<div className="flex items-center justify-between p-4 bg-primary border-t dark:bg-primary-lighter dark:border-primary-darker">
-				<p>Allow data collection for performance tracking?</p>
-				<div className="flex items-center justify-between">
-					<button
-							className="px-4 m-2 rounded text-white bg-green-500 hover:bg-green-700"
-							onClick={() => {
-								setEnabled(true);
-								setSeen(true);
-							}}
-					>
-						Allow
-					</button>
-					<button
-							className="px-4 m-2 mr-3 rounded text-white bg-red-500 hover:bg-red-700"
-							onClick={() => {
-								setEnabled(false);
-								setSeen(true);
-							}}
-					>
-						Deny
-					</button>
-				</div>
+		<div className="flex items-center justify-between p-4 bg-primary border-t dark:bg-primary-lighter dark:border-primary-darker">
+			<p>Allow data collection for performance tracking?</p>
+			<div className="flex items-center justify-between">
+				<button
+					className="px-4 m-2 rounded text-white bg-green-500 hover:bg-green-700"
+					onClick={() => {
+						setEnabled(true);
+						setSeen(true);
+					}}
+				>
+					Allow
+				</button>
+				<button
+					className="px-4 m-2 mr-3 rounded text-white bg-red-500 hover:bg-red-700"
+					onClick={() => {
+						setEnabled(false);
+						setSeen(true);
+					}}
+				>
+					Deny
+				</button>
 			</div>
+		</div>
 	);
 };
 

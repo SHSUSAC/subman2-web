@@ -1,7 +1,7 @@
 import React, { ErrorInfo } from "react";
 import Error from "../../pages/_error";
-import { ConstructLog, LogContext, useLog } from "./LogProvider";
-import FullPageLoaderComponent, { FullPageWrapper } from "../_app/FullPageLoaderComponent";
+import { ConstructLog, LogContext } from "./LogProvider";
+import { FullPageWrapper } from "../_app/FullPageLoaderComponent";
 
 export class ErrorBoundary extends React.Component<
 	{ children: React.ReactNode; generateRawShell?: boolean },

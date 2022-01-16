@@ -2,13 +2,13 @@
 # https://github.com/firebase/firebase-tools
 
 name: Create release on merge
-'on':
+"on":
   push:
     branches:
       - main
     paths-ignore:
-      - 'package.json'
-      - 'CHANGELOG.md'
+      - "package.json"
+      - "CHANGELOG.md"
 jobs:
   build_release:
     runs-on: ubuntu-latest
@@ -29,8 +29,8 @@ jobs:
         if: ${{ !env.ACT }}
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
-          cache: 'yarn'
+          node-version: "14"
+          cache: "yarn"
 
       - name: Install Dependencies
         run: yarn install --immutable --check-cache

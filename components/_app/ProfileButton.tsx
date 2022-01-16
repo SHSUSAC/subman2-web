@@ -4,8 +4,8 @@ import { Transition } from "@headlessui/react";
 import { useAnalytics, useAuth, useUser } from "reactfire";
 import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 import { useLog } from "../common/LogProvider";
-import { logEvent, setUserId, setUserProperties } from "firebase/analytics";
-import { useStore } from "react-context-hook"
+import { logEvent, setUserId } from "firebase/analytics";
+import { useStore } from "react-context-hook";
 
 type GisResponse = {
 	credential: string;
@@ -27,11 +27,11 @@ export function ProfileButton(): JSX.Element | null {
 
 	//Loads the script into the page
 	useEffect(() => {
-		if(gisReady) {
+		if (gisReady) {
 			return;
 		}
 
-		if(!gisLoaded) {
+		if (!gisLoaded) {
 			return;
 		}
 
@@ -44,8 +44,8 @@ export function ProfileButton(): JSX.Element | null {
 				const signInResult = signInWithCredential(auth, credential);
 				signInResult.then((uc) => {
 					gisLog.trace(
-							"Authenticated with via firebase using sign in credential. Got result {CredentialJson}",
-							uc.user.toJSON()
+						"Authenticated with via firebase using sign in credential. Got result {CredentialJson}",
+						uc.user.toJSON()
 					);
 					setUserId(anal, uc.user.uid);
 					logEvent(anal, "login", {
@@ -56,7 +56,7 @@ export function ProfileButton(): JSX.Element | null {
 		});
 
 		setGisReady(true);
-	}, [anal, auth, gisLog, gisReady, setGisReady]);
+	}, [anal, auth, gisLoaded, gisLog, gisReady, setGisReady]);
 
 	//Prompts the user if they are not signed in and it is allowed
 	useEffect(() => {

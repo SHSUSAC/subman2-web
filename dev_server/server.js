@@ -6,8 +6,8 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const httpsOptions = {
-	pfx: fs.readFileSync('./dev_server/certificates/localhost.pfx'),
-	passphrase: 'password'
+	pfx: fs.readFileSync("./dev_server/certificates/localhost.pfx"),
+	passphrase: "password",
 };
 app.prepare().then(() => {
 	createServer(httpsOptions, (req, res) => {

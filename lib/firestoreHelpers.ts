@@ -1,9 +1,9 @@
 import { PressureRecord } from "./types/records/PressureRecord";
 import { Logger } from "./types/logging";
-import { addDoc, collection, doc, Firestore, setDoc, writeBatch, WriteBatch } from "firebase/firestore";
+import { collection, doc, Firestore, setDoc, writeBatch, WriteBatch } from "firebase/firestore";
 import { toFirestore } from "./dateTimeHelpers";
-import {TestRecord} from "./types/records/TestRecord.js";
-import {ConditionRecord} from "./types/records/ConditionRecord.js";
+import { TestRecord } from "./types/records/TestRecord.js";
+import { ConditionRecord } from "./types/records/ConditionRecord.js";
 
 function getDocRef(firestore: Firestore, itemId: string, collection: string) {
 	return doc(firestore, collection, itemId);

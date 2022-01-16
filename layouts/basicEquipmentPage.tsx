@@ -1,5 +1,5 @@
 import { faPlusSquare, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import { faEdit, faFileInvoice, faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faFileInvoice } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Cell, Column } from "react-table";
 import { CommonEquipmentProperties } from "../lib/types/equipmentComponents";
@@ -7,7 +7,7 @@ import LogProvider, { useLog } from "../components/common/LogProvider";
 import { Table } from "../components/common/Table";
 import { AppError } from "../lib/types/errors";
 import { useFirestore, useFirestoreCollectionData } from "reactfire";
-import { ReactElement, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { NewEquipmentModal } from "../components/equipment/NewEquipmentModal";
 import { GeneralEquipmentFormControls } from "../components/equipment/equipmentFormControls";
@@ -26,7 +26,6 @@ function TableWrapper({
 	columns: Column<CommonEquipmentProperties>[];
 	itemCollection: string;
 }) {
-	const log = useLog();
 	const { data } = useCollection(true, itemCollection);
 
 	const mappedData = data?.map((x) => {
@@ -50,15 +49,16 @@ const useCollection = (suspense = true, itemCollection: string) =>
 	});
 
 export default function Wrapper({ itemCollection }: { itemCollection: string }): JSX.Element {
-	return <FirestoreWrapper>
-		<BasicEquipmentPage itemCollection={itemCollection} />
-	</FirestoreWrapper>
+	return (
+		<FirestoreWrapper>
+			<BasicEquipmentPage itemCollection={itemCollection} />
+		</FirestoreWrapper>
+	);
 }
 
 function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX.Element | null {
 	const firestore = useFirestore();
 	const [newPanelOpen, setNewPanelOpen] = useState(false);
-	const [newPressureRecordPanelOpen, setNewPressureRecordPanelOpen] = useState(false);
 	const [deleteItem, setDeleteItem] = useState<CommonEquipmentProperties | null>(null);
 	const [editItem, setEditItem] = useState<CommonEquipmentProperties | null>(null);
 	const log = useLog();
@@ -133,7 +133,7 @@ function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX
 				},
 			},
 		],
-		[editEquipmentForm]
+		[editEquipmentForm, itemCollection]
 	);
 
 	const saveNewEquipment = (newItem: CommonEquipmentProperties) => {

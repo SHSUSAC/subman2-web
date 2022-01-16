@@ -32,24 +32,18 @@ export default function FirestoreWrapper({ children }: { children: ReactNode }) 
 
 			try {
 				connectFirestoreEmulator(db, hostnameSplit[0], port);
-			}
-			catch (e) {
+			} catch (e) {
 				if (e instanceof FirebaseError) {
-					if(e.message.startsWith("Firestore has already been started")) {
+					if (e.message.startsWith("Firestore has already been started")) {
 						log.info(
-								"Caught duplicate firestore emulator connection. code: %s; msg: %s",
-								e.code,
-								e.message
+							"Caught duplicate firestore emulator connection. code: %s; msg: %s",
+							e.code,
+							e.message
 						);
+					} else {
+						log.warn("%s error during firestore emulator connection. %s", e.code, e.message);
 					}
-					else {
-						log.warn(
-								"%s error during firestore emulator connection. %s",
-								e.code,
-								e.message);
-					}
-				}
-				else {
+				} else {
 					const err = e as Error;
 					log.warn("%s during firestore emulator connection. %s", err.name, err.message);
 				}
@@ -60,21 +54,16 @@ export default function FirestoreWrapper({ children }: { children: ReactNode }) 
 			await enableMultiTabIndexedDbPersistence(db);
 		} catch (e) {
 			if (e instanceof FirebaseError) {
-				if(e.message.startsWith("Firestore has already been started")) {
+				if (e.message.startsWith("Firestore has already been started")) {
 					log[process.env.NEXT_PUBLIC_FIRESTORE_EMULATOR ? "info" : "warn"](
-							"Caught duplicate firestore persistence initialisation. code: %s; msg: %s",
-							e.code,
-							e.message
+						"Caught duplicate firestore persistence initialisation. code: %s; msg: %s",
+						e.code,
+						e.message
 					);
+				} else {
+					log.warn("%s error during firestore persistence initialisation. %s", e.code, e.message);
 				}
-				else {
-					log.warn(
-							"%s error during firestore persistence initialisation. %s",
-							e.code,
-							e.message);
-				}
-			}
-			else {
+			} else {
 				const err = e as Error;
 				log.warn("%s during firestore persistence initialisation. %s", err.name, err.message);
 			}

@@ -1,6 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
 import { Timestamp } from "firebase/firestore";
-import { useLog } from "../../components/common/LogProvider";
 
 export const EquipmentConditions = [
 	"OK",

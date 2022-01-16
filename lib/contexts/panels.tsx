@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { toast, ToastContent, ToastOptions, TypeOptions } from "react-toastify";
 
 export type BasePanelTypes = {
 	open: boolean;

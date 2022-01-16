@@ -14,7 +14,6 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { logEvent } from "firebase/analytics";
 import FirestoreWrapper from "../_app/FirestoreWrapper";
-import { getInstanceTypeOfClassLikeDeclaration } from "tsutils";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import PressureRecordPanel from "../../fragments/panels/pressureRecordPanel";
 import { useForm } from "react-hook-form";
@@ -28,11 +27,11 @@ const TimestampCell = ({ zdt }: { zdt: datePhases }) => {
 	const date = toTemporal(zdt, log);
 	log.trace("Rendering timestamp (%s) in cell", date.toString());
 	return (
-			<>
-				<p>
-					{date?.day}/{date?.month}/{date?.year}
-				</p>
-			</>
+		<>
+			<p>
+				{date?.day}/{date?.month}/{date?.year}
+			</p>
+		</>
 	);
 };
 
@@ -337,8 +336,11 @@ const Tabs = ({
 	newPressureRecordForm.setValue("parentId", itemId);
 	const [newPressureRecordPanelOpen, setNewPressureRecordPanelOpen] = useState(false);
 	const savePressureRecord = async (record: { record: PressureRecord; parentId: string }) => {
-		if(itemCollection !== "cylinders") {
-			log.error("Tried to update a pressure record for a type (%s) that does not support pressure!", itemCollection);
+		if (itemCollection !== "cylinders") {
+			log.error(
+				"Tried to update a pressure record for a type (%s) that does not support pressure!",
+				itemCollection
+			);
 			throw new AppError(601, "Attempted to add pressure record to unsupported type");
 		}
 		try {
@@ -460,15 +462,19 @@ const Tabs = ({
 					</ul>
 					<div className="flex flex-row">
 						<button
-								onClick={openRecordPanelForTab}
-								title={`Add new ${openTab === 1 ? "condition" : openTab === 2 ? "pressure" : "test"} record`}
-								className="p-2 w-12 h-12 transition-colors duration-200 rounded text-secondary-lighter dark:text-white bg-secondary-50 hover:bg-secondary-100 dark:hover:bg-secondary-dark dark:bg-secondary-darker focus:bg-secondary-100 dark:focus:bg-secondary-dark focus:ring-secondary-darker focus:outline-none"
+							onClick={openRecordPanelForTab}
+							title={`Add new ${
+								openTab === 1 ? "condition" : openTab === 2 ? "pressure" : "test"
+							} record`}
+							className="p-2 w-12 h-12 transition-colors duration-200 rounded text-secondary-lighter dark:text-white bg-secondary-50 hover:bg-secondary-100 dark:hover:bg-secondary-dark dark:bg-secondary-darker focus:bg-secondary-100 dark:focus:bg-secondary-dark focus:ring-secondary-darker focus:outline-none"
 						>
 							<>
 								<FontAwesomeIcon icon={faPlusSquare} className="" />
 							</>
 						</button>
-						<p className="ml-2 self-center">Add new {openTab === 1 ? "condition" : openTab === 2 ? "pressure" : "test"} record</p>
+						<p className="ml-2 self-center">
+							Add new {openTab === 1 ? "condition" : openTab === 2 ? "pressure" : "test"} record
+						</p>
 					</div>
 					<div className="relative flex flex-col break-words ">
 						<div className="py-2 flex-auto">
@@ -486,11 +492,25 @@ const Tabs = ({
 						</div>
 					</div>
 				</div>
-
 			</div>
-			<PressureRecordPanel panelOpen={newPressureRecordPanelOpen} pressureRecordForm={newPressureRecordForm} savePressureRecord={savePressureRecord} setPanelOpen={setNewPressureRecordPanelOpen}/>
-			<TestRecordPanel panelOpen={testRecordPanelOpen} recordForm={testRecordForm} saveRecord={saveTestRecord} setPanelOpen={setTestRecordPanelOpen}/>
-			<ConditionRecordPanel panelOpen={conditionRecordPanelOpen} recordForm={conditionRecordForm} saveRecord={saveConditionRecord} setPanelOpen={setConditionRecordPanelOpen}/>
+			<PressureRecordPanel
+				panelOpen={newPressureRecordPanelOpen}
+				pressureRecordForm={newPressureRecordForm}
+				savePressureRecord={savePressureRecord}
+				setPanelOpen={setNewPressureRecordPanelOpen}
+			/>
+			<TestRecordPanel
+				panelOpen={testRecordPanelOpen}
+				recordForm={testRecordForm}
+				saveRecord={saveTestRecord}
+				setPanelOpen={setTestRecordPanelOpen}
+			/>
+			<ConditionRecordPanel
+				panelOpen={conditionRecordPanelOpen}
+				recordForm={conditionRecordForm}
+				saveRecord={saveConditionRecord}
+				setPanelOpen={setConditionRecordPanelOpen}
+			/>
 		</>
 	);
 };

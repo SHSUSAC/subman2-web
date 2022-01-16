@@ -14,10 +14,7 @@ import SquaresLoader from "../../../components/common/SquaresLoader";
 import { faEdit, faFileInvoice, faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { PanelDialog } from "../../../components/common/PanelDialog";
-import {
-	GeneralEquipmentFormControls,
-	PressureRecordFormControls,
-} from "../../../components/equipment/equipmentFormControls";
+import { GeneralEquipmentFormControls } from "../../../components/equipment/equipmentFormControls";
 import { useForm, FormProvider } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { PressureRecord } from "../../../lib/types/records/PressureRecord";
@@ -345,7 +342,12 @@ export default function Index(): JSX.Element | null {
 					</form>
 				</FormProvider>
 			</PanelDialog>
-			<PressureRecordPanel panelOpen={newPressureRecordPanelOpen} pressureRecordForm={newPressureRecordForm} savePressureRecord={savePressureRecord} setPanelOpen={setNewPressureRecordPanelOpen}/>
+			<PressureRecordPanel
+				panelOpen={newPressureRecordPanelOpen}
+				pressureRecordForm={newPressureRecordForm}
+				savePressureRecord={savePressureRecord}
+				setPanelOpen={setNewPressureRecordPanelOpen}
+			/>
 			<main>
 				<header className="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
 					<h1 className="text-2xl font-semibold">Cylinders</h1>
