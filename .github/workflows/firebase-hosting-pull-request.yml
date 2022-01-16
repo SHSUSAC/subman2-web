@@ -5,6 +5,7 @@ name: Deploy Preview to Firebase Hosting on PR
 jobs:
   deploy_preview:
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - uses: actions/checkout@v2
         with:
