@@ -1287,7 +1287,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@browser-bunyan/console-formatted-stream@npm:1.6.2, @browser-bunyan/console-formatted-stream@npm:^1.6.2":
+"@browser-bunyan/console-formatted-stream@npm:1.6.4":
+  version: 1.6.4
+  resolution: "@browser-bunyan/console-formatted-stream@npm:1.6.4"
+  dependencies:
+    "@browser-bunyan/levels": ^1.6.0
+  checksum: 4a2ca58c602ccb93b4fc907c2322fc43dd7b76f0a909c6bd4e226955876c6e215959fc015d19bb3c25d4e1bed4b3f5858a691ac01349caf3083c03eae4335301
+  languageName: node
+  linkType: hard
+
+"@browser-bunyan/console-formatted-stream@npm:^1.6.2":
   version: 1.6.2
   resolution: "@browser-bunyan/console-formatted-stream@npm:1.6.2"
   dependencies:
@@ -2933,7 +2942,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@shsusac/subman2-web@workspace:."
   dependencies:
-    "@browser-bunyan/console-formatted-stream": 1.6.2
+    "@browser-bunyan/console-formatted-stream": 1.6.4
     "@firebase/logger": 0.3.2
     "@fortawesome/fontawesome-svg-core": 1.2.36
     "@fortawesome/free-regular-svg-icons": 5.15.4

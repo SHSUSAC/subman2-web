@@ -13,7 +13,7 @@
     "export-emulators": "firebase emulators:export ./.firebase/emulator-data"
   },
   "devDependencies": {
-    "@browser-bunyan/console-formatted-stream": "1.6.2",
+    "@browser-bunyan/console-formatted-stream": "1.6.4",
     "@firebase/logger": "0.3.2",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
