@@ -1287,21 +1287,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@browser-bunyan/console-formatted-stream@npm:1.6.4":
+"@browser-bunyan/console-formatted-stream@npm:1.6.4, @browser-bunyan/console-formatted-stream@npm:^1.6.4":
   version: 1.6.4
   resolution: "@browser-bunyan/console-formatted-stream@npm:1.6.4"
   dependencies:
     "@browser-bunyan/levels": ^1.6.0
   checksum: 4a2ca58c602ccb93b4fc907c2322fc43dd7b76f0a909c6bd4e226955876c6e215959fc015d19bb3c25d4e1bed4b3f5858a691ac01349caf3083c03eae4335301
-  languageName: node
-  linkType: hard
-
-"@browser-bunyan/console-formatted-stream@npm:^1.6.2":
-  version: 1.6.2
-  resolution: "@browser-bunyan/console-formatted-stream@npm:1.6.2"
-  dependencies:
-    "@browser-bunyan/levels": ^1.6.0
-  checksum: 3cd26006861527fda43355f39e99f9b5a6d8c7146ab6f083dcb050ca27b04487ee8c098759bc03dec4127c15c12995b720c92c6b40c76c1c43cf331650069dba
   languageName: node
   linkType: hard
 
@@ -2965,7 +2956,7 @@ __metadata:
     "@types/react-table": 7.7.9
     "@typescript-eslint/parser": 5.10.0
     autoprefixer: 10.4.2
-    browser-bunyan: 1.6.3
+    browser-bunyan: 1.6.5
     cross-env: 7.0.3
     del: 6.0.0
     eslint: 8.7.0
@@ -4698,15 +4689,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browser-bunyan@npm:1.6.3":
-  version: 1.6.3
-  resolution: "browser-bunyan@npm:1.6.3"
+"browser-bunyan@npm:1.6.5":
+  version: 1.6.5
+  resolution: "browser-bunyan@npm:1.6.5"
   dependencies:
-    "@browser-bunyan/console-formatted-stream": ^1.6.2
+    "@browser-bunyan/console-formatted-stream": ^1.6.4
     "@browser-bunyan/console-plain-stream": ^1.6.0
     "@browser-bunyan/console-raw-stream": ^1.6.0
     "@browser-bunyan/levels": ^1.6.0
-  checksum: fa344540e5bd5576e96072a60129f8d8f200889bab2483f0a36cf8b26eba66d55b99a21e8fc255ef795e75935e18403628a715536b98d3a8088d22ae5c040292
+  checksum: 4b88e0d53f8ec7277a55c57203e361ae60098d1b8a43c0c949fccf7be70e1c0df3501ac33e51106d6397023f55ca42e5df40b9155ca0dd2c01a20c68ce5d9105
   languageName: node
   linkType: hard
 

@@ -36,7 +36,7 @@
     "@types/react-table": "7.7.9",
     "@typescript-eslint/parser": "5.10.0",
     "autoprefixer": "10.4.2",
-    "browser-bunyan": "1.6.3",
+    "browser-bunyan": "1.6.5",
     "cross-env": "7.0.3",
     "del": "6.0.0",
     "eslint": "8.7.0",
