@@ -48,7 +48,7 @@
     "eslint-plugin-json": "3.1.0",
     "eslint-plugin-prettier": "4.0.0",
     "fancy-log": "2.0.0",
-    "firebase": "9.6.3",
+    "firebase": "9.6.4",
     "firebase-tools": "10.1.0",
     "git-guppy": "2.1.0",
     "gulp": "4.0.2",
