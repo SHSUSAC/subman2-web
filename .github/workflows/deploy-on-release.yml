@@ -18,7 +18,7 @@ jobs:
 
       - name: Deploy Firestore
         if: ${{ !env.ACT }}
-        run: yarn firebase deploy --only firestore --token $FIREBASE_TOKEN
+        run: yarn dlx firebase deploy --only firestore --token $FIREBASE_TOKEN
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_CI_TOKEN }}
 
@@ -54,7 +54,7 @@ jobs:
 
       - name: Build
         if: steps.build_cache.outputs.cache-hit != 'true'
-        run: yarn gulp build
+        run: yarn gulp build#ci
 
       - name: Deploy Hosting
         if: ${{ !env.ACT }}

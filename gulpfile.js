@@ -261,6 +261,7 @@ const BuildBundle = shell.task("yarn next build");
 const BuildStaticCompilation = shell.task("yarn next export");
 
 module.exports["build"] = gulp.series(Clean, LintNoFix, BuildFavicons, BuildBundle, BuildStaticCompilation);
+module.exports["build#ci"] = gulp.series(BuildFavicons, BuildBundle, BuildStaticCompilation);
 
 module.exports["depcheck"] = shell.task("yarn dlx depcheck");
 module.exports["analyze-bundle"] = gulp.series(

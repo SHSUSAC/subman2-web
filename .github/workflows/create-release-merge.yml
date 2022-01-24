@@ -45,7 +45,7 @@ jobs:
 
       - name: Build if not cached
         if: steps.build_cache.outputs.cache-hit != 'true'
-        run: yarn gulp build
+        run: yarn gulp build#ci
 
       - name: Zip static export
         run: "cd out && zip -r ../static_site.zip . ; cd .."
