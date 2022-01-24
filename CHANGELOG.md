@@ -1,5 +1,18 @@
 # Semantic Versioning Changelog
 
+# [1.1.0](https://github.com/SHSUSAC/subman2-web/compare/v1.0.16...v1.1.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **build:** replace custom type declaration with official type. fix build error due to missing cssnano ([0a78d10](https://github.com/SHSUSAC/subman2-web/commit/0a78d103736d5c0d6ffb2be5fb4c64b2e479e699))
+
+
+### Features
+
+* added test and condition record editing panels ([8dbf4d9](https://github.com/SHSUSAC/subman2-web/commit/8dbf4d98997671cd4b46a406b5b37dd348d15bcf))
+* finished setting up equipment record forms ([193012a](https://github.com/SHSUSAC/subman2-web/commit/193012a946978524932bba8a5280d221ae0a9816))
+
 ## [1.0.16](https://github.com/SHSUSAC/subman2-web/compare/v1.0.15...v1.0.16) (2022-01-22)
 
 ## [1.0.15](https://github.com/SHSUSAC/subman2-web/compare/v1.0.14...v1.0.15) (2022-01-21)
