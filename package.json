@@ -72,7 +72,7 @@
     "gulp-real-favicon": "0.3.2",
     "gulp-shell": "0.8.0",
     "husky": "7.0.4",
-    "pinst": "2.0.0",
+    "pinst": "2.1.6",
     "plugin-error": "1.0.1",
     "postcss": "8.4.5",
     "prettier": "2.5.1",
