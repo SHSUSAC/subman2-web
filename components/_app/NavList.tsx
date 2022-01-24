@@ -2,7 +2,7 @@
 
 import React, { ReactNode } from "react";
 import Link from "next/link";
-import { roles, usePermission } from "../../lib/hooks/useAuthErrorPages";
+import { usePermission } from "../../lib/hooks/useAuthErrorPages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
@@ -33,20 +33,15 @@ function Section({
 	hasPermission?: boolean;
 	signedIn?: boolean;
 }) {
-
 	const SelectDisplayedElement = () => {
-		if(!signedIn) {
-			return <SignInComponent show={true} />
+		if (!signedIn) {
+			return <SignInComponent show={true} />;
 		}
-		if(!hasPermission) {
-			return <NoPermissionComponent show={true}/>
+		if (!hasPermission) {
+			return <NoPermissionComponent show={true} />;
 		}
-		return <div
-				className={`flex flex-col space-y-4 bg-primary-50 dark:bg-dark`}
-		>
-			{children}
-		</div>;
-	}
+		return <div className={`flex flex-col space-y-4 bg-primary-50 dark:bg-dark`}>{children}</div>;
+	};
 
 	return (
 		<section>

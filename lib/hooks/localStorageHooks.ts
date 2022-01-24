@@ -3,7 +3,7 @@ import { ThemeContextType } from "../contexts/theme";
 // import { useLog } from "../../components/common/LogProvider";
 
 export const useGdprConsent = createLocalStorageStateHook("GDPR_CONSENT", false);
-export const useGdprConsentBannerShown = createLocalStorageStateHook("GDPR_CONSENT", false);
+export const useGdprConsentBannerShown = createLocalStorageStateHook("GDPR_CONSENT#BannerShown", false);
 export const useLogLevel = createLocalStorageStateHook("log", "warn");
 
 export const useThemeConfigPersistence = createLocalStorageStateHook("theming", () => {

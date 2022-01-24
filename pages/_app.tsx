@@ -1,15 +1,15 @@
 import React, { ReactElement, ReactNode, useContext, useEffect } from "react";
 import { AppProps } from "next/app";
 import { NextPage } from "next";
-import LogProvider, { useLog } from "../components/common/LogProvider";
+import LogProvider, { _createRootLogger, ConstructLog, useLog } from "../components/common/LogProvider";
 import { useRouterLogging } from "../lib/hooks/RouterHooks";
 import { Sidebar } from "../components/_app/Sidebar";
 import { Navbar } from "../components/_app/Navbar";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import ThemeProvider, { ThemeContext } from "../lib/contexts/theme";
 import PanelProvider from "../lib/contexts/panels";
 import { SettingsPanel } from "../components/_app/SettingsPanel";
-// import { config as faConfig } from "@fortawesome/fontawesome-svg-core";
 import "../assets/styles/global.css";
 import dynamic from "next/dynamic";
 import { ErrorBoundary } from "../components/common/ErrorBoundry";
@@ -22,17 +22,19 @@ import { Temporal } from "@js-temporal/polyfill";
 import packagejson from "../package.json";
 import { useGdprConsent, useGdprConsentBannerShown } from "../lib/hooks/localStorageHooks";
 import { Workbox } from "workbox-window";
+import { withStore, useSetStoreValue } from "react-context-hook";
+import Script from "next/script";
 
 // faConfig.autoAddCss = false;
 
 const panelPortalId = "panelPortal";
 export const PanelPortalSelector = "#" + panelPortalId;
 
-export type NextPageWithLayout = NextPage & {
+type NextPageWithLayout = NextPage & {
 	getLayout?: (page: ReactElement) => ReactNode;
 };
 
-export type AppPropsWithLayout = AppProps & {
+type AppPropsWithLayout = AppProps & {
 	Component: NextPageWithLayout;
 };
 
@@ -44,6 +46,73 @@ const FirebaseComponents = dynamic(
 	{ ssr: false }
 );
 
+export type GlobalStore = {
+	gisLoaded: boolean;
+	gisReady: boolean;
+};
+const initialState: GlobalStore = { gisLoaded: false, gisReady: false };
+const storeLog = ConstructLog(_createRootLogger(), "GlobalState");
+const storeConfig = {
+	listener: (state: Object, key: string, prevValue: any, nextValue: any) => {
+		storeLog.debug("%s updated to %j from %j", key, nextValue, prevValue);
+		storeLog.trace("Store state: %j", state);
+	},
+	logging: false, //process.env.NODE_ENV !== 'production'
+};
+
+export default withStore(ApplicationContainer, initialState, storeConfig);
+
+// noinspection JSUnusedGlobalSymbols
+function ApplicationContainer({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
+	useRouterLogging();
+	const log = useLog();
+	dumpInfo(log);
+
+	useEffect(() => {
+		log.debug("Attempting service worker registration");
+		if (!("serviceWorker" in navigator) || process.env.NODE_ENV !== "production") {
+			log.warn("Progressive Web App support is disabled");
+			return;
+		}
+		const wb = new Workbox("/service-workers/sw_root.js", { scope: "/" });
+		wb.register().then(() => {
+			log.info("Service Worker registered with browser");
+		});
+	}, [log]);
+
+	log.trace("Rendering application container");
+	const getLayout = Component.getLayout || ((page) => page);
+
+	const setGisLoaded = useSetStoreValue("gisLoaded");
+	return (
+		<ErrorBoundary generateRawShell={true}>
+			<LogProvider>
+				<Script
+					strategy="afterInteractive"
+					src="https://accounts.google.com/gsi/client"
+					onLoad={() => {
+						setGisLoaded(true);
+					}}
+				/>
+				{/*<React.Suspense*/}
+				{/*	fallback={*/}
+				{/*		<Shell>*/}
+				{/*			<div className="flex flex-col flex-1 items-center justify-center">*/}
+				{/*				<SquaresLoader />*/}
+				{/*				<p className="text-center m-4">Reticulating Splines...</p>*/}
+				{/*			</div>*/}
+				{/*		</Shell>*/}
+				{/*	}*/}
+				{/*>*/}
+				<FirebaseComponents>
+					<Shell>{getLayout(<Component {...pageProps} />)}</Shell>
+				</FirebaseComponents>
+				{/*</React.Suspense>*/}
+			</LogProvider>
+		</ErrorBoundary>
+	);
+}
+
 function dumpInfo(log: Logger) {
 	log.info("Scuba Management Version 2 (%s)", packagejson.version);
 	try {
@@ -53,27 +122,25 @@ function dumpInfo(log: Logger) {
 		for (let [key, value] of Object.entries(packagejson.dependencies)) {
 			depsLog.trace("%s@%s", key, value);
 		}
-	}
-	catch{
+	} catch {
 		log.warn("Error loading dependency info");
 	}
 	log.info("Environmental Mode: %s", process.env.NEXT_PUBLIC_ENVIRONMENT_MODE);
 	log.info("Emulation Modes: %j", {
 		FirestoreEmulatorEnabled: process.env.NEXT_PUBLIC_FIRESTORE_EMULATOR ?? false,
 		AuthEmulatorEnabled: process.env.NEXT_PUBLIC_AUTH_EMULATOR ?? false,
+		AppCheckDebugTokenEnabled: process.env.NEXT_PUBLIC_APP_CHECK_DEBUG,
 	});
 	log.debug("Built-in firebase configuration: %j", fbConfig);
 	try {
 		log.info("Process TZ: %s", process.env.TZ);
-	}
-	catch{
-		log.warn("Error finding process timezone. This could cause time related issues")
+	} catch {
+		log.warn("Error finding process timezone. This could cause time related issues");
 	}
 	try {
 		log.info("Temporal TZ: %s", Temporal.Now.timeZone().toString());
-	}
-	catch{
-		log.warn("Error finding temporal timezone. This could cause time related issues")
+	} catch {
+		log.warn("Error finding temporal timezone. This could cause time related issues");
 	}
 	log.trace("Panel portal set to %s, use selector %s to access it", panelPortalId, PanelPortalSelector);
 }
@@ -109,52 +176,7 @@ const ConsentBanner = () => {
 	);
 };
 
-// noinspection JSUnusedGlobalSymbols
-export default function ApplicationContainer({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
-	useRouterLogging();
-	const log = useLog();
-	dumpInfo(log);
-
-	useEffect(() => {
-		log.debug("Attempting service worker registration")
-		if (
-				!("serviceWorker" in navigator) ||
-				process.env.NODE_ENV !== "production"
-		) {
-			log.warn("Progressive Web App support is disabled");
-			return;
-		}
-		const wb = new Workbox("/service-workers/sw_root.js", { scope: "/" });
-		wb.register().then(() => {
-			log.info("Service Worker registered with browser")
-		});
-	}, [log]);
-
-	log.trace("Rendering application container");
-	const getLayout = Component.getLayout || ((page) => page);
-	return (
-		<ErrorBoundary generateRawShell={true}>
-			<LogProvider>
-				{/*<React.Suspense*/}
-				{/*	fallback={*/}
-				{/*		<Shell>*/}
-				{/*			<div className="flex flex-col flex-1 items-center justify-center">*/}
-				{/*				<SquaresLoader />*/}
-				{/*				<p className="text-center m-4">Reticulating Splines...</p>*/}
-				{/*			</div>*/}
-				{/*		</Shell>*/}
-				{/*	}*/}
-				{/*>*/}
-				<FirebaseComponents>
-					<Shell>{getLayout(<Component {...pageProps} />)}</Shell>
-				</FirebaseComponents>
-				{/*</React.Suspense>*/}
-			</LogProvider>
-		</ErrorBoundary>
-	);
-}
-
-export function Shell({ children }: { children: ReactNode }) {
+function Shell({ children }: { children: ReactNode }) {
 	return (
 		<ErrorBoundary generateRawShell={true}>
 			<ThemeProvider>

@@ -3,26 +3,25 @@ const realFavicon = require("gulp-real-favicon");
 const fs = require("fs");
 const utils = require("util");
 const del = require("del");
-const eslint = require("gulp-eslint");
-const guppy = require("git-guppy")(gulp);
-const gulpFilter = require("gulp-filter");
+const eslint = require("gulp-eslint-new");
+const prettier = require("gulp-prettier");
 const shell = require("gulp-shell");
+const contains = require("gulp-contains2");
+const PluginError = require("plugin-error");
+const gulpIf = require("gulp-if");
 
-module.exports["pre-commit"] = function () {
-	return (
-		guppy
-			.stream("pre-commit")
-			.pipe(gulpFilter(["*.js*", "*.ts*"]))
-			// eslint() attaches the lint output to the "eslint" property
-			// of the file object so it can be used by other modules.
-			.pipe(eslint())
-			// eslint.format() outputs the lint results to the console.
-			// Alternatively use eslint.formatEach() (see Docs).
-			.pipe(eslint.format())
-			// To have the process exit with an error code (1) on
-			// lint error, return the stream and pipe to failAfterError last.
-			.pipe(eslint.failAfterError())
-	);
+const CheckAppCheckTokenIsNotCommitted = function () {
+	return gulp
+		.src(".env.*")
+		.pipe(gulp.src(".env"))
+		.pipe(
+			contains({
+				search: new RegExp(/NEXT_PUBLIC_APP_CHECK_DEBUG=.*\n?/gm),
+				onFound: function (string, file, cb) {
+					cb(new PluginError("gulp-contains2", new Error("Found a App Check Debug token")));
+				},
+			})
+		);
 };
 
 // File where the favicon markups are stored
@@ -118,6 +117,7 @@ const CheckForApiUpdates = async function () {
 	if (!fs.existsSync(FAVICON_DATA_FILE)) {
 		currentVersion = "";
 	} else {
+		// noinspection JSCheckFunctionSignatures
 		const file = JSON.parse(await utils.promisify(fs.readFile)(FAVICON_DATA_FILE));
 		currentVersion = file?.version ?? "";
 	}
@@ -153,46 +153,123 @@ function CleanFaviconData() {
 
 const Clean = gulp.parallel(CleanNextDirectory, CleanOutputDirectory, CleanFaviconData);
 
-const RunNextDevServer = shell.task("yarn next dev");
+const RunNextDevServer = shell.task("yarn node ./dev_server/server.js");
 
-function Lint(fix) {
+const lintingBaseGlobs = [
+	"*.json",
+	"*.js",
+	".github/*.json",
+	"public/**/*.js",
+	"pages/**/*",
+	"lib/**/*",
+	"layouts/**/*",
+	"fragments/**/*",
+	"dev_server/*.js",
+	"components/**/*",
+];
+
+function PrettierMarkdownInternal(fix) {
+	let pipeline = gulp.src("*.md", { base: "./" });
+	if (fix) {
+		pipeline = pipeline.pipe(prettier({ parser: "markdown" })).pipe(gulp.dest("./"));
+	} else {
+		pipeline = pipeline.pipe(prettier.check({ parser: "markdown" }));
+	}
+	return pipeline;
+}
+
+function PrettierYamlInternal(fix) {
+	let pipeline = gulp.src(["*.yml", "*.yaml", ".github/workflows/*.yml"], { base: "./" });
+	if (fix) {
+		pipeline = pipeline
+			.pipe(
+				prettier({
+					parser: "yaml",
+				})
+			)
+			.pipe(gulp.dest("./"));
+	} else {
+		pipeline = pipeline.pipe(prettier.check({ parser: "yaml" }));
+	}
+	return pipeline;
+}
+
+function EslintInternal(fix) {
+	function isFixed(file) {
+		return file.eslint != null && file.eslint.fixed;
+	}
+
 	return (
 		gulp
-			.src(["./components/*", "./pages/*", "./lib/*", "*.js", "*.json"])
+			.src(lintingBaseGlobs, { base: "./" })
 			// eslint() attaches the lint output to the "eslint" property
 			// of the file object so it can be used by other modules.
 			.pipe(
 				eslint({
 					fix: fix,
+					ignore: true,
+					warnIgnored: true,
 				})
 			)
 			// eslint.format() outputs the lint results to the console.
 			// Alternatively use eslint.formatEach() (see Docs).
 			.pipe(eslint.format())
+			.pipe(gulpIf(isFixed, gulp.dest("./")))
 			// To have the process exit with an error code (1) on
 			// lint error, return the stream and pipe to failAfterError last.
 			.pipe(eslint.failAfterError())
 	);
 }
 
-module.exports["lint"] = () => Lint(process.env.NODE_ENV === "development");
-module.exports["lint#no-fix"] = () => Lint(false);
+const Format = gulp.parallel(
+	function PrettierMarkdown() {
+		return PrettierMarkdownInternal(true);
+	},
+	function PrettierYaml() {
+		return PrettierYamlInternal(true);
+	}
+);
+
+const FormatNoFix = gulp.parallel(
+	function PrettierMarkdown() {
+		return PrettierMarkdownInternal(false);
+	},
+	function PrettierYaml() {
+		return PrettierYamlInternal(false);
+	}
+);
+
+const Lint = gulp.series(Format, function Eslint() {
+	return EslintInternal(true);
+});
+
+const LintNoFix = gulp.series(FormatNoFix, function Eslint() {
+	return EslintInternal(false);
+});
+
+module.exports["lint"] = Lint;
+module.exports["lint#no-fix"] = LintNoFix;
+module.exports["format"] = Format;
+module.exports["format#no-fix"] = FormatNoFix;
 module.exports["clean"] = Clean;
 module.exports["clean#CleanNextDirectory"] = CleanNextDirectory;
 module.exports["clean#CleanOutputDirectory"] = CleanOutputDirectory;
 module.exports["clean#CleanFaviconData"] = CleanFaviconData;
-module.exports["dev"] = gulp.series(gulp.parallel(CleanNextDirectory, BuildFavicons), Lint, RunNextDevServer);
+module.exports["dev"] = gulp.series(BuildFavicons, Lint, RunNextDevServer);
 
 const BuildBundle = shell.task("yarn next build");
 const BuildStaticCompilation = shell.task("yarn next export");
 
-module.exports["build"] = gulp.series(Clean, Lint, BuildFavicons, BuildBundle, BuildStaticCompilation);
+module.exports["build"] = gulp.series(Clean, LintNoFix, BuildFavicons, BuildBundle, BuildStaticCompilation);
 
 module.exports["depcheck"] = shell.task("yarn dlx depcheck");
 module.exports["analyze-bundle"] = gulp.series(
 	Clean,
-	Lint,
+	LintNoFix,
 	BuildFavicons,
 	shell.task("cross-env ANALYZE=true yarn next build"),
 	BuildStaticCompilation
 );
+
+module.exports["git-hooks/pre-commit#CheckAppCheckTokenIsNotCommitted"] = CheckAppCheckTokenIsNotCommitted;
+module.exports["git-hooks/pre-commit"] = gulp.parallel(LintNoFix, CheckAppCheckTokenIsNotCommitted);

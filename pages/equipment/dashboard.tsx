@@ -1,5 +1,5 @@
 import React from "react";
-import { faBatteryEmpty, faSuitcase, faTools } from "@fortawesome/free-solid-svg-icons";
+import { faBatteryEmpty, faTools } from "@fortawesome/free-solid-svg-icons";
 import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
 import { StatCard } from "../../components/common/Card";
 import { useAuthErrorPages } from "../../lib/hooks/useAuthErrorPages";

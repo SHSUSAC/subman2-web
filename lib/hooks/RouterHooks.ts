@@ -1,7 +1,6 @@
 import { useLog } from "../../components/common/LogProvider";
 import { useRouter } from "next/router";
 import { useCallback, useEffect } from "react";
-import { useAnalytics } from "reactfire";
 
 export function useRouterLogging() {
 	const router = useRouter();

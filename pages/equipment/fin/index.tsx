@@ -17,6 +17,7 @@ import { PanelDialog } from "../../../components/common/PanelDialog";
 import { GeneralEquipmentFormControls, SizedFormControl } from "../../../components/equipment/equipmentFormControls";
 import { useForm, FormProvider } from "react-hook-form";
 import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
+import { toast } from "react-toastify";
 
 function TableWrapper({ columns }: { columns: Column<Fins>[] }) {
 	const { data } = useCollection();
@@ -122,10 +123,14 @@ export default function Index(): JSX.Element | null {
 		[editEquipmentForm]
 	);
 
-	const saveNewEquipment = (newItem: Fins) => {
+	const saveNewEquipment = async (newItem: Fins) => {
 		log.info("Adding new fin pair, values: %j", newItem);
 		try {
-			addDoc(collection(firestore, "fins"), newItem);
+			await toast.promise(addDoc(collection(firestore, "fins"), newItem), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} catch (e) {
 			const err = e as AppError;
 			err.code = 600;
@@ -140,9 +145,13 @@ export default function Index(): JSX.Element | null {
 		setNewPanelOpen(false);
 	};
 
-	const writeEquipmentEdit = (d: Fins) => {
+	const writeEquipmentEdit = async (d: Fins) => {
 		try {
-			updateDoc(doc(firestore, "fins", editItem?.id ?? ""), d);
+			await toast.promise(updateDoc(doc(firestore, "fins", editItem?.id ?? ""), d), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} finally {
 			setEditItem(null);
 		}
@@ -195,9 +204,13 @@ export default function Index(): JSX.Element | null {
 						</button>
 						<button
 							type="button"
-							onClick={() => {
+							onClick={async () => {
 								try {
-									deleteDoc(doc(firestore, "bcds", deleteItem?.id ?? ""));
+									await toast.promise(deleteDoc(doc(firestore, "fins", deleteItem?.id ?? "")), {
+										pending: "Deleting item...",
+										success: "Deleted item successfully",
+										error: "An error occurred during deletion",
+									});
 								} finally {
 									setDeleteItem(null);
 								}
@@ -276,7 +289,7 @@ export default function Index(): JSX.Element | null {
 					//@ts-ignore
 					<NewEquipmentModal
 						open={newPanelOpen}
-						save={(c) => saveNewEquipment(c as Fins)}
+						save={async (c) => await saveNewEquipment(c as Fins)}
 						cancel={cancelNewEquipment}
 						type="sized"
 						title="New Fin pair"

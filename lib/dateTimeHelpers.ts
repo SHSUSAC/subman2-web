@@ -50,6 +50,7 @@ export function toTemporal(data: datePhases, log: Logger): Temporal.ZonedDateTim
 
 export function toFormDateString(log: Logger, data?: datePhases): string | undefined {
 	if (!data) return undefined;
-	const parsed = toTemporal(data, log);
-	return `${parsed.year}-${parsed.month}-${parsed.day}`;
+	return toTemporal(data, log).toPlainDate().toString({
+		calendarName: "never",
+	});
 }

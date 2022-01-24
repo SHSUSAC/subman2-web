@@ -4,7 +4,9 @@ import { Transition } from "@headlessui/react";
 import { useAnalytics, useAuth, useUser } from "reactfire";
 import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 import { useLog } from "../common/LogProvider";
-import { logEvent, setUserId, setUserProperties } from "firebase/analytics";
+import { logEvent, setUserId } from "firebase/analytics";
+import { useStore } from "react-context-hook";
+import { toast } from "react-toastify";
 
 type GisResponse = {
 	credential: string;
@@ -21,12 +23,16 @@ export function ProfileButton(): JSX.Element | null {
 
 	const gisLog = useLog("GoogleIdentityService");
 	const [allowPrompt, setAllowPrompt] = useState(true);
-	const [gisReady, setGisReady] = useState(false);
+	const [gisLoaded] = useStore("gisLoaded");
+	const [gisReady, setGisReady] = useStore("gisReady");
 
 	//Loads the script into the page
 	useEffect(() => {
+		if (gisReady) {
+			return;
+		}
 
-		if(gisReady) {
+		if (!gisLoaded) {
 			return;
 		}
 
@@ -38,10 +44,7 @@ export function ProfileButton(): JSX.Element | null {
 				const credential = GoogleAuthProvider.credential(response.credential);
 				const signInResult = signInWithCredential(auth, credential);
 				signInResult.then((uc) => {
-					gisLog.trace(
-							"Authenticated with via firebase using sign in credential. Got result {CredentialJson}",
-							uc.user.toJSON()
-					);
+					gisLog.trace("Authenticated with firebase via sign in credential. Got result %j", uc.user.toJSON());
 					setUserId(anal, uc.user.uid);
 					logEvent(anal, "login", {
 						method: response.select_by,
@@ -51,8 +54,7 @@ export function ProfileButton(): JSX.Element | null {
 		});
 
 		setGisReady(true);
-
-	}, [gisReady, anal, auth, gisLog]);
+	}, [anal, auth, gisLoaded, gisLog, gisReady, setGisReady]);
 
 	//Prompts the user if they are not signed in and it is allowed
 	useEffect(() => {
@@ -176,15 +178,17 @@ export function ProfileButton(): JSX.Element | null {
 				<ClickAwayListener onClickAway={() => setDropdownOpen(false)}>
 					<>
 						<button
-							onClick={() => {
+							onClick={async () => {
 								try {
-									auth.signOut();
+									await auth.signOut();
 									setUserId(anal, "");
 									// @ts-ignore
 									google.accounts.id.disableAutoSelect();
 									setAllowPrompt(false);
+									toast.success("Signed out successfully");
 								} catch (e) {
 									gisLog.error(e as Error, "Error during sign-out");
+									toast.error("Sign out error. Your session may not have shutdown correctly!");
 								}
 							}}
 							role="menuitem"

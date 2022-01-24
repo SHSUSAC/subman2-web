@@ -1,4 +1,4 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { datePhases } from "../equipmentComponents";
 
 /**
  * Possible outcomes of a repair
@@ -15,7 +15,7 @@ export type ConditionRecord = {
 	/**
 	 * When the fault was discovered
 	 */
-	reportedAt: Temporal.ZonedDateTime;
+	reportedAt: datePhases;
 	/**
 	 * Who discovered the fault
 	 */
@@ -23,7 +23,7 @@ export type ConditionRecord = {
 	/**
 	 * When the fault was repaired
 	 */
-	repairedAt?: Temporal.ZonedDateTime;
+	repairedAt?: datePhases;
 	/**
 	 * Who performed the repair
 	 */
@@ -31,7 +31,7 @@ export type ConditionRecord = {
 	/**
 	 * When the repair was approved as complete
 	 */
-	approvedAt?: Temporal.ZonedDateTime;
+	approvedAt?: datePhases;
 	/**
 	 * Who approved the repair work
 	 *

@@ -1,14 +1,10 @@
-import { FirebaseError, FirebaseOptions, initializeApp, onLog } from "firebase/app";
+import { FirebaseOptions, initializeApp, onLog, setLogLevel } from "firebase/app";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
-import { connectAuthEmulator, initializeAuth, indexedDBLocalPersistence } from "firebase/auth"; // Firebase v9+
-import { connectFirestoreEmulator, enableMultiTabIndexedDbPersistence, initializeFirestore } from "firebase/firestore"; // Firebase v9+
-import { LogCallback } from "@firebase/logger";
+import { connectAuthEmulator, initializeAuth, indexedDBLocalPersistence } from "firebase/auth";
 import {
 	FirebaseAppProvider,
 	AuthProvider,
 	AppCheckProvider,
-	FirestoreProvider,
-	useInitFirestore,
 	useInitPerformance,
 	useInitAnalytics,
 	useInitAuth,
@@ -16,20 +12,15 @@ import {
 	PerformanceProvider,
 } from "reactfire";
 import firebaseConfig, { APP_CHECK_TOKEN } from "../../lib/constants/firebaseConfig";
-import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
-import { useLog } from "../common/LogProvider";
+import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ConstructLog, useLog } from "../common/LogProvider";
 import process from "process";
 import { useGdprConsent } from "../../lib/hooks/localStorageHooks";
 import { initializeAnalytics } from "firebase/analytics";
 import { initializePerformance } from "firebase/performance";
-import SquaresLoader from "../common/SquaresLoader";
-import { Favicons, Footer, ThemeModeController } from "../../pages/_app";
-import ThemeProvider from "../../lib/contexts/theme";
-import { Navbar } from "./Navbar";
-import { ProfileButton } from "./ProfileButton";
-import { NavList } from "./NavList";
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import FullPageLoaderComponent from "./FullPageLoaderComponent";
+
+declare const self: Window & typeof globalThis & { FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string };
 
 function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 	const log = useLog("Firebase");
@@ -52,11 +43,10 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 		const initialisedAnal = initializeAnalytics(firebaseApp, {});
 		try {
 			// @ts-ignore
-			gtag('config', firebaseApp.options.measurementId, { 'anonymize_ip': true });
+			gtag("config", firebaseApp.options.measurementId, { anonymize_ip: true });
 			// @ts-ignore
-			gtag('set', 'dimension1', 'online');
-		}
-		catch (e) {
+			gtag("set", "dimension1", "online");
+		} catch (e) {
 			log.debug("Error configuring gtag. %o", e);
 		}
 		return initialisedAnal;
@@ -76,9 +66,7 @@ function FirebaseSDKProviderHOC({ children }: { children: ReactNode }) {
 	return (
 		<AuthProvider sdk={auth?.data}>
 			<AnalyticsProvider sdk={anal?.data}>
-				<PerformanceProvider sdk={perf?.data}>
-					{children}
-				</PerformanceProvider>
+				<PerformanceProvider sdk={perf?.data}>{children}</PerformanceProvider>
 			</AnalyticsProvider>
 		</AuthProvider>
 	);
@@ -91,32 +79,47 @@ function AppProviderHOC({ children, fetchedConfig }: { children: ReactNode; fetc
 
 	useEffect(() => {
 		const id = fetchedConfig?.measurementId;
-		if(id){
+		if (id) {
 			// @ts-ignore
 			window[`ga-disable-${id}`] = process.env.NEXT_PUBLIC_DATA_COLLECTION != "true" || !gdprConsent;
 		}
-	}, [fetchedConfig, gdprConsent])
+	}, [fetchedConfig, gdprConsent]);
 
 	const app = useMemo(() => {
-		const logHandler: LogCallback = (logParams) => {
-			switch (logParams.level) {
-				case "verbose":
-				case "silent":
-					fbLog.trace({ firebaseLogType: logParams.type }, logParams.message, logParams.args);
-					break;
-				default:
-					fbLog[logParams.level]({ firebaseLogType: logParams.type }, logParams.message, logParams.args);
-					break;
+		setLogLevel("verbose");
+		onLog(
+			(logParams) => {
+				const internalLogger = ConstructLog(fbLog, "Internal");
+				switch (logParams.level) {
+					case "verbose":
+					case "silent":
+						internalLogger.trace({ source: logParams.type }, logParams.message);
+						break;
+					default:
+						internalLogger[logParams.level]({ source: logParams.type }, logParams.message);
+						break;
+				}
+			},
+			{
+				level: "debug",
 			}
-		};
-
+		);
 		const app = initializeApp(fetchedConfig ?? firebaseConfig);
 		app.automaticDataCollectionEnabled = process.env.NEXT_PUBLIC_DATA_COLLECTION == "true" && gdprConsent;
-		onLog(logHandler, {
-			level: "silent",
-		});
 		return app;
 	}, [fbLog, fetchedConfig, gdprConsent]);
+
+	if (process.env.NEXT_PUBLIC_APP_CHECK_DEBUG) {
+		if (process.env.NEXT_PUBLIC_APP_CHECK_DEBUG === "true") {
+			fbLog.warn(
+				"App Check is configured to generate a debug token, watch the console for it, and then whitelist it in firebase!"
+			);
+			self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+		} else {
+			fbLog.warn("App Check is configured to use a debug token, ensure it is whitelisted in firebase!");
+			self.FIREBASE_APPCHECK_DEBUG_TOKEN = process.env.NEXT_PUBLIC_APP_CHECK_DEBUG;
+		}
+	}
 
 	const appCheck = initializeAppCheck(app, {
 		provider: new ReCaptchaV3Provider(APP_CHECK_TOKEN),
@@ -137,9 +140,8 @@ function AppProviderHOC({ children, fetchedConfig }: { children: ReactNode; fetc
 }
 
 export default function FirebaseComponents({ children }: { children: ReactNode }) {
-	const [config, setConfig] = useState<undefined | FirebaseOptions>();
-	const [fetchRunning, setFetchRunning] = useState(false);
-	const log = useLog();
+	const [config] = useState<undefined | FirebaseOptions>();
+	const [fetchRunning] = useState(false);
 
 	// useCallback(() => {
 	// 	try {

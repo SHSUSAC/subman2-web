@@ -96,5 +96,6 @@ module.exports = {
 			variants: ["responsive"],
 		}),
 		require("tailwindcss-multi-column")(),
+		require("@tailwindcss/forms"),
 	],
 };

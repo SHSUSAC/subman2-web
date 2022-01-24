@@ -14,16 +14,15 @@ import SquaresLoader from "../../../components/common/SquaresLoader";
 import { faEdit, faFileInvoice, faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { PanelDialog } from "../../../components/common/PanelDialog";
-import {
-	GeneralEquipmentFormControls,
-	PressureRecordFormControls,
-} from "../../../components/equipment/equipmentFormControls";
+import { GeneralEquipmentFormControls } from "../../../components/equipment/equipmentFormControls";
 import { useForm, FormProvider } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { PressureRecord } from "../../../lib/types/records/PressureRecord";
 import { SavePressureRecord } from "../../../lib/firestoreHelpers";
 import { toFirestore, toTemporal } from "../../../lib/dateTimeHelpers";
 import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
+import PressureRecordPanel from "../../../fragments/panels/pressureRecordPanel";
+import { toast } from "react-toastify";
 
 function TableWrapper({ columns }: { columns: Column<cylinder>[] }) {
 	const log = useLog();
@@ -177,9 +176,9 @@ export default function Index(): JSX.Element | null {
 		[editEquipmentForm, newPressureRecordForm]
 	);
 
-	const savePressureRecord = (record: { record: PressureRecord; parentId: string }) => {
+	const savePressureRecord = async (record: { record: PressureRecord; parentId: string }) => {
 		try {
-			SavePressureRecord(record.record, record.parentId, "cylinders", log, firestore);
+			await SavePressureRecord(record.record, record.parentId, "cylinders", false, log, firestore);
 			setNewPressureRecordPanelOpen(false);
 		} catch (e) {
 			const err = e as AppError;
@@ -196,7 +195,11 @@ export default function Index(): JSX.Element | null {
 		log.info("Adding new cylinder, values: %j", newItem);
 		try {
 			newItem.nextDue = toFirestore(newItem.nextDue, log);
-			await addDoc(collection(firestore, "cylinders"), newItem);
+			await toast.promise(addDoc(collection(firestore, "cylinders"), newItem), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} catch (e) {
 			const err = e as AppError;
 			err.code = 600;
@@ -217,7 +220,11 @@ export default function Index(): JSX.Element | null {
 			if (data.nextDue) {
 				data.nextDue = toFirestore(data.nextDue, log);
 			}
-			await updateDoc(doc(firestore, "cylinders", editItem?.id ?? ""), data);
+			await toast.promise(updateDoc(doc(firestore, "cylinders", editItem?.id ?? ""), d), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} finally {
 			setEditItem(null);
 		}
@@ -344,37 +351,12 @@ export default function Index(): JSX.Element | null {
 					</form>
 				</FormProvider>
 			</PanelDialog>
-			<PanelDialog open={newPressureRecordPanelOpen} title="Changing cylinder pressure">
-				<FormProvider {...newPressureRecordForm}>
-					<form
-						onSubmit={newPressureRecordForm.handleSubmit(data => savePressureRecord(data as {record: PressureRecord, parentId: string}))}
-						className="w-full flex flex-col px-4 py-6 space-y-6 bg-white rounded-md dark:bg-darker flex-grow overflow-y-auto overscroll-y-contain"
-					>
-						<div className="flex-grow flex flex-col space-y-2">
-							<PressureRecordFormControls />
-						</div>
-
-						<div className="block md:flex mb-4 gap-8">
-							<button
-								type="button"
-								className="w-full mb-2 md:mb-0 space-y-3 px-4 py-2 font-medium border border-primary-darker text-primary-darker text-center hover:text-white dark:text-white transition-colors duration-200 rounded-md hover:bg-primary-dark dark:hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-darker"
-								onClick={() => {
-									newPressureRecordForm.reset();
-									setNewPressureRecordPanelOpen(false);
-								}}
-							>
-								Cancel
-							</button>
-							<button
-								type="submit"
-								className="w-full space-y-3 px-4 py-2 font-medium text-center text-white transition-colors duration-200 rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-darker"
-							>
-								Save changes
-							</button>
-						</div>
-					</form>
-				</FormProvider>
-			</PanelDialog>
+			<PressureRecordPanel
+				panelOpen={newPressureRecordPanelOpen}
+				pressureRecordForm={newPressureRecordForm}
+				savePressureRecord={savePressureRecord}
+				setPanelOpen={setNewPressureRecordPanelOpen}
+			/>
 			<main>
 				<header className="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
 					<h1 className="text-2xl font-semibold">Cylinders</h1>

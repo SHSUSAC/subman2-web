@@ -18,6 +18,7 @@ import { GeneralEquipmentFormControls, NextTestFormControl } from "../../../comp
 import { useForm, FormProvider } from "react-hook-form";
 import { toTemporal } from "../../../lib/dateTimeHelpers";
 import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
+import { toast } from "react-toastify";
 
 function TableWrapper({ columns }: { columns: Column<Regulator>[] }) {
 	const { data } = useCollection();
@@ -136,10 +137,14 @@ export default function Index(): JSX.Element | null {
 		[editEquipmentForm]
 	);
 
-	const saveNewEquipment = (newItem: Regulator) => {
+	const saveNewEquipment = async (newItem: Regulator) => {
 		log.info("Adding new regulator, values: %j", newItem);
 		try {
-			addDoc(collection(firestore, "regulators"), newItem);
+			await toast.promise(addDoc(collection(firestore, "regulators"), newItem), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} catch (e) {
 			const err = e as AppError;
 			err.code = 600;
@@ -154,9 +159,13 @@ export default function Index(): JSX.Element | null {
 		setNewPanelOpen(false);
 	};
 
-	const writeEquipmentEdit = (d: Regulator) => {
+	const writeEquipmentEdit = async (d: Regulator) => {
 		try {
-			updateDoc(doc(firestore, "regulators", editItem?.id ?? ""), d);
+			await toast.promise(updateDoc(doc(firestore, "regulators", editItem?.id ?? ""), d), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} finally {
 			setEditItem(null);
 		}
@@ -209,9 +218,13 @@ export default function Index(): JSX.Element | null {
 						</button>
 						<button
 							type="button"
-							onClick={() => {
+							onClick={async () => {
 								try {
-									deleteDoc(doc(firestore, "regulators", deleteItem?.id ?? ""));
+									await toast.promise(deleteDoc(doc(firestore, "regulators", deleteItem?.id ?? "")), {
+										pending: "Deleting item...",
+										success: "Deleted item successfully",
+										error: "An error occurred during deletion",
+									});
 								} finally {
 									setDeleteItem(null);
 								}
@@ -290,7 +303,7 @@ export default function Index(): JSX.Element | null {
 					//@ts-ignore
 					<NewEquipmentModal
 						open={newPanelOpen}
-						save={(c) => saveNewEquipment(c as Regulator)}
+						save={async (c) => await saveNewEquipment(c as Regulator)}
 						cancel={cancelNewEquipment}
 						type="reg"
 						title="New Regulator"

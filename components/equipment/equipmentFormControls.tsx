@@ -1,15 +1,13 @@
-///** @jsxImportSource @emotion/react **/
 import { Controller, useFormContext } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { CommonEquipmentProperties, EquipmentConditions } from "../../lib/types/equipmentComponents";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-//import tw from "twin.macro";
 import { _sizeProperties, _weightProperties, cylinder, Regulator } from "../../lib/types/equipment";
 import { PressureRecord } from "../../lib/types/records/PressureRecord";
-import { Temporal } from "@js-temporal/polyfill";
-import { toFormDateString, toTemporal } from "../../lib/dateTimeHelpers";
+import { toFormDateString } from "../../lib/dateTimeHelpers";
 import { useLog } from "../common/LogProvider";
+import { TestRecord } from "../../lib/types/records/TestRecord";
 
 export function PressureRecordFormControls({ data }: { data?: { record: PressureRecord; parentId: string } }) {
 	const {
@@ -19,9 +17,6 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 	} = useFormContext<{ record: PressureRecord; parentId: string }>();
 
 	const log = useLog("PressureRecordForm");
-
-	const timestampDefault = toTemporal(data?.record?.timestamp ?? Temporal.Now.zonedDateTimeISO(), log);
-	const timestampDefaultValue = `${timestampDefault.year}-${timestampDefault.month}-${timestampDefault.day}`;
 
 	return (
 		<>
@@ -89,7 +84,7 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 					className="w-full mb-2 px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
 					type="date"
 					inputMode="numeric"
-					defaultValue={timestampDefaultValue}
+					defaultValue={toFormDateString(log, data?.record?.timestamp)}
 					required
 					{...register("record.timestamp", {
 						// setValueAs: (v) => {
@@ -105,7 +100,7 @@ export function PressureRecordFormControls({ data }: { data?: { record: Pressure
 			</label>
 			<ErrorMessage errors={errors} name="record.timestamp" />
 			<label className="">
-				Fill Location
+				Location
 				<input
 					className="w-full mb-2 px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
 					type="text"
@@ -315,7 +310,7 @@ export function SizedFormControl({ data }: { data?: _sizeProperties }) {
 	);
 }
 
-export function NextTestFormControl({ data }: { data?: cylinder | Regulator }) {
+export function NextTestFormControl({ data }: { data?: cylinder | Regulator | TestRecord }) {
 	const log = useLog();
 	const {
 		register,

@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { toast, ToastContent, ToastOptions, TypeOptions } from "react-toastify";
+import { createContext, ReactNode, useState } from "react";
 
 export type BasePanelTypes = {
 	open: boolean;
 	toggle: () => void;
 };
 
-export const SettingsPanelContext = React.createContext<BasePanelTypes | undefined>(undefined);
+export const SettingsPanelContext = createContext<BasePanelTypes | undefined>(undefined);
 
-export default function PanelProvider({ children }: { children: React.ReactNode }): JSX.Element {
+export default function PanelProvider({ children }: { children: ReactNode }): JSX.Element {
 	const [settingsOpen, setSettingsOpen] = useState(false);
 
 	return (
