@@ -1,6 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { ConsoleFormattedStream, createLogger, stdSerializers, TRACE } from "browser-bunyan";
-import { Logger } from "../../lib/types/logging";
+import { ConsoleFormattedStream, createLogger, stdSerializers, TRACE, Logger } from "browser-bunyan";
 
 const rootLogName = "SubMan2-WebInterface";
 

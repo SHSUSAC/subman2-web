@@ -10,7 +10,7 @@
 
 import { Timestamp } from "firebase/firestore";
 import { datePhases } from "./types/equipmentComponents";
-import { Logger } from "./types/logging";
+import { Logger } from "browser-bunyan";
 import { Temporal } from "@js-temporal/polyfill";
 
 export function toFirestore(data: datePhases, log: Logger): Timestamp {

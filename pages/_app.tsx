@@ -16,7 +16,6 @@ import { ErrorBoundary } from "../components/common/ErrorBoundry";
 import SquaresLoader from "../components/common/SquaresLoader";
 import Head from "next/head";
 import * as process from "process";
-import { Logger } from "../lib/types/logging";
 import fbConfig from "../lib/constants/firebaseConfig";
 import { Temporal } from "@js-temporal/polyfill";
 import packagejson from "../package.json";
@@ -24,6 +23,7 @@ import { useGdprConsent, useGdprConsentBannerShown } from "../lib/hooks/localSto
 import { Workbox } from "workbox-window";
 import { withStore, useSetStoreValue } from "react-context-hook";
 import Script from "next/script";
+import { Logger } from "browser-bunyan";
 
 // faConfig.autoAddCss = false;
 

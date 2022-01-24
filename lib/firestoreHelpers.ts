@@ -1,5 +1,5 @@
 import { PressureRecord } from "./types/records/PressureRecord";
-import { Logger } from "./types/logging";
+import { Logger } from "browser-bunyan";
 import {
 	collection,
 	deleteDoc,
