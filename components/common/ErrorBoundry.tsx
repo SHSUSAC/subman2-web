@@ -1,9 +1,9 @@
-import React, { ErrorInfo } from "react";
+import React, { Component, ErrorInfo } from "react";
 import Error from "../../pages/_error";
 import { ConstructLog, LogContext } from "./LogProvider";
 import { FullPageWrapper } from "../_app/FullPageLoaderComponent";
 
-export class ErrorBoundary extends React.Component<
+export class ErrorBoundary extends Component<
 	{ children: React.ReactNode; generateRawShell?: boolean },
 	{ error: Error | null; errorInfo: React.ErrorInfo | null }
 > {

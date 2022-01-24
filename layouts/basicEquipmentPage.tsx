@@ -7,7 +7,7 @@ import LogProvider, { useLog } from "../components/common/LogProvider";
 import { Table } from "../components/common/Table";
 import { AppError } from "../lib/types/errors";
 import { useFirestore, useFirestoreCollectionData } from "reactfire";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { NewEquipmentModal } from "../components/equipment/NewEquipmentModal";
 import { GeneralEquipmentFormControls } from "../components/equipment/equipmentFormControls";
@@ -16,8 +16,8 @@ import SquaresLoader from "../components/common/SquaresLoader";
 import { query, collection, addDoc, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import Link from "next/link";
 import Error from "../pages/_error";
-import React from "react";
 import FirestoreWrapper from "../components/_app/FirestoreWrapper";
+import { toast } from "react-toastify";
 
 function TableWrapper({
 	columns,
@@ -136,10 +136,10 @@ function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX
 		[editEquipmentForm, itemCollection]
 	);
 
-	const saveNewEquipment = (newItem: CommonEquipmentProperties) => {
+	const saveNewEquipment = async (newItem: CommonEquipmentProperties) => {
 		log.info("Adding new item, values: %j", newItem);
 		try {
-			addDoc(collection(firestore, itemCollection), newItem);
+			await addDoc(collection(firestore, itemCollection), newItem);
 		} catch (e) {
 			const err = e as AppError;
 			err.code = 600;
@@ -154,9 +154,13 @@ function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX
 		setNewPanelOpen(false);
 	};
 
-	const writeEquipmentEdit = (d: CommonEquipmentProperties) => {
+	const writeEquipmentEdit = async (d: CommonEquipmentProperties) => {
 		try {
-			updateDoc(doc(firestore, itemCollection, editItem?.id ?? ""), d);
+			await toast.promise(updateDoc(doc(firestore, itemCollection, editItem?.id ?? ""), d), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} finally {
 			setEditItem(null);
 		}
@@ -210,9 +214,16 @@ function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX
 						</button>
 						<button
 							type="button"
-							onClick={() => {
+							onClick={async () => {
 								try {
-									deleteDoc(doc(firestore, itemCollection, deleteItem?.id ?? ""));
+									await toast.promise(
+										deleteDoc(doc(firestore, itemCollection, deleteItem?.id ?? "")),
+										{
+											pending: "Deleting item...",
+											success: "Deleted item successfully",
+											error: "An error occurred during deletion",
+										}
+									);
 								} finally {
 									setDeleteItem(null);
 								}
@@ -277,7 +288,7 @@ function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX
 				</header>
 
 				<div className="mt-2 w-full px-4 overflow-y-auto">
-					<React.Suspense
+					<Suspense
 						fallback={
 							<div className="flex flex-col flex-1 items-center justify-center">
 								<SquaresLoader />
@@ -286,7 +297,7 @@ function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX
 						}
 					>
 						<TableWrapper columns={columns} itemCollection={itemCollection} />
-					</React.Suspense>
+					</Suspense>
 				</div>
 			</main>
 			<div className="h-full" />
@@ -295,7 +306,7 @@ function BasicEquipmentPage({ itemCollection }: { itemCollection: string }): JSX
 					//@ts-ignore
 					<NewEquipmentModal
 						open={newPanelOpen}
-						save={(c) => saveNewEquipment(c as CommonEquipmentProperties)}
+						save={async (c) => await saveNewEquipment(c as CommonEquipmentProperties)}
 						cancel={cancelNewEquipment}
 						type="normal"
 						title={`New ${itemCollection.substring(0, itemCollection.length - 1)}`}

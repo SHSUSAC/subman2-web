@@ -22,6 +22,7 @@ import { SavePressureRecord } from "../../../lib/firestoreHelpers";
 import { toFirestore, toTemporal } from "../../../lib/dateTimeHelpers";
 import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
 import PressureRecordPanel from "../../../fragments/panels/pressureRecordPanel";
+import { toast } from "react-toastify";
 
 function TableWrapper({ columns }: { columns: Column<cylinder>[] }) {
 	const log = useLog();
@@ -175,9 +176,9 @@ export default function Index(): JSX.Element | null {
 		[editEquipmentForm, newPressureRecordForm]
 	);
 
-	const savePressureRecord = (record: { record: PressureRecord; parentId: string }) => {
+	const savePressureRecord = async (record: { record: PressureRecord; parentId: string }) => {
 		try {
-			SavePressureRecord(record.record, record.parentId, "cylinders", log, firestore);
+			await SavePressureRecord(record.record, record.parentId, "cylinders", false, log, firestore);
 			setNewPressureRecordPanelOpen(false);
 		} catch (e) {
 			const err = e as AppError;
@@ -194,7 +195,11 @@ export default function Index(): JSX.Element | null {
 		log.info("Adding new cylinder, values: %j", newItem);
 		try {
 			newItem.nextDue = toFirestore(newItem.nextDue, log);
-			await addDoc(collection(firestore, "cylinders"), newItem);
+			await toast.promise(addDoc(collection(firestore, "cylinders"), newItem), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} catch (e) {
 			const err = e as AppError;
 			err.code = 600;
@@ -215,7 +220,11 @@ export default function Index(): JSX.Element | null {
 			if (data.nextDue) {
 				data.nextDue = toFirestore(data.nextDue, log);
 			}
-			await updateDoc(doc(firestore, "cylinders", editItem?.id ?? ""), data);
+			await toast.promise(updateDoc(doc(firestore, "cylinders", editItem?.id ?? ""), d), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} finally {
 			setEditItem(null);
 		}

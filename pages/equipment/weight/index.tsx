@@ -17,6 +17,7 @@ import { PanelDialog } from "../../../components/common/PanelDialog";
 import { GeneralEquipmentFormControls, WeightFormControls } from "../../../components/equipment/equipmentFormControls";
 import { useForm, FormProvider } from "react-hook-form";
 import FirestoreWrapper from "../../../components/_app/FirestoreWrapper";
+import { toast } from "react-toastify";
 
 function TableWrapper({ columns }: { columns: Column<Weight>[] }) {
 	const { data } = useCollection();
@@ -128,10 +129,14 @@ export default function Index(): JSX.Element | null {
 		[editEquipmentForm]
 	);
 
-	const saveNewEquipment = (newItem: Weight) => {
+	const saveNewEquipment = async (newItem: Weight) => {
 		log.info("Adding new weight, values: %j", newItem);
 		try {
-			addDoc(collection(firestore, "weights"), newItem);
+			await toast.promise(addDoc(collection(firestore, "weights"), newItem), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} catch (e) {
 			const err = e as AppError;
 			err.code = 600;
@@ -146,9 +151,13 @@ export default function Index(): JSX.Element | null {
 		setNewPanelOpen(false);
 	};
 
-	const writeEquipmentEdit = (d: Weight) => {
+	const writeEquipmentEdit = async (d: Weight) => {
 		try {
-			updateDoc(doc(firestore, "weights", editItem?.id ?? ""), d);
+			await toast.promise(updateDoc(doc(firestore, "weights", editItem?.id ?? ""), d), {
+				pending: "Saving item...",
+				success: "Saved successfully",
+				error: "Error saving",
+			});
 		} finally {
 			setEditItem(null);
 		}
@@ -201,9 +210,13 @@ export default function Index(): JSX.Element | null {
 						</button>
 						<button
 							type="button"
-							onClick={() => {
+							onClick={async () => {
 								try {
-									deleteDoc(doc(firestore, "weights", deleteItem?.id ?? ""));
+									await toast.promise(deleteDoc(doc(firestore, "weights", deleteItem?.id ?? "")), {
+										pending: "Deleting item...",
+										success: "Deleted item successfully",
+										error: "An error occurred during deletion",
+									});
 								} finally {
 									setDeleteItem(null);
 								}
@@ -282,7 +295,7 @@ export default function Index(): JSX.Element | null {
 					//@ts-ignore
 					<NewEquipmentModal
 						open={newPanelOpen}
-						save={(c) => saveNewEquipment(c as Weight)}
+						save={async (c) => await saveNewEquipment(c as Weight)}
 						cancel={cancelNewEquipment}
 						type="weight"
 						title="New weight"

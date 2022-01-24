@@ -4,7 +4,7 @@ type testProperties = {
 	nextDue: datePhases;
 };
 
-type pressureProperties = {
+export type pressureProperties = {
 	pressure: number;
 };
 

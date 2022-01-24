@@ -1,8 +1,6 @@
-import { FirebaseOptions, initializeApp, onLog } from "firebase/app";
+import { FirebaseOptions, initializeApp, onLog, setLogLevel } from "firebase/app";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
-import { connectAuthEmulator, initializeAuth, indexedDBLocalPersistence } from "firebase/auth"; // Firebase v9+
-// Firebase v9+
-import { LogCallback } from "@firebase/logger";
+import { connectAuthEmulator, initializeAuth, indexedDBLocalPersistence } from "firebase/auth";
 import {
 	FirebaseAppProvider,
 	AuthProvider,
@@ -15,7 +13,7 @@ import {
 } from "reactfire";
 import firebaseConfig, { APP_CHECK_TOKEN } from "../../lib/constants/firebaseConfig";
 import { ReactNode, useEffect, useMemo, useState } from "react";
-import { useLog } from "../common/LogProvider";
+import { ConstructLog, useLog } from "../common/LogProvider";
 import process from "process";
 import { useGdprConsent } from "../../lib/hooks/localStorageHooks";
 import { initializeAnalytics } from "firebase/analytics";
@@ -88,23 +86,26 @@ function AppProviderHOC({ children, fetchedConfig }: { children: ReactNode; fetc
 	}, [fetchedConfig, gdprConsent]);
 
 	const app = useMemo(() => {
-		const logHandler: LogCallback = (logParams) => {
-			switch (logParams.level) {
-				case "verbose":
-				case "silent":
-					fbLog.trace({ firebaseLogType: logParams.type }, logParams.message, logParams.args);
-					break;
-				default:
-					fbLog[logParams.level]({ firebaseLogType: logParams.type }, logParams.message, logParams.args);
-					break;
+		setLogLevel("verbose");
+		onLog(
+			(logParams) => {
+				const internalLogger = ConstructLog(fbLog, "Internal");
+				switch (logParams.level) {
+					case "verbose":
+					case "silent":
+						internalLogger.trace({ source: logParams.type }, logParams.message);
+						break;
+					default:
+						internalLogger[logParams.level]({ source: logParams.type }, logParams.message);
+						break;
+				}
+			},
+			{
+				level: "debug",
 			}
-		};
-
+		);
 		const app = initializeApp(fetchedConfig ?? firebaseConfig);
 		app.automaticDataCollectionEnabled = process.env.NEXT_PUBLIC_DATA_COLLECTION == "true" && gdprConsent;
-		onLog(logHandler, {
-			level: "silent",
-		});
 		return app;
 	}, [fbLog, fetchedConfig, gdprConsent]);
 

@@ -12,6 +12,7 @@ const httpsOptions = {
 app.prepare().then(() => {
 	createServer(httpsOptions, (req, res) => {
 		const parsedUrl = parse(req.url, true);
+		// noinspection JSIgnoredPromiseFromCall
 		handle(req, res, parsedUrl);
 	}).listen(3000, (err) => {
 		if (err) throw err;

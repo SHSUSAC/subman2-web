@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { createContext, ReactNode, useCallback, useEffect, useState } from "react";
 import { useLog } from "../../components/common/LogProvider";
 import { useThemeConfigPersistence } from "../hooks/localStorageHooks";
 
@@ -13,9 +13,9 @@ export type ThemeContextType = {
 	iconColour: string;
 };
 
-export const ThemeContext = React.createContext<ThemeContextType | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export default function ThemeProvider({ children }: { children: React.ReactNode }): JSX.Element {
+export default function ThemeProvider({ children }: { children: ReactNode }): JSX.Element {
 	const logger = useLog();
 	const [themeUpdating, setThemeUpdating] = useState(false);
 	const [theme, setTheme] = useThemeConfigPersistence();
