@@ -1321,13 +1321,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:16.0.2":
-  version: 16.0.2
-  resolution: "@commitlint/cli@npm:16.0.2"
+"@commitlint/cli@npm:16.1.0":
+  version: 16.1.0
+  resolution: "@commitlint/cli@npm:16.1.0"
   dependencies:
     "@commitlint/format": ^16.0.0
     "@commitlint/lint": ^16.0.0
-    "@commitlint/load": ^16.0.0
+    "@commitlint/load": ^16.1.0
     "@commitlint/read": ^16.0.0
     "@commitlint/types": ^16.0.0
     lodash: ^4.17.19
@@ -1336,7 +1336,7 @@ __metadata:
     yargs: ^17.0.0
   bin:
     commitlint: cli.js
-  checksum: 20760e0f8d54cfffad8a3c24ab4052b815d4545e2237f6b2c54a9a9a1190bf69adcff49b22ba665ae5e3b758b17b7a9dfb162d49d8b3926a756f60a314edd5e3
+  checksum: 58dced3f3eb6960d1f91949cefb631bc00f588d2510230ab5050c51b98083aa5626e11a22f6aef85f09c001f86a4d8baed0bf54182ab05231ebd203b03229d03
   languageName: node
   linkType: hard
 
@@ -1359,12 +1359,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cz-commitlint@npm:16.0.0":
-  version: 16.0.0
-  resolution: "@commitlint/cz-commitlint@npm:16.0.0"
+"@commitlint/cz-commitlint@npm:16.1.0":
+  version: 16.1.0
+  resolution: "@commitlint/cz-commitlint@npm:16.1.0"
   dependencies:
     "@commitlint/ensure": ^16.0.0
-    "@commitlint/load": ^16.0.0
+    "@commitlint/load": ^16.1.0
     "@commitlint/types": ^16.0.0
     chalk: ^4.1.0
     lodash: ^4.17.21
@@ -1372,7 +1372,7 @@ __metadata:
   peerDependencies:
     commitizen: ^4.0.3
     inquirer: ^8.0.0
-  checksum: fa45ac8175b9bcf44e93dda7c207e5178a7e138a260a6f8421a9d85635f234412c4768856f20742ba0ddc96cb4c6755eaf6eb1b47b47cbc961f5508fd8c6edc6
+  checksum: 51b8f157c2c4ce3ef1ed6b879c713983b8fdade7031825d87413e1c04b1e31443fe43c743294401c159cbb32ff7b49b5db04f4049f90cbb6747efd6cdd354711
   languageName: node
   linkType: hard
 
@@ -1425,7 +1425,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/load@npm:>6.1.1, @commitlint/load@npm:^16.0.0":
+"@commitlint/load@npm:>6.1.1, @commitlint/load@npm:^16.1.0":
   version: 16.1.0
   resolution: "@commitlint/load@npm:16.1.0"
   dependencies:
@@ -3129,9 +3129,9 @@ __metadata:
   resolution: "@shsusac/subman2-web@workspace:."
   dependencies:
     "@browser-bunyan/console-formatted-stream": 1.6.4
-    "@commitlint/cli": 16.0.2
+    "@commitlint/cli": 16.1.0
     "@commitlint/config-conventional": 16.0.0
-    "@commitlint/cz-commitlint": 16.0.0
+    "@commitlint/cz-commitlint": 16.1.0
     "@firebase/logger": 0.3.2
     "@fortawesome/fontawesome-svg-core": 1.2.36
     "@fortawesome/free-regular-svg-icons": 5.15.4
