@@ -3178,7 +3178,7 @@ __metadata:
     gulp-prettier: 4.0.0
     gulp-real-favicon: 0.3.2
     gulp-shell: 0.8.0
-    husky: 7.0.0
+    husky: 7.0.4
     next: 12.0.8
     next-compose-plugins: 2.2.1
     pinst: 2.0.0
@@ -9519,12 +9519,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:7.0.0":
-  version: 7.0.0
-  resolution: "husky@npm:7.0.0"
+"husky@npm:7.0.4":
+  version: 7.0.4
+  resolution: "husky@npm:7.0.4"
   bin:
     husky: lib/bin.js
-  checksum: 2b9848c6365ad43110e19cffbf715ef695f2bcd8c98ee263b67389b492fe6b4045cad7be2af393b89c2d5effe3b97a6ff0443f869e9407d954bb93e17dade8a0
+  checksum: c6ec4af63da2c9522da8674a20ad9b48362cc92704896cc8a58c6a2a39d797feb2b806f93fbd83a6d653fbdceb2c3b6e0b602c6b2e8565206ffc2882ef7db9e9
   languageName: node
   linkType: hard
 
