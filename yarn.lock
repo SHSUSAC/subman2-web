@@ -3155,7 +3155,7 @@ __metadata:
     "@types/react-table": 7.7.9
     "@typescript-eslint/parser": 5.10.1
     autoprefixer: 10.4.2
-    browser-bunyan: 1.6.5
+    browser-bunyan: 1.7.0
     commitizen: 4.2.4
     cross-env: 7.0.3
     cssnano: 5.0.16
@@ -4927,15 +4927,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browser-bunyan@npm:1.6.5":
-  version: 1.6.5
-  resolution: "browser-bunyan@npm:1.6.5"
+"browser-bunyan@npm:1.7.0":
+  version: 1.7.0
+  resolution: "browser-bunyan@npm:1.7.0"
   dependencies:
     "@browser-bunyan/console-formatted-stream": ^1.6.4
     "@browser-bunyan/console-plain-stream": ^1.6.0
     "@browser-bunyan/console-raw-stream": ^1.6.0
     "@browser-bunyan/levels": ^1.6.0
-  checksum: 4b88e0d53f8ec7277a55c57203e361ae60098d1b8a43c0c949fccf7be70e1c0df3501ac33e51106d6397023f55ca42e5df40b9155ca0dd2c01a20c68ce5d9105
+  checksum: ebc4848451728a1cac2e7d947a9bd4897757d5fa6a75e93a604d655951b27ab1eea301ab34f486ad03461c25771c797b0ce33755013da8c3c08d1d1ee56cecca
   languageName: node
   linkType: hard
 
