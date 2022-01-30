@@ -29,7 +29,7 @@
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
-    "@fortawesome/react-fontawesome": "0.1.16",
+    "@fortawesome/react-fontawesome": "0.1.17",
     "@headlessui/react": "1.4.3",
     "@hookform/error-message": "2.0.0",
     "@js-temporal/polyfill": "0.3.0",
