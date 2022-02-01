@@ -1266,7 +1266,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@browser-bunyan/console-formatted-stream@npm:1.6.4, @browser-bunyan/console-formatted-stream@npm:^1.6.4":
+"@browser-bunyan/console-formatted-stream@npm:1.8.0":
+  version: 1.8.0
+  resolution: "@browser-bunyan/console-formatted-stream@npm:1.8.0"
+  dependencies:
+    "@browser-bunyan/levels": ^1.8.0
+  checksum: 0ff3038fabf49be99949aaafe68ac7dc3abe15ee32532af88a6a91f8523ed37405ce85dd76486526ad502ce48b961a3ada6bb3bad5a923cc94f6ed7b49e1491b
+  languageName: node
+  linkType: hard
+
+"@browser-bunyan/console-formatted-stream@npm:^1.6.4":
   version: 1.6.4
   resolution: "@browser-bunyan/console-formatted-stream@npm:1.6.4"
   dependencies:
@@ -1297,6 +1306,13 @@ __metadata:
   version: 1.6.0
   resolution: "@browser-bunyan/levels@npm:1.6.0"
   checksum: 00914a22e424fe5f9e22f7ab2f2790d49c55a672e5cf704f9c5a2463e2077edee039e5f613a7d8fd83d176d535290aa0b3f570c7650d8a089d94d61cb66335dc
+  languageName: node
+  linkType: hard
+
+"@browser-bunyan/levels@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "@browser-bunyan/levels@npm:1.8.0"
+  checksum: 2e72ef8b56934db2b4a42ba4cddfa71a57325aa543c59d8a20641d34662887e8d245b0c38df763fa6f6b0e3fd4013a25cc64f6d8862a978fcd02f1a645ebb8b8
   languageName: node
   linkType: hard
 
@@ -3119,7 +3135,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@shsusac/subman2-web@workspace:."
   dependencies:
-    "@browser-bunyan/console-formatted-stream": 1.6.4
+    "@browser-bunyan/console-formatted-stream": 1.8.0
     "@commitlint/cli": 16.1.0
     "@commitlint/config-conventional": 16.0.0
     "@commitlint/cz-commitlint": 16.1.0
