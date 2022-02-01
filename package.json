@@ -66,7 +66,7 @@
     "firebase-tools": "10.1.2",
     "gulp": "4.0.2",
     "gulp-contains2": "1.1.0",
-    "gulp-eslint-new": "1.1.2",
+    "gulp-eslint-new": "1.2.0",
     "gulp-if": "^3.0.0",
     "gulp-prettier": "4.0.0",
     "gulp-real-favicon": "0.3.2",
