@@ -1266,7 +1266,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@browser-bunyan/console-formatted-stream@npm:1.8.0":
+"@browser-bunyan/console-formatted-stream@npm:1.8.0, @browser-bunyan/console-formatted-stream@npm:^1.8.0":
   version: 1.8.0
   resolution: "@browser-bunyan/console-formatted-stream@npm:1.8.0"
   dependencies:
@@ -1275,37 +1275,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@browser-bunyan/console-formatted-stream@npm:^1.6.4":
-  version: 1.6.4
-  resolution: "@browser-bunyan/console-formatted-stream@npm:1.6.4"
+"@browser-bunyan/console-plain-stream@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "@browser-bunyan/console-plain-stream@npm:1.8.0"
   dependencies:
-    "@browser-bunyan/levels": ^1.6.0
-  checksum: 4a2ca58c602ccb93b4fc907c2322fc43dd7b76f0a909c6bd4e226955876c6e215959fc015d19bb3c25d4e1bed4b3f5858a691ac01349caf3083c03eae4335301
+    "@browser-bunyan/levels": ^1.8.0
+  checksum: 307cc8efcfdb2a61d14285dbed89074935ddc08740714e0b896ce90b294d43c82719cd7fc43b1928acd4620d9593198e3864f80bd33e5054ba7cb2423b89d26f
   languageName: node
   linkType: hard
 
-"@browser-bunyan/console-plain-stream@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@browser-bunyan/console-plain-stream@npm:1.6.0"
+"@browser-bunyan/console-raw-stream@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "@browser-bunyan/console-raw-stream@npm:1.8.0"
   dependencies:
-    "@browser-bunyan/levels": ^1.6.0
-  checksum: 9534225a18084d3a8a58f7a180b2718635faebae667037893930fd9c3bdddcc06405d394af8f71a989d3b33be65df0655e86eb45426457ebac542abfd8af2776
-  languageName: node
-  linkType: hard
-
-"@browser-bunyan/console-raw-stream@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@browser-bunyan/console-raw-stream@npm:1.6.0"
-  dependencies:
-    "@browser-bunyan/levels": ^1.6.0
-  checksum: 533ab022e26e2e4f79b71e1b661f55e67a3579d052dd9b0fb70a447eaa4538541e62a175e3cf5bd40ec882660c5a0fe84e3f30342b1e007b62b10a8da46c1f8d
-  languageName: node
-  linkType: hard
-
-"@browser-bunyan/levels@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@browser-bunyan/levels@npm:1.6.0"
-  checksum: 00914a22e424fe5f9e22f7ab2f2790d49c55a672e5cf704f9c5a2463e2077edee039e5f613a7d8fd83d176d535290aa0b3f570c7650d8a089d94d61cb66335dc
+    "@browser-bunyan/levels": ^1.8.0
+  checksum: b8a4983f70e17bea8c35b15eba633de35c04f52b135f47f79444415794d6d5581ec34541cc0ab52f6a23bb560b13362bbb780f36994ad83b4294528a87398110
   languageName: node
   linkType: hard
 
@@ -3162,7 +3146,7 @@ __metadata:
     "@types/react-table": 7.7.9
     "@typescript-eslint/parser": 5.10.1
     autoprefixer: 10.4.2
-    browser-bunyan: 1.7.0
+    browser-bunyan: 1.8.0
     commitizen: 4.2.4
     cross-env: 7.0.3
     cssnano: 5.0.16
@@ -4934,15 +4918,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browser-bunyan@npm:1.7.0":
-  version: 1.7.0
-  resolution: "browser-bunyan@npm:1.7.0"
+"browser-bunyan@npm:1.8.0":
+  version: 1.8.0
+  resolution: "browser-bunyan@npm:1.8.0"
   dependencies:
-    "@browser-bunyan/console-formatted-stream": ^1.6.4
-    "@browser-bunyan/console-plain-stream": ^1.6.0
-    "@browser-bunyan/console-raw-stream": ^1.6.0
-    "@browser-bunyan/levels": ^1.6.0
-  checksum: ebc4848451728a1cac2e7d947a9bd4897757d5fa6a75e93a604d655951b27ab1eea301ab34f486ad03461c25771c797b0ce33755013da8c3c08d1d1ee56cecca
+    "@browser-bunyan/console-formatted-stream": ^1.8.0
+    "@browser-bunyan/console-plain-stream": ^1.8.0
+    "@browser-bunyan/console-raw-stream": ^1.8.0
+    "@browser-bunyan/levels": ^1.8.0
+  checksum: 87db5e1ceccec840525a8810754c03805b39d3a2bba406ed01d37bf56dfc62f741f332dcdd9254e3f88fe258d5d7cbcfc0caf4f3ccaf2eafd05b24c1ecdd1335
   languageName: node
   linkType: hard
 
