@@ -33,7 +33,7 @@
     "@headlessui/react": "1.4.3",
     "@hookform/error-message": "2.0.0",
     "@js-temporal/polyfill": "0.3.0",
-    "@next/bundle-analyzer": "12.0.9",
+    "@next/bundle-analyzer": "12.0.10",
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/exec": "6.0.3",
@@ -54,7 +54,7 @@
     "cssnano": "5.0.16",
     "del": "6.0.0",
     "eslint": "8.8.0",
-    "eslint-config-next": "12.0.9",
+    "eslint-config-next": "12.0.10",
     "eslint-config-prettier": "8.3.0",
     "eslint-import-resolver-node": "0.3.6",
     "eslint-import-resolver-typescript": "2.5.0",
@@ -108,7 +108,7 @@
     "workbox-window": "6.4.2"
   },
   "dependencies": {
-    "next": "12.0.9",
+    "next": "12.0.10",
     "next-compose-plugins": "2.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
