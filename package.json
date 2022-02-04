@@ -2,7 +2,7 @@
   "name": "@shsusac/subman2-web",
   "author": "Vespion Softworks",
   "license": "AGPL-3.0-only",
-  "version": "1.1.18",
+  "version": "1.1.19",
   "packageManager": "yarn@3.1.1",
   "repository": {
     "type": "git",
