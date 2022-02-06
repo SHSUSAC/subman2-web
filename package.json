@@ -76,7 +76,7 @@
     "plugin-error": "1.0.1",
     "postcss": "8.4.6",
     "prettier": "2.5.1",
-    "react-click-away-listener": "2.0.5",
+    "react-click-away-listener": "2.1.0",
     "react-context-hook": "3.0.7",
     "react-hook-form": "7.25.3",
     "react-select": "5.2.2",

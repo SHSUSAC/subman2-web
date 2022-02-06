@@ -3177,7 +3177,7 @@ __metadata:
     postcss: 8.4.6
     prettier: 2.5.1
     react: 17.0.2
-    react-click-away-listener: 2.0.5
+    react-click-away-listener: 2.1.0
     react-context-hook: 3.0.7
     react-dom: 17.0.2
     react-hook-form: 7.25.3
@@ -14498,13 +14498,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-click-away-listener@npm:2.0.5":
-  version: 2.0.5
-  resolution: "react-click-away-listener@npm:2.0.5"
+"react-click-away-listener@npm:2.1.0":
+  version: 2.1.0
+  resolution: "react-click-away-listener@npm:2.1.0"
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: 9024baa2acd14a2abad3b5baf393d14e45cddd5309d6ca7a79e38d30456f4fffb667aabdcd6c17e626ef44042b6df17bbd8d424bb7dfe8a1d43c77af7aa9b902
+  checksum: 79a62bf68edcc32ba42b6c514e31ffacc45c4ffbac5ad976d64251cd05ea467a2a3f37e6edf75e6f42b95f36274dcc88544c791b898cacd92993e03b9225d674
   languageName: node
   linkType: hard
 
