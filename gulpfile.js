@@ -156,6 +156,7 @@ const Clean = gulp.parallel(CleanNextDirectory, CleanOutputDirectory, CleanFavic
 const RunNextDevServer = shell.task("yarn node ./dev_server/server.js");
 
 const lintingBaseGlobs = [
+	"!node_modules",
 	"*.json",
 	"*.js",
 	".github/*.json",
@@ -169,7 +170,7 @@ const lintingBaseGlobs = [
 ];
 
 function PrettierMarkdownInternal(fix) {
-	let pipeline = gulp.src("*.md", { base: "./" });
+	let pipeline = gulp.src(["*.md", "!CHANGELOG.md"], { base: "./" });
 	if (fix) {
 		pipeline = pipeline.pipe(prettier({ parser: "markdown" })).pipe(gulp.dest("./"));
 	} else {
