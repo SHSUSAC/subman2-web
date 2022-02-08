@@ -3184,7 +3184,7 @@ __metadata:
     react-select: 5.2.2
     react-table: 7.7.0
     react-toastify: 8.1.1
-    react-use-error-boundary: 0.0.6
+    react-use-error-boundary: 1.0.2
     reactfire: 4.2.1
     rxfire: 6.0.3
     rxjs: 7.5.2
@@ -14603,12 +14603,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-use-error-boundary@npm:0.0.6":
-  version: 0.0.6
-  resolution: "react-use-error-boundary@npm:0.0.6"
+"react-use-error-boundary@npm:1.0.2":
+  version: 1.0.2
+  resolution: "react-use-error-boundary@npm:1.0.2"
   peerDependencies:
     react: ">= 16.8"
-  checksum: e8535a28aaf87e44567ca06417812a32afb063b4a2dadae40c9779a795f3127241764d8d73aa7c95d85f9529bfedb7d2d634186f63ffbaf556d74dd5c79e2eed
+  checksum: 91a8b79c5740b8a88e494f44160e41d4557e9f4fdbe8f0261c8514ad5ec164ce331b3cfd44bc21d976e45176ccd8bdb69ad6d4f5cf438cfab0e0b1adf1b0af5a
   languageName: node
   linkType: hard
 
