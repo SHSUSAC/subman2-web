@@ -3165,7 +3165,7 @@ __metadata:
     gulp: 4.0.2
     gulp-contains2: 1.1.0
     gulp-eslint-new: 1.3.0
-    gulp-if: ^3.0.0
+    gulp-if: 3.0.0
     gulp-prettier: 4.0.0
     gulp-real-favicon: 0.3.2
     gulp-shell: 0.8.0
@@ -9092,7 +9092,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-if@npm:^3.0.0":
+"gulp-if@npm:3.0.0":
   version: 3.0.0
   resolution: "gulp-if@npm:3.0.0"
   dependencies:
