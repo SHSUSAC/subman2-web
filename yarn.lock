@@ -3164,7 +3164,7 @@ __metadata:
     firebase-tools: 10.1.4
     gulp: 4.0.2
     gulp-contains2: 1.1.0
-    gulp-eslint-new: 1.2.0
+    gulp-eslint-new: 1.3.0
     gulp-if: ^3.0.0
     gulp-prettier: 4.0.0
     gulp-real-favicon: 0.3.2
@@ -3393,10 +3393,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^17.0.13":
-  version: 17.0.13
-  resolution: "@types/node@npm:17.0.13"
-  checksum: 8b87c850c1604c65e3474bd03d122914464b7970caed20f65f4a7706ab429353b896a3916be4d2581164eccda9e3dd95c338fbccf686ff85a824c40d15e8f3fa
+"@types/node@npm:^17.0.15":
+  version: 17.0.16
+  resolution: "@types/node@npm:17.0.16"
+  checksum: 2d452a9e0ee7ec83d447d66dd2baf4dd05ef2fbcda39b06f73d86b36d5150d86c43a733d534d77467e7782104756944d42a35ed4b64113bda341b8334ee4d01d
   languageName: node
   linkType: hard
 
@@ -9077,18 +9077,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-eslint-new@npm:1.2.0":
-  version: 1.2.0
-  resolution: "gulp-eslint-new@npm:1.2.0"
+"gulp-eslint-new@npm:1.3.0":
+  version: 1.3.0
+  resolution: "gulp-eslint-new@npm:1.3.0"
   dependencies:
     "@types/eslint": ^8.4.1
-    "@types/node": ^17.0.13
+    "@types/node": ^17.0.15
     eslint: ^8.8.0
     fancy-log: ^2.0.0
     plugin-error: ^1.0.1
     ternary-stream: ^3.0.0
     vinyl-fs: ^3.0.3
-  checksum: c557d03c2908cd06c0c39bca4a3f8703230f8de8c62ef616281e614fc513fbaee57bba32f93c8fcf6200b601db33ab68b5d111ef3e65fdc60ae27b5886c3e89a
+  checksum: dfdbe4cc80c622acb68015b1f5169011579295a7a3575eda0e31e3d69b05904b57f4caad07d288ae7e9c66bb9aad57c290c0118cf60b1e4423e68e3394d2abac
   languageName: node
   linkType: hard
 
