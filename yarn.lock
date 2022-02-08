@@ -3180,7 +3180,7 @@ __metadata:
     react-click-away-listener: 2.1.0
     react-context-hook: 3.0.7
     react-dom: 17.0.2
-    react-hook-form: 7.26.0
+    react-hook-form: 7.26.1
     react-select: 5.2.2
     react-table: 7.7.0
     react-toastify: 8.1.1
@@ -14534,12 +14534,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:7.26.0":
-  version: 7.26.0
-  resolution: "react-hook-form@npm:7.26.0"
+"react-hook-form@npm:7.26.1":
+  version: 7.26.1
+  resolution: "react-hook-form@npm:7.26.1"
   peerDependencies:
     react: ^16.8.0 || ^17
-  checksum: ba2218410515d68f5f06177276bd233054a8481b2d9772651e6f0e44f90f5ecfd5144578c6518e64a6ab5177c018c5f0f7c597ee2e4a9e7adfc577c0c5400f2c
+  checksum: e873924a0bb16b312424a1fe98e402c478f4e10fdd2bb171dc36e27778216508c4e263e12eb6fcb015e50e108d91fd38ab729f73a7b5a5ad626ad97254ff15c0
   languageName: node
   linkType: hard
 
