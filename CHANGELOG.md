@@ -1,5 +1,7 @@
 # Semantic Versioning Changelog
 
+## [1.1.28](https://github.com/SHSUSAC/subman2-web/compare/v1.1.27...v1.1.28) (2022-02-10)
+
 ## [1.1.27](https://github.com/SHSUSAC/subman2-web/compare/v1.1.26...v1.1.27) (2022-02-10)
 
 ## [1.1.26](https://github.com/SHSUSAC/subman2-web/compare/v1.1.25...v1.1.26) (2022-02-10)
