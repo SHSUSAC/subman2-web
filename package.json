@@ -108,7 +108,7 @@
     "workbox-window": "6.4.2"
   },
   "dependencies": {
-    "next": "12.0.10",
+    "next": "12.1.0",
     "next-compose-plugins": "2.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
