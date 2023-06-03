@@ -3147,7 +3147,7 @@ __metadata:
     "@semantic-release/release-notes-generator": 10.0.3
     "@tailwindcss/forms": 0.4.0
     "@types/node": 16.11.22
-    "@types/prettier": 2.4.3
+    "@types/prettier": 2.7.3
     "@types/react": 17.0.39
     "@types/react-dom": 17.0.11
     "@types/react-table": 7.7.9
@@ -3182,7 +3182,7 @@ __metadata:
     pinst: 2.1.6
     plugin-error: 1.0.1
     postcss: 8.4.6
-    prettier: 2.5.1
+    prettier: 2.8.8
     react: 17.0.2
     react-click-away-listener: 2.1.0
     react-context-hook: 3.0.7
@@ -3421,10 +3421,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:2.4.3":
-  version: 2.4.3
-  resolution: "@types/prettier@npm:2.4.3"
-  checksum: b240434daabac54700c862b0bb52a83fec396e0e9c847447119ba41fd8404d79aadfa174e6306fb094b29efadac586344b7606c3a71c286b71755ab2579d54df
+"@types/prettier@npm:2.7.3":
+  version: 2.7.3
+  resolution: "@types/prettier@npm:2.7.3"
+  checksum: 705384209cea6d1433ff6c187c80dcc0b95d99d5c5ce21a46a9a58060c527973506822e428789d842761e0280d25e3359300f017fbe77b9755bc772ab3dc2f83
   languageName: node
   linkType: hard
 
@@ -14136,7 +14136,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.5.1, prettier@npm:^2.0.0":
+"prettier@npm:2.8.8":
+  version: 2.8.8
+  resolution: "prettier@npm:2.8.8"
+  bin:
+    prettier: bin-prettier.js
+  checksum: b49e409431bf129dd89238d64299ba80717b57ff5a6d1c1a8b1a28b590d998a34e083fa13573bc732bb8d2305becb4c9a4407f8486c81fa7d55100eb08263cf8
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.0.0":
   version: 2.5.1
   resolution: "prettier@npm:2.5.1"
   bin:
