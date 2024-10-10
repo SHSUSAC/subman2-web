@@ -3146,7 +3146,7 @@ __metadata:
     "@semantic-release/npm": 9.0.0
     "@semantic-release/release-notes-generator": 10.0.3
     "@tailwindcss/forms": 0.4.0
-    "@types/node": 16.11.22
+    "@types/node": 16.18.113
     "@types/prettier": 2.4.3
     "@types/react": 17.0.39
     "@types/react-dom": 17.0.11
@@ -3393,10 +3393,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.11.22":
-  version: 16.11.22
-  resolution: "@types/node@npm:16.11.22"
-  checksum: 9d879b9b0427e21a11e3162917553d5bc3c7d68d1ef4aa631512144801fe59bc3b4da5965e7ea7c2db99394487b543d4f2499b318e12392574802ac4f975b7c4
+"@types/node@npm:16.18.113":
+  version: 16.18.113
+  resolution: "@types/node@npm:16.18.113"
+  checksum: 483bee0ba09b767910b810c499931a4786549c7c04134073e08c2ecc9cdbd23873786ae57db72010837a7662122ace72cfa6661e9fe7be0fb806cd0dd10032c9
   languageName: node
   linkType: hard
 
