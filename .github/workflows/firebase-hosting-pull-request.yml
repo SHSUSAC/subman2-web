@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.8.0
         with:
           lfs: true
 
@@ -16,9 +16,9 @@ jobs:
         run: npm install --global yarn
 
       - name: Setup Node and Cached Dependencies
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v2.5.2
         with:
-          node-version: "14"
+          node-version: "14.21.3"
           cache: "yarn"
 
       - name: Install Dependencies
@@ -30,7 +30,7 @@ jobs:
       #- name: Test
       #  run: yarn run test
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0.11.0
         if: ${{ !env.ACT }}
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
