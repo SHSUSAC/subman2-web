@@ -83,7 +83,7 @@
     "react-table": "7.7.0",
     "react-toastify": "8.1.1",
     "react-use-error-boundary": "1.0.2",
-    "reactfire": "4.2.1",
+    "reactfire": "4.2.6",
     "rxfire": "6.0.3",
     "rxjs": "7.5.2",
     "semantic-release": "19.0.2",
